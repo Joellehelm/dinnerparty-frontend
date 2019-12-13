@@ -36,6 +36,9 @@ class Login extends Component {
       })
       .then(r => r.json())
       .then(response => {
+        localStorage.setItem('token', response.jwt)
+        
+        
         console.log(response)
         if (response.logged_in) {
           this.props.handleLogin(response)

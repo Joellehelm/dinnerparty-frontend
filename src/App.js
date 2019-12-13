@@ -6,8 +6,7 @@ class App extends Component {
     super();
     this.state = { 
       isLoggedIn: false,
-      user: {},
-      navClick: "none"
+      user: {}
      };
   }
 componentDidMount() {
@@ -17,7 +16,7 @@ loginStatus = () => {
     fetch('http://localhost:3000/logged_in')
     .then(r => r.json())
     .then(response => {
-      if (response.logged_in) {
+      if (response.logged_in && localStorage.getItem('token') === this.state.user.jwt) {
         this.handleLogin(response)
       } else {
         this.handleLogout()
@@ -28,7 +27,7 @@ loginStatus = () => {
 handleLogin = (data) => {
     this.setState({
       isLoggedIn: true,
-      user: data.user
+      user: data
     })
   }
 handleLogout = () => {
@@ -36,6 +35,7 @@ handleLogout = () => {
     isLoggedIn: false,
     user: {}
     })
+    // maube just clear local storage, and user, isLoggedIn might not be necessary
   }
 
 
