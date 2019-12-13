@@ -5,7 +5,6 @@ class Login extends Component {
       super(props);
       this.state = { 
         username: '',
-        email: '',
         password: '',
         errors: ''
        };
@@ -21,10 +20,9 @@ class Login extends Component {
     };
   handleSubmit = (event) => {
       event.preventDefault()
-      const {username, email, password} = this.state
+      const {username, password} = this.state
         let user = {
         username: username,
-        email: email,
         password: password
       }
       
@@ -38,6 +36,7 @@ class Login extends Component {
       })
       .then(r => r.json())
       .then(response => {
+        console.log(response)
         if (response.logged_in) {
           this.props.handleLogin(response)
           this.redirect()
@@ -65,7 +64,7 @@ class Login extends Component {
       )
     }
   render() {
-      const {username, email, password} = this.state
+      const {username, password} = this.state
   return (
         <div className="login">
           
@@ -80,14 +79,7 @@ class Login extends Component {
               onChange={this.handleChange}
             />   
            
-            <input
-              className="input"
-              placeholder="email"
-              type="text"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
+        
             <input
               className="input"
               placeholder="password"
