@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import { register } from '../actions/auth'
+
+
 
 class Signup extends Component {
     constructor(props) {
@@ -19,6 +23,18 @@ class Signup extends Component {
         [name]: value
       })
     };
+
+    handleSubmot = (event) => {
+      event.preventDefault()
+
+      const newUser = {
+          name: this.state.name,
+          email: this.state.email,
+          password: this.state.password,
+          password2: this.state.password2
+      }
+      this.props.register(newUser, this.props.history)
+  }
   
   
   handleSubmit = (event) => {
@@ -57,20 +73,7 @@ class Signup extends Component {
     };
   
   
-  redirect = () => {
-      this.props.history.push('/')
-    }
   
-  
-  handleErrors = () => {
-      return (
-        <div>
-          <ul>{this.state.errors.map((error) => {
-            return <li key={error}>{error}</li>
-          })}</ul> 
-        </div>
-      )
-    }
   
   
   
@@ -127,4 +130,11 @@ class Signup extends Component {
       );
     }
   }
-  export default Signup;
+
+
+
+  const mapStateToProps = (state) => ({
+      user: state.user
+  })
+  
+  export default connect(mapStateToProps, { register })(Signup);
