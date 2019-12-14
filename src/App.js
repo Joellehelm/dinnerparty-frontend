@@ -31,6 +31,7 @@ handleLogin = (data) => {
     })
   }
 handleLogout = () => {
+    localStorage.removeItem('token')
     this.setState({
     isLoggedIn: false,
     user: {}
