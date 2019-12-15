@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { login } from '../actions/auth';
 
 class Login extends Component {
     constructor(props) {
@@ -9,9 +11,9 @@ class Login extends Component {
         errors: ''
        };
     }
-    componentWillMount() {
-      return this.props.loggedInStatus ? this.redirect() : null
-    }
+    // componentWillMount() {
+    //   return this.props.loggedInStatus ? this.redirect() : null
+    // }
   handleChange = (event) => {
       const {name, value} = event.target
       this.setState({
@@ -25,47 +27,14 @@ class Login extends Component {
         username: username,
         password: password
       }
+      this.props.login(user)
+    
       
-      fetch('http://localhost:3000/login', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({user})
-      })
-      .then(r => r.json())
-      .then(response => {
-        localStorage.setItem('token', response.jwt)
-        
-        
-        console.log(response)
-        if (response.logged_in) {
-          this.props.handleLogin(response)
-          this.redirect()
-        } else {
-          this.setState({
-            errors: response.errors
-          })
-        }
-      })
-      .catch(error => console.log('api errors:', error))
     };
   redirect = () => {
       this.props.history.push('/')
     }
-  handleErrors = () => {
-      return (
-        <div>
-          <ul>
-          {this.state.errors.map(error => {
-          return <li key={error}>{error}</li>
-            })
-          }
-          </ul>
-        </div>
-      )
-    }
+
   render() {
       const {username, password} = this.state
   return (
@@ -86,7 +55,7 @@ class Login extends Component {
             <input
               className="input"
               placeholder="password"
-              type="password"
+              type="new-password"
               name="password"
               value={password}
               onChange={this.handleChange}
@@ -106,4 +75,10 @@ class Login extends Component {
       );
     }
   }
-  export default Login;
+
+  const mapStateToProps = (state) => ({
+    auth: state.auth
+  })
+
+
+  export default connect(mapStateToProps, { login })(Login);

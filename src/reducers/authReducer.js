@@ -2,7 +2,9 @@ import * as act from '../actions/actionTypes';
 
 
 const initialState = {
-    user: {}
+    user: {},
+    isLoggedIn: false
+
     
 };
 export default function(state = initialState, action) {
@@ -12,10 +14,20 @@ export default function(state = initialState, action) {
             ...state,
             user: action.payload
         };
+
+        case action.LOGIN:
+        return {
+            ...state,
+            user: action.payload,
+            isLoggedIn: true
+        };
    //second case
+   
 
         default: 
         return state;
     }
+    
+
     
 }
