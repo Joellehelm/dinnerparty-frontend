@@ -23,6 +23,13 @@ export default function(state = initialState, action) {
             user: action.payload.user,
             isLoggedIn: true
         };
+
+        case act.LOGOUT:
+            return {
+                ...state,
+                user: {},
+                isLoggedIn: false
+            }
    //second case
    
 

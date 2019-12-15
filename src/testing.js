@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import store from './store';
 import { connect } from 'react-redux'
 
 
 class testing extends Component {
 
     componentDidMount(){
-       console.log(this.props.auth)
+       
         // fetch('http://localhost:3000/profile', {
         //     method: 'GET',
         //     headers: {
@@ -24,7 +23,7 @@ class testing extends Component {
     render() {
         return (
             <div>
-    <h1>{console.log(store.getState())}</h1>
+    <h1>{this.props.auth.user.username}</h1>
             </div>
         );
     }
