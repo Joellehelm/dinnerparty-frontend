@@ -24,21 +24,9 @@ class Signup extends Component {
       })
     };
 
-    handleSubmot = (event) => {
+    handleSubmit = (event) => {
       event.preventDefault()
 
-      const newUser = {
-          name: this.state.name,
-          email: this.state.email,
-          password: this.state.password,
-          password2: this.state.password2
-      }
-      this.props.register(newUser, this.props.history)
-  }
-  
-  
-  handleSubmit = (event) => {
-      event.preventDefault()
       const {username, email, password, password_confirmation} = this.state
       let user = {
         username: username,
@@ -47,33 +35,11 @@ class Signup extends Component {
         password_confirmation: password_confirmation,
         status: "created"
       }
-  
-      fetch('http://localhost:3000/users', {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-      },
-      body: JSON.stringify({user})
-  })
-  
-      .then(r => r.json())
-      .then(response => {
-       
-        if (response.status === 'created') {
-          this.props.handleLogin(response)
-          this.redirect()
-        } else {
-          this.setState({
-            errors: response.errors
-          })
-        }
-      })
-      .catch(error => console.log('api errors:', error))
-    };
+      this.props.register(user)
+  }
   
   
-  
+ 
   
   
   
