@@ -15,8 +15,8 @@ class Login extends Component {
         loggedIn: false
        };
     }
-    // componentWillMount() {
-    //   return this.props.loggedInStatus ? this.redirect() : null
+    // componentDidMount() {
+    //   this.props.history.push("/")
     // }
   handleChange = (event) => {
       const {name, value} = event.target
@@ -45,9 +45,9 @@ class Login extends Component {
 
 
 
-  redirect = () => {
-      this.state.history.push('/')
-    }
+  // redirect = () => {
+  //     this.state.history.push('/')
+    // }
 
 
     handleButton = (event) => {

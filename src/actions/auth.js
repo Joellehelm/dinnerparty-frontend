@@ -3,7 +3,7 @@ import * as action from './actionTypes'
 
 
 
-export const register = (user) => dispatch => {
+export const register = (user, history) => dispatch => {
     
   
         return fetch('http://localhost:3000/users', {
@@ -17,6 +17,7 @@ export const register = (user) => dispatch => {
     
         .then(r => r.json())
         .then(response => {
+          history.push("/")
    
           if (response.status === 'created') {
               // probably change this to display a successful account creation message
