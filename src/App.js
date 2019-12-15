@@ -44,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MainContainer user={this.state.user} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
+        <MainContainer handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
       </div>
     );
   }
