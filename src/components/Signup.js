@@ -26,7 +26,6 @@ class Signup extends Component {
 
     handleSubmit = (event) => {
       event.preventDefault()
-
       const {username, email, password, password_confirmation} = this.state
       let user = {
         username: username,
@@ -38,6 +37,7 @@ class Signup extends Component {
       this.props.register(user)
   }
   
+ 
   
  
   
@@ -68,7 +68,7 @@ class Signup extends Component {
             <input 
               className="input"
               placeholder="password"
-              type="password"
+              type="new-password"
               name="password"
               value={password}
               onChange={this.handleChange}
@@ -76,7 +76,7 @@ class Signup extends Component {
             <input
               className="input"
               placeholder="password confirmation"
-              type="password"
+              type="new-password"
               name="password_confirmation"
               value={password_confirmation}
               onChange={this.handleChange}
@@ -100,7 +100,7 @@ class Signup extends Component {
 
 
   const mapStateToProps = (state) => ({
-      user: state.user
+      auth: state.auth
   })
   
   export default connect(mapStateToProps, { register })(Signup);
