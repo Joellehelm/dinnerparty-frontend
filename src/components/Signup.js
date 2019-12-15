@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { register } from '../actions/auth'
+import '../style/login.css'
 
 
 
@@ -34,7 +35,7 @@ class Signup extends Component {
         password_confirmation: password_confirmation,
         status: "created"
       }
-      this.props.register(user, this.props.history)
+      this.props.register(user)
 
       this.setState({
         username: "",
@@ -54,52 +55,17 @@ class Signup extends Component {
       const {username, email, password, password_confirmation} = this.state
   return (
         <div>
-         
-          <form className="form" onSubmit={this.handleSubmit}>
-            <input
-              className="input"
-              placeholder="username"
-              type="text"
-              name="username"
-              value={username}
-              onChange={this.handleChange}
-            />
-            <input
-              className="input"
-              placeholder="email"
-              type="text"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-            <input 
-              className="input"
-              placeholder="password"
-              type="new-password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-            <input
-              className="input"
-              placeholder="password confirmation"
-              type="new-password"
-              name="password_confirmation"
-              value={password_confirmation}
-              onChange={this.handleChange}
-            />
-          
-            <button placeholder="submit" type="submit">
-              Sign Up
-            </button>
-        
-          </form>
-          <div>
-            {
-              this.state.errors ? this.handleErrors() : null
-            }
-          </div>
-        </div>
+    <div class="form-container sign-up-container">
+      <form onSubmit={this.handleSubmit}>
+        <h1>Create Account</h1>
+        <input type="text" placeholder="Name" name="username" value={username} onChange={this.handleChange}/>
+        <input type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange}/>
+        <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange}/>
+        <input type="password" placeholder="Password Confirmation" name="password_confirmation" value={password_confirmation} onChange={this.handleChange}/>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+    </div>
       );
     }
   }
@@ -111,3 +77,7 @@ class Signup extends Component {
   })
   
   export default connect(mapStateToProps, { register })(Signup);
+
+
+
+
