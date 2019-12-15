@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
+import { logout } from '../actions/auth';
+
+
 
 class Login extends Component {
     constructor(props) {
@@ -8,7 +11,8 @@ class Login extends Component {
       this.state = { 
         username: '',
         password: '',
-        errors: ''
+        errors: '',
+        loggedIn: false
        };
     }
     // componentWillMount() {
@@ -27,17 +31,39 @@ class Login extends Component {
         username: username,
         password: password
       }
+      
       this.props.login(user)
-    
+      this.setState({
+        loggedIn: true
+      })
+
+      
       
     };
   redirect = () => {
-      this.props.history.push('/')
+      this.state.history.push('/')
     }
+
+
+    handleButton = (event) => {
+      event.preventDefault()
+      this.props.logout()
+      this.setState({
+        loggedIn: false
+      })
+    }
+
+
 
   render() {
       const {username, password} = this.state
+    
   return (
+    <div>
+      {
+        // this.props.auth.jwt === localStorage.getItem('token') || 
+        this.state.loggedIn === true ? <button onClick={this.handleButton}>LOGOUT</button>
+        :
         <div className="login">
           
         
@@ -72,6 +98,8 @@ class Login extends Component {
             }
           </div>
         </div>
+  }
+        </div>
       );
     }
   }
@@ -80,5 +108,12 @@ class Login extends Component {
     auth: state.auth
   })
 
+  const mapDispatchToProps = {
+ 
+      login,
+      logout
+    
+  }
 
-  export default connect(mapStateToProps, { login })(Login);
+
+  export default connect(mapStateToProps, mapDispatchToProps)(Login);
