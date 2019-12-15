@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Login from './Login'
-import Signup from './Signup'
+// import Login from './Login'
+// import Signup from './Signup'
+import Registration from './Registration'
 import Testing from '../testing'
 import {
     BrowserRouter as Router,
@@ -11,18 +12,18 @@ import {
 
 
 
-  const login = (props) => {
-      return (
-          <Login handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn}/>
-      )
-  }
+//   const login = (props) => {
+//       return (
+//           <Login handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn}/>
+//       )
+//   }
 
   
-  const signup = (props) => {
-    return(
-        <Signup handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} />
-    )
-  }
+//   const signup = (props) => {
+//     return(
+//         <Signup handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} />
+//     )
+//   }
 
 
   const home = (props) => {
@@ -55,20 +56,25 @@ class MainContainer extends Component {
 
     render() {
         return (
+
             <Router>
-            <div>
-                {/* <Login handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} /> */}
-                {/* <Signup handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} /> */}
-            
+            <div >
+                <Registration handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} />
+                
                 <Switch>
                     <Route exact path = "/" component={home}>
+        
                         
                         </Route>
+
                     <Route exact path = "/messages" component={messages}>
 
                         </Route>
+
                     <Route exact path = "/account" component={account}>
+
                         </Route>
+
                     </Switch>
             </div>
             </ Router>
