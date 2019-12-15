@@ -47,18 +47,18 @@ export const login = (user) => dispatch => {
         })
         .then(r => r.json())
         .then(response => {
-      
-          localStorage.setItem('token', response.jwt)
-
-          if (response.logged_in) {
-             
-              dispatch({
-                  type: action.LOGIN,
-                  payload: response
-              })
-          
+    
+            if (response.user) {
+                
+                dispatch({
+                    type: action.LOGIN,
+                    payload: response
+                })
+                localStorage.setItem('token', response.jwt)
+                
           } else {
           // error handling here
+          console.log('HIT THE ELSE IN LOGIN FETCH')
 
           }
         })

@@ -8,6 +8,7 @@ const initialState = {
     
 };
 export default function(state = initialState, action) {
+  
     switch (action.type) {
         case act.CURRENT_USER:
         return {
@@ -15,10 +16,11 @@ export default function(state = initialState, action) {
             user: action.payload
         };
 
-        case action.LOGIN:
+        case act.LOGIN:
+            debugger
         return {
             ...state,
-            user: action.payload,
+            user: action.payload.user,
             isLoggedIn: true
         };
    //second case

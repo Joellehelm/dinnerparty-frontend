@@ -5,8 +5,7 @@ import thunk from 'redux-thunk';
 
 
 const initialState = {
-    isLoggedIn: false,
-    user: {}
+  
 };
 
 const middleware = [thunk];
