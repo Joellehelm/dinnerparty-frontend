@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import store from './store';
+import { connect } from 'react-redux'
 
 
 class testing extends Component {
 
     componentDidMount(){
-        store.getState()
-
+       console.log(this.props.auth)
         // fetch('http://localhost:3000/profile', {
         //     method: 'GET',
         //     headers: {
@@ -24,10 +24,14 @@ class testing extends Component {
     render() {
         return (
             <div>
-                <h1>{this.props.user}</h1>
+    <h1>{console.log(store.getState())}</h1>
             </div>
         );
     }
 }
 
-export default testing;
+const mapStateToProps = (state) => ({
+    auth: state.auth
+  })
+
+export default connect(mapStateToProps)(testing);
