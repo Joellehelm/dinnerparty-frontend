@@ -34,12 +34,17 @@ class Login extends Component {
       
       this.props.login(user)
       this.setState({
-        loggedIn: true
+        loggedIn: true,
+        username: "",
+        password: ""
       })
-
-      
+   
+     
       
     };
+
+
+
   redirect = () => {
       this.state.history.push('/')
     }

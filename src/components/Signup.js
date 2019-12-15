@@ -35,6 +35,13 @@ class Signup extends Component {
         status: "created"
       }
       this.props.register(user)
+
+      this.setState({
+        username: "",
+        email: "",
+        password: "",
+        password_confirmation: ""
+      })
   }
   
  
