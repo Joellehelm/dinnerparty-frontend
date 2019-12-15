@@ -3,7 +3,8 @@ import * as act from '../actions/actionTypes';
 
 const initialState = {
     user: {},
-    isLoggedIn: false
+    isLoggedIn: false,
+
 
     
 };
@@ -17,7 +18,7 @@ export default function(state = initialState, action) {
         };
 
         case act.LOGIN:
-            debugger
+           
         return {
             ...state,
             user: action.payload.user,

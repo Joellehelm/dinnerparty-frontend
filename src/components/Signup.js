@@ -34,7 +34,7 @@ class Signup extends Component {
         password_confirmation: password_confirmation,
         status: "created"
       }
-      this.props.register(user)
+      this.props.register(user, this.props.history)
 
       this.setState({
         username: "",
