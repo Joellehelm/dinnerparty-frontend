@@ -17,7 +17,7 @@ export const register = (user, history) => dispatch => {
     
         .then(r => r.json())
         .then(response => {
-          history.push("/")
+
    
           if (response.status === 'created') {
               // probably change this to display a successful account creation message

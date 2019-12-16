@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 // import Login from './Login'
 // import Signup from './Signup'
+import Home from './Home'
 import Registration from './Registration'
+import { connect } from 'react-redux'
 import Testing from '../testing'
 import {
     BrowserRouter as Router,
@@ -26,11 +28,13 @@ import {
 //   }
 
 
-  const home = (props) => {
-    return (
-        <div>HOME</div>
-    )
-}
+//   const home = (props) => {
+
+//     return (
+     
+//         <div>HOME</div>
+//     )
+// }
 
 
 const messages = (props) => {
@@ -53,17 +57,24 @@ const account = (props) => {
 class MainContainer extends Component {
 
 
+    comonentDidUpdate(){
+        debugger
+    }
 
     render() {
         return (
 
             <Router>
             <div >
-                <Registration handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} />
+                {
+                    this.props.auth.isLoggedIn ?
+               
                 
                 <Switch>
-                    <Route exact path = "/" component={home}>
-        
+
+
+                    <Route exact path = "/">
+                        <Home />
                         
                         </Route>
 
@@ -76,10 +87,17 @@ class MainContainer extends Component {
                         </Route>
 
                     </Switch>
+                    :
+                    <Registration handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} /> 
+                    }
             </div>
             </ Router>
         );
     }
 }
 
-export default MainContainer;
+const mapStateToProps = (state) => ({
+    auth: state.auth
+  })
+
+export default connect(mapStateToProps)(MainContainer);

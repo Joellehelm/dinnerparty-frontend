@@ -25,7 +25,7 @@ class Registration extends Component {
 
     render() {
         return (
-            <div>
+            <div className="registration">
                 <div className="container" id="container">
                     <Login handleSwap={this.handleSwap} handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn}  />
 

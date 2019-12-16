@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 }
 
-body {
+.registration {
 	background: #f6f5f7;
 	display: flex;
 	justify-content: center;
@@ -43,9 +43,9 @@ a {
 	margin: 15px 0;
 }
 
-button {
+.resbutton {
 	border-radius: 20px;
-	border: 1px solid rgb(4, 153, 29);
+	border: 1px solid white;
 	background-color: rgb(4, 153, 29);
 	color: #FFFFFF;
 	font-size: 12px;
@@ -56,20 +56,20 @@ button {
 	transition: transform 80ms ease-in;
 }
 
-button:active {
+.resbutton:active {
 	transform: scale(0.95);
 }
 
-button:focus {
+.resbutton:focus {
 	outline: none;
 }
 
-button.ghost {
+.resbutton.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
 
-form {
+.resform {
 	background-color: #FFFFFF;
 	display: flex;
 	align-items: center;

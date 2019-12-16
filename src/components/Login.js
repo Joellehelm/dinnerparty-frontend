@@ -39,6 +39,7 @@ class Login extends Component {
         username: "",
         password: ""
       })
+      
    
      
       
@@ -69,18 +70,18 @@ class Login extends Component {
   return (
   
     <>
-      {this.state.loggedIn === true ? <button onClick={this.handleButton}>LOGOUT</button>
+      {/* {this.state.loggedIn === true ? <button onClick={this.handleButton}>LOGOUT</button> */}
         :
         <>
 	<div className="form-container sign-in-container">
-		<form onSubmit={this.handleSubmit}>
+		<form className="resform" onSubmit={this.handleSubmit}>
 			<h1>Sign in</h1>
 		
 		
 			<input type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange}/>
-			<input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange}/>
-			<a href="#">Forgot your password?</a>
-			<button type="submit">Sign In</button>
+			<input type="password" autoComplete="current-password" name="password" placeholder="Password" value={password} onChange={this.handleChange}/>
+			{/* <a href="#">Forgot your password?</a> */}
+			<button className="resbutton" type="submit">Sign In</button>
 		</form>
 	</div>
 	<div className="overlay-container">
@@ -88,12 +89,12 @@ class Login extends Component {
 			<div className="overlay-panel overlay-left">
 				<h1>Welcome Back!</h1>
 				<p>To keep connected with us please login with your personal info</p>
-				<button onClick={this.props.handleSwap} className="ghost" id="signIn">Sign In</button>
+				<button onClick={this.props.handleSwap} className={"ghost", "resbutton"} id="signIn">Sign In</button>
 			</div>
 			<div className="overlay-panel overlay-right">
 				<h1>Hello, Friend!</h1>
 				<p>Enter your personal details and start journey with us</p>
-				<button onClick={this.props.handleSwap} className="ghost" id="signUp">Sign Up</button>
+				<button onClick={this.props.handleSwap} className={"ghost", "resbutton"} id="signUp">Sign Up</button>
 			</div>
 		</div>
 	</div>

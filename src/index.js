@@ -10,6 +10,7 @@ import store from './store'
 
 
 
+
 // const compose enhancers for better dev tools
 
 ReactDOM.render(<Provider store={store} ><App /></ Provider>, document.getElementById('root'));
