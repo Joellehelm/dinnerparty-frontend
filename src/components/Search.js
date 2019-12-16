@@ -79,13 +79,13 @@ class Search extends Component {
                 {this.props.search}
                 {this.props.selected}
                 <form onSubmit={this.props.handleSubmit}>
-               <select onChange={this.props.handleChange} name="Cuisine">
+               <select onChange={this.props.handleChange} name="cuisine">
                    <option defaultValue>Cuisine Type</option>
                    {this.mapCuisines()}
                    </select>
 
 
-                   <select onChange={this.props.handleChange} name="Diet">
+                   <select onChange={this.props.handleChange} name="diet">
                    <option defaultValue>Dietary Restrictions</option>
                    {this.mapDiets()}
                    </select>

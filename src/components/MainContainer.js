@@ -57,9 +57,7 @@ const account = (props) => {
 class MainContainer extends Component {
 
 
-    comonentDidUpdate(){
-        debugger
-    }
+    
 
     render() {
         return (
