@@ -10,7 +10,8 @@ class Recipes extends Component {
         
         this.state = {
             randoms: [],
-            servings: ""
+            servings: "",
+            searched: []
         }
     }
     
@@ -44,7 +45,7 @@ class Recipes extends Component {
   
     mapCards = () => {
         if(this.state.randoms.length === 0){
-            return <div>EMPTY</div>
+            return null
         }else{
             return this.state.randoms.map((random, idx) => { return <RecipeCard info={random} key={idx}/>})
 
@@ -52,11 +53,26 @@ class Recipes extends Component {
     }
 
 
+    handleSubmit = (event) => {
+        event.preventDefault()
+        this.fetchSearched()
+        debugger
+        event.target.query.value = ""
+        event.target.Cuisine.value = "Cuisine Type"
+        event.target.Diet.value = "Dietary Restrictions"
+    }
+
+
+    fetchSearched = () => {
+
+    }
+
+
     render() {
         return (
             <div>
                 <div>
-                    <Search selected={this.state.cuisine} handleChange={this.handleChange}/>
+                    <Search search={this.state.query} selected={this.state.cuisine} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
                 </div>
               {this.mapCards()}
             </div>
