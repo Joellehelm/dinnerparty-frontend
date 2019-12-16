@@ -55,14 +55,14 @@ class Signup extends Component {
       const {username, email, password, password_confirmation} = this.state
   return (
         <div>
-    <div class="form-container sign-up-container">
-      <form onSubmit={this.handleSubmit}>
+    <div className="form-container sign-up-container">
+      <form className="resform" onSubmit={this.handleSubmit}>
         <h1>Create Account</h1>
         <input type="text" placeholder="Name" name="username" value={username} onChange={this.handleChange}/>
         <input type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange}/>
-        <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange}/>
-        <input type="password" placeholder="Password Confirmation" name="password_confirmation" value={password_confirmation} onChange={this.handleChange}/>
-        <button type="submit">Sign Up</button>
+        <input type="password" autoComplete="new-password" placeholder="Password" name="password" value={password} onChange={this.handleChange}/>
+        <input type="password" autoComplete="new-password" placeholder="Password Confirmation" name="password_confirmation" value={password_confirmation} onChange={this.handleChange}/>
+        <button className="resbutton" type="submit">Sign Up</button>
       </form>
     </div>
     </div>
