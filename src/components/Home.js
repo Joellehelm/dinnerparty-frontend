@@ -6,9 +6,7 @@ import { connect } from 'react-redux'
 class Home extends Component {
 
 
-    componentDidMount(){
-        debugger
-    }
+
 
    
 

@@ -76,7 +76,9 @@ class Search extends Component {
     render() {
         return (
             <div>
+                {this.props.search}
                 {this.props.selected}
+                <form onSubmit={this.props.handleSubmit}>
                <select onChange={this.props.handleChange} name="Cuisine">
                    <option defaultValue>Cuisine Type</option>
                    {this.mapCuisines()}
@@ -87,6 +89,11 @@ class Search extends Component {
                    <option defaultValue>Dietary Restrictions</option>
                    {this.mapDiets()}
                    </select>
+
+
+                   <input onChange={this.props.handleChange} name="query" placeholder="Search..."/>
+                   <button name="submit">Submit</button>
+                   </form>
             </div>
         );
     }
