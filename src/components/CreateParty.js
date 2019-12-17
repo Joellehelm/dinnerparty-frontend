@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+
+
 
 import '../style/CreateParty.css'
 
@@ -22,29 +24,69 @@ class CreateParty extends Component {
         }
 
     }
-
+   
 
     handleSubmit = (event) => {
         event.preventDefault()
-        console.log(this.props.auth)
-        debugger
-        // fetch('http://localhost:3000/parties', {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Accept": "application/json"
-        //     },
-        //     body: JSON.stringify({
-        //         name: this.state.partyName,
-        //         host_id: 
-        //     })
 
-
-        // })
+        const partyObj = {
+            name: this.state.partyName,
+            host_id: this.props.auth.user.id,
+            address: this.state.partyAddress,
+            details: this.state.partyDetails,
+            date: this.state.partyDate
+        }
+       
+      
+        fetch('http://localhost:3000/parties', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": 'application/json'
+               
+            },
+            body: JSON.stringify({party: partyObj})
+        })
+        .then(r => r.json())
+        .then(response => {
+            this.createPartyUsers(response.id)
+            this.setState({
+                name: "",
+                host_id: "",
+                address: "",
+                details: "",
+                date: ""
+            })
+        })
     }   
 
+
+    createPartyUsers = (partyId) => {
+
+        fetch('http://localhost:3000/party_users', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({party_user: {party_id: partyId, user_id: this.state.partyGuests}})
+        })
+        .then(r => r.json())
+        .then(response => {
+           
+            this.setState({
+                partyGuests: []
+            })
+            this.props.mapHosting()
+            this.props.doneCreating()
+            
+        })
+    }
+
+
+
     handleChange = (event) => {
-        console.log(event.target.value)
+        
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -52,7 +94,7 @@ class CreateParty extends Component {
     }
     
     handleCalendar = (event) => {
-       
+        
         this.setState({
             partyDate: event
         })
@@ -69,21 +111,23 @@ class CreateParty extends Component {
     }
 
     handleCheck = (event) => {
+        const guestId = parseInt(event.target.id)
            
         let guests = this.state.partyGuests
-        if(this.state.partyGuests.includes(event.target.id)){
-            let idx = guests.indexOf(event.target.id)
+        if(this.state.partyGuests.includes(guestId)){
+            let idx = guests.indexOf(guestId)
             delete guests[idx]
 
             this.setState({
                 partyGuests: guests
             })
         } else {
-            guests.push(event.target.id)
+            guests.push(guestId)
             this.setState({
                 partyGuests: guests
             })
         }
+       
         
     }
 
@@ -106,8 +150,9 @@ class CreateParty extends Component {
                     <input onChange={this.handleChange} type="text" name="partyName" value={partyName} placeholder="Name"/>
                     <input onChange={this.handleChange} type="text" name="partyAddress" value={partyAddress} placeholder="Address"/>
                     
-                    <DatePicker placeholderText="Select Date" selected={this.state.partyDate} onChange={this.handleCalendar} showTimeSelect dateFormat="Pp" />
-
+                    <input type="date" name="partyDate" placeholder="Select Date" onChange={this.handleChange} />
+                    {/* <DatePicker placeholderText="Select Date" selected={this.state.partyDate} onChange={this.handleCalendar}  /> */}
+                    
                     <textarea placeholder="Additional Details" type="text" onChange={this.handleChange} name="partyDetails"/>
 
 
