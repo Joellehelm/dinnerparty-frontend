@@ -71,7 +71,7 @@ class Login extends Component {
   
     <>
       {/* {this.state.loggedIn === true ? <button onClick={this.handleButton}>LOGOUT</button> */}
-        :
+        
         <>
 	<div className="form-container sign-in-container">
 		<form className="resform" onSubmit={this.handleSubmit}>
@@ -99,7 +99,7 @@ class Login extends Component {
 		</div>
 	</div>
   </>
-  }
+  
 </>
 
       );
