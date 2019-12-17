@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Home from './Home'
 import Registration from './Registration'
 import { connect } from 'react-redux'
-import Testing from '../testing'
+import Account from './Account'
 import {
     BrowserRouter as Router,
     Switch,
@@ -44,11 +44,7 @@ const messages = (props) => {
 }
 
 
-const account = (props) => {
-    return (
-        <div>ACCOUNT</div>
-    )
-}
+
 
 
 
@@ -71,17 +67,17 @@ class MainContainer extends Component {
                 <Switch>
 
 
-                    <Route exact path = "/">
+                    {/* <Route exact path = "/">
                         <Home />
                         
-                        </Route>
+                        </Route> */}
 
-                    <Route exact path = "/messages" component={messages}>
+                    {/* <Route exact path = "/messages" component={messages}>
 
-                        </Route>
+                        </Route> */}
 
-                    <Route exact path = "/account" component={account}>
-
+                    <Route exact path = "/account">
+                        <Account auth={this.props.auth}/>
                         </Route>
 
                     </Switch>

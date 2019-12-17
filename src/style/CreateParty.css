@@ -1,0 +1,8 @@
+.scrollBox {
+  height: 450px;
+  width: 250px;
+  border: 1px solid #4e4e4e;
+  font: 18px Arial, Serif;
+  overflow: auto;
+
+}
