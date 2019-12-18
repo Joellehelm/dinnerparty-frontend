@@ -84,7 +84,7 @@ class Parties extends Component {
        
         if(this.state.hosting.length > 0){
 
-            return this.state.hosting.map((party, idx) => { return <div key={idx} partyid={party.id}><p onClick={() => this.viewParty(party)}>{party.name}</p><button onClick={() => this.handleEdit(party)}>EDIT</button></div>})
+            return this.state.hosting.map((party, idx) => { return <div key={idx} partyid={party.id}><p onClick={() => this.viewParty(party)}>{party.name}</p></div>})
         }else{
             return null
         }

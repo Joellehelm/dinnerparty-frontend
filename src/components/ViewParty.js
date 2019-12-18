@@ -36,7 +36,7 @@ class ViewParty extends Component {
                 <h3>Details</h3>
                 <p>{this.props.party.details}</p>
 
-                <button>Shopping List</button>
+                <button onClick={this.showShoppingList} >Shopping List</button>
                 <button>Recipes</button>
                 
                 

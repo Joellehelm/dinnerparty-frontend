@@ -67,10 +67,10 @@ class MainContainer extends Component {
                 <Switch>
 
 
-                    {/* <Route exact path = "/">
+                    <Route exact path = "/">
                         <Home />
                         
-                        </Route> */}
+                        </Route>
 
                     {/* <Route exact path = "/messages" component={messages}>
 
