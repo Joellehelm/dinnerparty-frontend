@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'redux';
-import DatePicker, { registerLocale } from 'react-datepicker';
+
 import "react-datepicker/dist/react-datepicker.css";
 
 
 
 import '../style/CreateParty.css'
-import { ReactReduxContext } from 'react-redux';
 
-class CreateParty extends Component {
+
+class EditParty extends Component {
     constructor(){
         super()
 
@@ -26,6 +26,17 @@ class CreateParty extends Component {
         }
 
     }
+
+   componentWillMount(){
+       this.setState({
+        partyName: this.props.party.name,
+        partyAddress: this.props.party.address,
+        partyDate: this.props.party.date,
+        partyTime: this.props.party.time,
+        partyDetails: this.props.party.details
+       })
+  
+   }
    
 
     handleSubmit = (event) => {
@@ -33,15 +44,15 @@ class CreateParty extends Component {
 
         const partyObj = {
             name: this.state.partyName,
-            host_id: this.props.auth.user.id,
+            host_id: this.props.party.host_id,
             address: this.state.partyAddress,
             details: this.state.partyDetails,
             date: this.state.partyDate
         }
        
       
-        fetch('http://localhost:3000/parties', {
-            method: "POST",
+        fetch(`http://localhost:3000/parties/${this.props.party.id}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": 'application/json'
@@ -51,44 +62,18 @@ class CreateParty extends Component {
         })
         .then(r => r.json())
         .then(response => {
-            this.createPartyUsers(response.id)
-            this.setState({
-                name: "",
-                host_id: "",
-                address: "",
-                details: "",
-                date: ""
-            })
+           
+           
+            this.props.handleEdit()
         })
     }   
 
 
-    createPartyUsers = (partyId) => {
-
-        fetch('http://localhost:3000/party_users', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({party_user: {party_id: partyId, user_id: this.state.partyGuests}})
-        })
-        .then(r => r.json())
-        .then(response => {
-           
-            this.setState({
-                partyGuests: []
-            })
-            this.props.mapHosting()
-            this.props.doneCreating()
-            
-        })
-    }
 
 
 
     handleChange = (event) => {
-        
+        debugger
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -141,6 +126,19 @@ class CreateParty extends Component {
     }
 
 
+    handleDelete = () => {
+        fetch(`http://localhost:3000/parties/${this.props.party.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        })
+        .then(r => r.json())
+        .then(response => {
+            console.log("Successfully deleted")
+        })
+    }
    
 
 
@@ -148,7 +146,7 @@ class CreateParty extends Component {
 
 
     render() {
-        const {partyName, partyAddress, userSearch} = this.state
+        const {partyName, partyAddress, userSearch, partyDetails} = this.state
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -158,14 +156,16 @@ class CreateParty extends Component {
                     <input type="date" name="partyDate" placeholder="Select Date" onChange={this.handleChange} />
                     {/* <DatePicker placeholderText="Select Date" selected={this.state.partyDate} onChange={this.handleCalendar}  /> */}
                     
-                    <textarea placeholder="Additional Details" type="text" onChange={this.handleChange} name="partyDetails"/>
+                    <textarea placeholder="Additional Details" type="text" onChange={this.handleChange} value={partyDetails}/>
 
 
                     <input type="text" value={userSearch} name="userSearch" placeholder="Search Users" onChange={this.handleChange} />
                     <div className="scrollBox" >
                     <ul>{this.mapUsers()}</ul>
                     </div>
-                    <button value="submit" type="submit">Create</button>
+                    <button value="submit" type="submit">Submit Edit</button>
+
+                    <button onClick={this.handleDelete}>Cancel Party</button>
 
                     
 
@@ -175,4 +175,4 @@ class CreateParty extends Component {
     }
 }
 
-export default CreateParty;
+export default EditParty;
