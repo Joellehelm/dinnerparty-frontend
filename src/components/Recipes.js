@@ -75,7 +75,7 @@ class Recipes extends Component {
     fetchSearched = () => {
 
        
-
+        
 
         let URL = `https://api.spoonacular.com/recipes/search`
 

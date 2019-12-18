@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CreateParty from './CreateParty'
+import ViewParty from './ViewParty'
 
 class Parties extends Component {
     constructor(){
@@ -8,7 +9,10 @@ class Parties extends Component {
         this.state = {
             creating: false,
             hosting: [],
-            attending: []
+            attending: [],
+            viewParty: false,
+            partyInfo: [],
+            editing: false
         }
     }
 
@@ -64,7 +68,15 @@ class Parties extends Component {
     }
 
     handleEdit = () => {
-        console.log("EDIT BUTTON PRESSED")
+        this.setState({editing: !this.state.editing})
+    }
+
+    viewParty = (party) => {
+        if(party.party){
+            this.setState({viewParty: !this.state.viewParty, partyInfo: party.party, hosting: false})
+        }else{
+            this.setState({viewParty: !this.state.viewParty, partyInfo: party, hosting: true})
+        }
     }
 
 
@@ -72,7 +84,7 @@ class Parties extends Component {
        
         if(this.state.hosting.length > 0){
 
-            return this.state.hosting.map((party, idx) => { return <div key={idx} partyid={party.id}><p>{party.name}</p><button onClick={this.handleEdit}>EDIT</button></div>})
+            return this.state.hosting.map((party, idx) => { return <div key={idx} partyid={party.id}><p onClick={() => this.viewParty(party)}>{party.name}</p><button onClick={() => this.handleEdit(party)}>EDIT</button></div>})
         }else{
             return null
         }
@@ -80,9 +92,11 @@ class Parties extends Component {
 
 
     mapAttending = () => {
+        
         if(this.state.attending.length > 0){
-            debugger
-        return this.state.attending.map((party, idx) => { return <div key={idx} partyid={party.id} ><p>{party.party.name}</p></div>} )
+          debugger
+        return this.state.attending.map((party, idx) => { return <div key={idx} partyid={party.id} ><p onClick={() => this.viewParty(party)} >{party.party.name}</p></div>} )
+        
         }else{
             return null
         }
@@ -92,10 +106,17 @@ class Parties extends Component {
     render() {
         return (
             <div>
+               
                 { this.state.creating ?
                 <CreateParty mapHosting={this.mapHosting} doneCreating={this.doneCreating} auth={this.props.auth}/>
 
                 :
+                
+                this.state.viewParty ? 
+                <ViewParty hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
+
+                :
+
                 <div>
                     <h2>Parties</h2>
                         <h4>Hosting</h4>
@@ -112,6 +133,7 @@ class Parties extends Component {
                     <button onClick={() => this.setState({creating: true})}>Create Party</button>
                     </div>
                 }
+                
             </div>
         );
     }
