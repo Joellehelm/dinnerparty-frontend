@@ -19,7 +19,8 @@ class CreateParty extends Component {
             partyDetails: "",
             partyGuests: [],
             users: [],
-            userSearch: ""
+            userSearch: "",
+            
 
         }
 
