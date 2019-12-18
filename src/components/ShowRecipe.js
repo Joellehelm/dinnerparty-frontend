@@ -21,6 +21,7 @@ class ShowRecipe extends Component {
     componentDidMount(){
 
         
+        
        
 
         fetch(`https://api.spoonacular.com/recipes/${this.props.showId}/information?includeNutrition=false&apiKey=${key}`)

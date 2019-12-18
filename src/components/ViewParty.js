@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EditParty from './EditParty'
 
 class ViewParty extends Component {
     constructor(){
@@ -11,15 +12,22 @@ class ViewParty extends Component {
 
     handleEdit = () => {
         this.setState({editing: !this.state.editing})
+        
 
     }
+
+    
 
 
 
     render() {
         return (
             <div>
-                
+            {
+                this.state.editing === true ?
+                <EditParty party={this.props.party} handleEdit={this.handleEdit} />
+                    :
+                    <div>
                 <h1>{this.props.party.name}</h1>
                 <h3>Date</h3>
                 <p>{this.props.party.date}</p>
@@ -38,6 +46,8 @@ class ViewParty extends Component {
                 :
                 null
                 }
+            </div>
+            }   
 
             </div>
         );
