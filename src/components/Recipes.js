@@ -24,9 +24,7 @@ class Recipes extends Component {
 
 
 
-    redirect = () => {
-        this.props.history.push('/')
-      }
+    
 
     // componentDidMount(){
 
