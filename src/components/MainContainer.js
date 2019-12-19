@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 // import Login from './Login'
 // import Signup from './Signup'
 import Home from './Home'
+import NavBar from './NavBar'
 import Registration from './Registration'
+import Recipes from './Recipes'
 import { connect } from 'react-redux'
 import Account from './Account'
 import {
-    BrowserRouter as Router,
+    BrowserRouter,
     Switch,
     Route,
-    Link
+    Link,
+    useHistory
   } from "react-router-dom";
 
 
@@ -53,31 +56,49 @@ const messages = (props) => {
 class MainContainer extends Component {
 
 
+
+    handleRedirect = (event) => {
+        const type = event.target.innerText
+
+        if(type === "Account"){
+            
+        }
+    }
     
 
     render() {
         return (
 
-            <Router>
+            <BrowserRouter>
             <div >
                 {
                     this.props.auth.isLoggedIn ?
                
                 
                 <Switch>
+                    
+                    <Route 
+                    exact path='/' 
+                    render={props => (
+                    <Home {...props} handleRedirect={this.handleRedirect}/>
+                     )}
+                    />
 
+                
 
-                    <Route exact path = "/">
-                        <Home />
+                    {/* <Route exact path = "/">
+                      
+                        <Home {...props} handleRedirect={this.handleRedirect} />
                         
-                        </Route>
+                        </Route> */}
 
                     {/* <Route exact path = "/messages" component={messages}>
 
                         </Route> */}
 
                     <Route exact path = "/account">
-                        <Account auth={this.props.auth}/>
+                        
+                        <Account handleRedirect={this.handleRedirect} auth={this.props.auth}/>
                         </Route>
 
                     </Switch>
@@ -85,7 +106,7 @@ class MainContainer extends Component {
                     <Registration handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} /> 
                     }
             </div>
-            </ Router>
+            </ BrowserRouter>
         );
     }
 }

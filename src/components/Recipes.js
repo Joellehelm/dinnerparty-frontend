@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RecipeCard from './RecipeCard'
 import Search from './Search'
 import ShowRecipe from './ShowRecipe'
+import '../style/Recipes.css'
 
 
 
@@ -23,7 +24,9 @@ class Recipes extends Component {
 
 
 
-
+    redirect = () => {
+        this.props.history.push('/')
+      }
 
     // componentDidMount(){
 
@@ -68,6 +71,7 @@ class Recipes extends Component {
         event.target.query.value = ""
         event.target.cuisine.value = "Cuisine Type"
         event.target.diet.value = "Dietary Restrictions"
+        this.redirect()
     }
 
 
@@ -131,7 +135,7 @@ class Recipes extends Component {
 
     render() {
         return (
-            <div>
+            <div className="recipesContainer">
                 {
                     this.state.clicked ? 
                     <ShowRecipe showId={this.state.showId}/>
