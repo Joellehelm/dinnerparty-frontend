@@ -73,7 +73,7 @@ class EditParty extends Component {
 
 
     handleChange = (event) => {
-        debugger
+    
         this.setState({
             [event.target.name]: event.target.value
         })
