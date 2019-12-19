@@ -6,6 +6,7 @@ import NavBar from './NavBar'
 import Registration from './Registration'
 import Recipes from './Recipes'
 import { connect } from 'react-redux'
+import ShowRecipe from './ShowRecipe'
 import Account from './Account'
 import {
     BrowserRouter,
@@ -85,21 +86,22 @@ class MainContainer extends Component {
                     />
 
                 
+                    <Route 
+                    exact path='/recipe' 
+                    render={props => (
+                    
+                        <ShowRecipe {...props} handleRedirect={this.handleRedirect}/>
+                     )}
+                    />
+                
 
-                    {/* <Route exact path = "/">
-                      
-                        <Home {...props} handleRedirect={this.handleRedirect} />
-                        
-                        </Route> */}
 
-                    {/* <Route exact path = "/messages" component={messages}>
-
-                        </Route> */}
-
-                    <Route exact path = "/account">
-                        
-                        <Account handleRedirect={this.handleRedirect} auth={this.props.auth}/>
-                        </Route>
+                    <Route 
+                    exact path='/account' 
+                    render={props => (
+                    <Account {...props} auth={this.props.auth} handleRedirect={this.handleRedirect}/>
+                     )}
+                    />
 
                     </Switch>
                     :

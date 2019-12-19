@@ -3,6 +3,10 @@ import RecipeCard from './RecipeCard'
 import Search from './Search'
 import ShowRecipe from './ShowRecipe'
 import '../style/Recipes.css'
+import { connect } from 'react-redux'
+import { searchedRecipes } from '../actions/recipes';
+import { recipeInfo } from '../actions/recipeInfo'
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -24,23 +28,6 @@ class Recipes extends Component {
 
 
 
-    redirect = () => {
-        this.props.history.push('/')
-      }
-
-    // componentDidMount(){
-
-
-    //     fetch(`https://api.spoonacular.com/recipes/random/?number=2&apiKey=${Key}`)
-    //     .then(r => r.json())
-    //     .then(r => {
-          
-        
-    //        this.setState({
-    //            randoms: r.recipes
-    //        })
-    //     })
-    // }
 
 
     handleChange = (event) => {
@@ -52,10 +39,10 @@ class Recipes extends Component {
 
   
     mapCards = () => {
-        if(this.state.recipes.length === 0 ){
+        if(this.props.recipes.recipes.length === 0 ){
             return null
         }else{
-            return this.state.recipes.map((recipe, idx) => { 
+            return this.props.recipes.recipes.map((recipe, idx) => { 
                 
                 return <RecipeCard cardClicked={this.cardClicked} info={recipe} key={idx}/>
             })
@@ -66,88 +53,55 @@ class Recipes extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.fetchSearched()
+        this.props.searchedRecipes({...this.state})
+        this.mapCards()
         
         event.target.query.value = ""
         event.target.cuisine.value = "Cuisine Type"
         event.target.diet.value = "Dietary Restrictions"
-        this.redirect()
+       
     }
 
 
 
-    fetchSearched = () => {
-
-      
-        
-
-        let URL = `https://api.spoonacular.com/recipes/search`
-
-        if(this.state.query.length > 0){
-            URL = URL + `?query=${this.state.query}`
-        }
-        if(this.state.cuisine.length > 0){
-            if(URL.includes('?')){
-                URL = URL + '&'
-            }else{
-                URL = URL + '?'
-            }
-            URL = URL + `cuisine=${this.state.cuisine}`
-        }
-        if(this.state.diet.length > 0){
-            if(URL.includes('?')){
-                URL = URL + '&'
-            }else{
-                URL = URL + '?'
-            }
-            URL = URL + `diet=${this.state.diet}`
-        }
-        
-
-
-        fetch(URL + `&number=5&instructionsRequired=true&apiKey=${key}`)
-        .then(r => r.json())
-        .then(recipes => {
-            
-          
-            this.setState({
-
-                recipes: recipes.results
-            })
-            this.mapCards()
-            this.setState({
-                query: "",
-                diet: "",
-                cuisine: ""
-            })
-        })
-    }
 
 
     cardClicked = (info) => {
-       
-        this.setState({
-            clicked: true,
-            showId: info.id
-        })
+        this.props.recipeInfo(info)
+       this.props.history.push('/recipe')
+        
     }
 
 
     render() {
         return (
             <div className="recipesContainer">
-                {
+                {/* {
                     this.state.clicked ? 
                     <ShowRecipe showId={this.state.showId}/>
-                    :
+                    : */}
                 <div>
                     <Search search={this.state.query} selected={this.state.cuisine} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
                     {this.mapCards()}
                 </div>
-                }
+                {/* // } */}
             </div>
         );
     }
 }
 
-export default Recipes;
+const mapStateToProps = (state) => ({
+    recipes: state.recipes,
+    info: state.info
+  })
+
+
+  const mapDispatchToProps = {
+ 
+      searchedRecipes,
+      recipeInfo
+    
+  }
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes);
