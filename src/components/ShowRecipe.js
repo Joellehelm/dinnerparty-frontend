@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import NavBar from './NavBar'
 
 class ShowRecipe extends Component {
     constructor(){
@@ -23,28 +24,30 @@ class ShowRecipe extends Component {
 
     componentDidMount(){
 
-        
+       
       
        
+        if(this.props.info.info.id){
 
-        fetch(`https://api.spoonacular.com/recipes/${this.props.showId}/information?includeNutrition=false&apiKey=${key}`)
-        .then(r => r.json())
-        .then(info => {
-          
-            this.setState({
-                name: info.title,
-                image: info.image,
-                servings: info.servings,
-                readyInMinutes: info.readyInMinutes,
-                diets: info.diets,
-                ingredients: info.extendedIngredients.map(ing => {return {item: ing.original, image: ing.image}}),
-                winePairings: info.winePairing.pairedWines,
-                pairingText: info.winePairing.pairingText,
-                instructions: info.instructions,
-                cuisines: info.cuisines
+            fetch(`https://api.spoonacular.com/recipes/${this.props.info.info.id}/information?includeNutrition=false&apiKey=${key}`)
+            .then(r => r.json())
+            .then(info => {
+              debugger
+                this.setState({
+                    name: info.title,
+                    image: info.image,
+                    servings: info.servings,
+                    readyInMinutes: info.readyInMinutes,
+                    diets: info.diets,
+                    ingredients: info.extendedIngredients.map(ing => {return {item: ing.original, image: ing.image}}),
+                    winePairings: info.winePairing.pairedWines,
+                    pairingText: info.winePairing.pairingText,
+                    instructions: info.instructions,
+                    cuisines: info.cuisines
+                })
+                this.fetchParties()
             })
-            this.fetchParties()
-        })
+        }
 
 
     }
@@ -135,6 +138,8 @@ class ShowRecipe extends Component {
     render() {
         return (
             <div>
+                <NavBar history={this.props.history}/>
+                <div>
                 <img src={this.state.image}/>
 
                 <h1>{this.state.name}</h1>
@@ -166,6 +171,7 @@ class ShowRecipe extends Component {
 
                 <h2>Instructions</h2>
                 {this.state.instructions}
+                </div>
             </div>
         );
     }
@@ -173,6 +179,7 @@ class ShowRecipe extends Component {
 
 
 const mapStateToProps = (state) => ({
+    info: state.info,
     auth: state.auth
   })
 

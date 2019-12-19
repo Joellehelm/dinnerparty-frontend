@@ -25,9 +25,9 @@ class NavBar extends Component {
                 </span>
                 <div className="menu-wrap">
                 <ul className={"menu", "navUl"}>
-                <li className="navLi"><a onClick={this.props.handleRedirect}>Home</a></li>
-                <li className="navLi"><a onClick={this.props.handleRedirect}>Account</a></li>
-                <li className="navLi"><a onClick={this.props.handleRedirect}>Messages</a></li>
+                <li className="navLi"><a onClick={() =>this.props.history.push('/')}>Home</a></li>
+                <li className="navLi"><a onClick={() => this.props.history.push('/account')}>Account</a></li>
+                <li className="navLi"><a onClick={() => this.props.history.push('/messages')}>Messages</a></li>
                 
                 </ul>
             </div>

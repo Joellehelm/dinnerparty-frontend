@@ -6,7 +6,7 @@ class Account extends Component {
     render() {
         return (
             <div>
-                <NavBar />
+                <NavBar history={this.props.history} />
                 <Parties auth={this.props.auth}/>
             </div>
         );
