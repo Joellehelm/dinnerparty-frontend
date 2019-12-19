@@ -7,6 +7,7 @@ import Registration from './Registration'
 import Recipes from './Recipes'
 import { connect } from 'react-redux'
 import ShowRecipe from './ShowRecipe'
+import ShoppingList from './ShoppingList'
 import Account from './Account'
 import {
     BrowserRouter,
@@ -100,6 +101,14 @@ class MainContainer extends Component {
                     exact path='/account' 
                     render={props => (
                     <Account {...props} auth={this.props.auth} handleRedirect={this.handleRedirect}/>
+                     )}
+                    />
+
+
+                    <Route 
+                    exact path='/shopping-list' 
+                    render={props => (
+                    <ShoppingList {...props} auth={this.props.auth} handleRedirect={this.handleRedirect}/>
                      )}
                     />
 

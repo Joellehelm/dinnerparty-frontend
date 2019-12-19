@@ -25,14 +25,14 @@ class ShowRecipe extends Component {
     componentDidMount(){
 
        
-      
+    
        
         if(this.props.info.info.id){
 
             fetch(`https://api.spoonacular.com/recipes/${this.props.info.info.id}/information?includeNutrition=false&apiKey=${key}`)
             .then(r => r.json())
             .then(info => {
-              debugger
+              
                 this.setState({
                     name: info.title,
                     image: info.image,
@@ -129,7 +129,7 @@ class ShowRecipe extends Component {
     
 
     handleChange = (event) => {
-        debugger
+       
         this.setState({
             [event.target.name]: parseInt(event.target.value)
         })
