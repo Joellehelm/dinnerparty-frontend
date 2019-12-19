@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import EditParty from './EditParty'
+import { connect } from 'react-redux'
+import { partyList } from '../actions/ViewParty'
 
 class ViewParty extends Component {
     constructor(){
@@ -16,6 +18,10 @@ class ViewParty extends Component {
 
     }
 
+    
+    showShoppingList = () => {
+        this.props.partyList(this.props.party.id)
+    }
     
 
 
@@ -54,4 +60,15 @@ class ViewParty extends Component {
     }
 }
 
-export default ViewParty;
+
+const mapStateToProps = (state) => ({
+    auth: state.auth
+  })
+
+  const mapDispatchToProps = {
+ 
+      partyList
+    
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewParty);

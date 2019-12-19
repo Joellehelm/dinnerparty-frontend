@@ -94,7 +94,7 @@ class Parties extends Component {
     mapAttending = () => {
         
         if(this.state.attending.length > 0){
-          debugger
+       
         return this.state.attending.map((party, idx) => { return <div key={idx} partyid={party.id} ><p onClick={() => this.viewParty(party)} >{party.party.name}</p></div>} )
         
         }else{
