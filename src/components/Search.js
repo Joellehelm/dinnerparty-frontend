@@ -76,8 +76,7 @@ class Search extends Component {
     render() {
         return (
             <div>
-                {this.props.search}
-                {this.props.selected}
+                
                 <form onSubmit={this.props.handleSubmit}>
                <select onChange={this.props.handleChange} name="cuisine">
                    <option defaultValue>Cuisine Type</option>

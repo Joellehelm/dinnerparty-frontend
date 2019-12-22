@@ -113,7 +113,7 @@ class Parties extends Component {
                 :
                 
                 this.state.viewParty ? 
-                <ViewParty hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
+                <ViewParty history={this.props.history} hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
 
                 :
 

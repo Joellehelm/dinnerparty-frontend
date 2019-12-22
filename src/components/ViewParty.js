@@ -20,7 +20,10 @@ class ViewParty extends Component {
 
     
     showShoppingList = () => {
+       
         this.props.partyList(this.props.party.id)
+        this.props.history.push('/list')
+       
     }
     
 
@@ -62,7 +65,8 @@ class ViewParty extends Component {
 
 
 const mapStateToProps = (state) => ({
-    auth: state.auth
+    auth: state.auth,
+    list: state.partyList
   })
 
   const mapDispatchToProps = {

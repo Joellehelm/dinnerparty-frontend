@@ -59,6 +59,11 @@ class Recipes extends Component {
         event.target.query.value = ""
         event.target.cuisine.value = "Cuisine Type"
         event.target.diet.value = "Dietary Restrictions"
+        this.setState({
+            query: "",
+            cuisine: "",
+            diet: ""
+        })
        
     }
 

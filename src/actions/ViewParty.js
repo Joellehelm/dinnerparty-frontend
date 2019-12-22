@@ -5,32 +5,29 @@ import * as action from './actionTypes'
 
 export const partyList = (partyId) => dispatch => {
 
-    fetch(`http://localhost:3000/party_recipes`)
+    fetch(`http://localhost:3000/ingredients`)
     .then(r => r.json())
     .then(response => {
-       const recipeApis = response.map(r => {
-           return r.recipe.api_id
-       })
+        const ingredients = response.map(ingredient => {
+            if(ingredient.party_id === partyId){
+                debugger
+                return ingredient
+            }
+        })
+      
 
 
-       
         dispatch({
             type: action.PARTY_LIST,
-            payload: partyId
+            payload: ingredients
         })
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
  
   }
+
+
+
+//   export const addIngredients = (ingredients) => dispatch => {
+
+   
+//   }

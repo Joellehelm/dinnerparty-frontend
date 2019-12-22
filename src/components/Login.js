@@ -16,9 +16,7 @@ class Login extends Component {
         loggedIn: false
        };
     }
-    // componentDidMount() {
-    //   this.props.history.push("/")
-    // }
+ 
   handleChange = (event) => {
       const {name, value} = event.target
       this.setState({
