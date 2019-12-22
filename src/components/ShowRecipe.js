@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import NavBar from './NavBar'
+// import { addIngredients } from '../actions/ViewParty'
 
 class ShowRecipe extends Component {
     constructor(){
@@ -25,7 +26,7 @@ class ShowRecipe extends Component {
     componentDidMount(){
 
        
-    
+       const key = '47d476a9850e403e8abbf3b822215bd5'
        
         if(this.props.info.info.id){
 
@@ -97,11 +98,11 @@ class ShowRecipe extends Component {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({name: this.state.name, api_id: this.props.showId, image: this.state.image})
+            body: JSON.stringify({name: this.state.name, api: this.props.info.info.id, image: this.state.image})
         })
         .then(r => r.json())
         .then(response => {
-            
+         
             this.addPartyRecipe(response.id)
         })
 
@@ -121,10 +122,39 @@ class ShowRecipe extends Component {
         })
         .then(r => r.json())
         .then(response => {
-            console.log(response)
+           
+            
+            this.addIngredients()
         })
     }
 
+
+
+    addIngredients = () => { 
+        const ing = this.state.ingredients.map(i => {return i.item})
+        const ingredient = {
+            ingredients: ing,
+            recipe_id: this.props.info.info.id,
+            party_id: this.state.party
+        }
+
+
+        fetch(`http://localhost:3000/ingredients`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "applicaton/json"
+            },
+            body: JSON.stringify({ingredient})
+        })
+        .then(r => r.json())
+        .then(response => {
+            
+        })
+       
+    }
+
+ 
 
     
 
@@ -183,5 +213,9 @@ const mapStateToProps = (state) => ({
     auth: state.auth
   })
 
+  const mapDispatchToProps = {
+    //   addIngredients
+  }
 
-export default connect(mapStateToProps)(ShowRecipe);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowRecipe);

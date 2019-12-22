@@ -27,7 +27,7 @@ class Registration extends Component {
         return (
             <div className="registration">
                 <div className="container" id="container">
-                    <Login handleSwap={this.handleSwap} handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn}  />
+                    <Login history={this.props.history} handleSwap={this.handleSwap} handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn}  />
 
                     <Signup handleSwap={this.handleSwap} handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} />
                     </div>

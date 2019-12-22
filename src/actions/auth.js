@@ -3,7 +3,7 @@ import * as action from './actionTypes'
 
 
 
-export const register = (user, history) => dispatch => {
+export const register = (user) => dispatch => {
     
   
         return fetch('http://localhost:3000/users', {
@@ -35,7 +35,7 @@ export const register = (user, history) => dispatch => {
       };
 
     
-export const login = (user) => dispatch => {
+export const login = (user, history) => dispatch => {
 
   
         return fetch('http://localhost:3000/login', {

@@ -8,10 +8,10 @@ class NavBar extends Component {
     var $toggleButton = $(".toggle-button"),
     $menuWrap = $(".menu-wrap");
   
-  $toggleButton.on("click", function() {
-    $(this).toggleClass("button-open");
+  
+    $toggleButton.toggleClass("button-open");
     $menuWrap.toggleClass("menu-show");
-  });
+
   
    }
 

@@ -106,7 +106,7 @@ class MainContainer extends Component {
 
 
                     <Route 
-                    exact path='/shopping-list' 
+                    exact path='/list' 
                     render={props => (
                     <ShoppingList {...props} auth={this.props.auth} handleRedirect={this.handleRedirect}/>
                      )}
@@ -114,7 +114,7 @@ class MainContainer extends Component {
 
                     </Switch>
                     :
-                    <Registration handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} /> 
+                    <Registration history={this.props.history} handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} /> 
                     }
             </div>
             </ BrowserRouter>
