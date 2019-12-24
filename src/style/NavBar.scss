@@ -21,6 +21,7 @@ font-family: 'Raleway', sans-serif;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
+ 
 }
 
 .toggle-button {
@@ -89,7 +90,8 @@ font-family: 'Raleway', sans-serif;
 
 .menu-wrap {
   background-color: $menuwrap-color;
-  position: absolute;
+  position: fixed;
+ 
   top: 0;
   left: -250px;
   height: 100vh;
@@ -112,14 +114,18 @@ font-family: 'Raleway', sans-serif;
 .navLi {
   padding: 20px 20px 0;
   list-style: none;
+  
 }
 
-a {
+
+
+.navA {
   color: $menubar-color;
   font-size: 1em;
   position: relative;
   text-decoration: none;
   &:hover {
     text-decoration: line-through;
+    cursor: pointer;
   }
 }

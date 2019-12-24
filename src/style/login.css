@@ -15,16 +15,16 @@
 	margin: -20px 0 50px;
 }
 
-h1 {
+.loginH1 {
 	font-weight: bold;
 	margin: 0;
 }
 
-h2 {
+.loginH2 {
 	text-align: center;
 }
 
-p {
+.loginP {
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
@@ -32,16 +32,16 @@ p {
 	margin: 20px 0 30px;
 }
 
-span {
+.loginSpan {
 	font-size: 12px;
 }
 
-a {
+/* a {
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0;
-}
+} */
 
 .resbutton {
 	border-radius: 20px;
