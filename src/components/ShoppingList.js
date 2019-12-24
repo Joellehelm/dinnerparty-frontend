@@ -6,17 +6,39 @@ class ShoppingList extends Component {
         super()
 
         this.state = {
-            bringingIngredients: []
+            bringingIngredients: [],
+            userIngredients: []
         }
     }
   
+
+    //map ids of user_ingredients to state then when list is mapped exclude ingredients that have an id that is included in user_ingredients
+    // then map user_ingredients in their correct places and style them appropriately.
+
+
+    componentDidMount(){
+        fetch('http://localhost:3000/user_ingredients')
+        .then(r => r.json())
+        .then(response => {
+            let boughtIngredients = response.map(r => {return r.ingredient_id})
+            this.setState({
+                userIngredients: boughtIngredients
+            })
+        })
+    }
+
+
 
     mapList = () => {
     
     
         return this.props.list.partyList.map((ingredient, idx) => {
-            
-            return <p key={idx}><input onChange={this.markList} type="checkbox" key={idx} name="user" id={ingredient.id}/>{ingredient.name}</p>
+            if(!this.state.userIngredients.includes(ingredient.id)){
+              
+                return <p key={idx}><input onChange={this.markList} type="checkbox" key={idx} name="user" id={ingredient.id}/>{ingredient.name}</p>
+            }else{
+            return <p>Hello i'm a purchased ingredient {ingredient.name}</p>
+            }
         })
     }
 
@@ -57,13 +79,7 @@ class ShoppingList extends Component {
         })
     }
 
-    componentDidMount(){
-        fetch('http://localhost:3000/user_ingredients')
-        .then(r => r.json())
-        .then(response => {
-            debugger
-        })
-    }
+
     
 
     render() {
