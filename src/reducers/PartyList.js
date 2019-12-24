@@ -2,7 +2,7 @@ import * as act from '../actions/actionTypes';
 
 
 const initialState = {
-    partyList: ""   
+    partyList: []   
  };
 
 
@@ -10,9 +10,14 @@ const initialState = {
    
     
      switch (action.type) {
-         case act.PARTY_LIST:
-        
-         const ingredientNames = action.payload.map(i => { return i.name})
+        case act.PARTY_LIST:
+        const ingredientNames = []
+
+        action.payload.map(i => {
+            if(i !== undefined){
+                ingredientNames.push(i)
+            }
+        })
          
             return {
                 ...state,
