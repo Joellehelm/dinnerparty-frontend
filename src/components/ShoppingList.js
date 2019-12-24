@@ -41,7 +41,29 @@ class ShoppingList extends Component {
     }
 
 
-    
+    handleSubmit = () => {
+        debugger
+        fetch('http://localhost:3000/user_ingredients', {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({user_id: this.props.auth.user.id, ingredient_id: this.state.bringingIngredients})
+        })
+        .then(r => r.json())
+        .then(response => {
+            console.log(response)
+        })
+    }
+
+    componentDidMount(){
+        fetch('http://localhost:3000/user_ingredients')
+        .then(r => r.json())
+        .then(response => {
+            debugger
+        })
+    }
     
 
     render() {
@@ -49,6 +71,7 @@ class ShoppingList extends Component {
             <div>
                 <div>
                     {this.mapList()}
+                    <button onClick={this.handleSubmit} >Bring These Ingredients</button>
                 </div>
             </div>
         );
@@ -57,7 +80,8 @@ class ShoppingList extends Component {
 
   
     const mapStateToProps = (state) => ({
-        list: state.partyList
+        list: state.partyList,
+        auth: state.auth
     })
 
 export default connect(mapStateToProps)(ShoppingList);
