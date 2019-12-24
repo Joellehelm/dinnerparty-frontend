@@ -80,14 +80,16 @@ class Recipes extends Component {
 
     render() {
         return (
-            <div className="recipesContainer">
+            <div>
                 {/* {
                     this.state.clicked ? 
                     <ShowRecipe showId={this.state.showId}/>
                     : */}
                 <div>
                     <Search search={this.state.query} selected={this.state.cuisine} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+                    <div className="recipesContainer">
                     {this.mapCards()}
+                    </div>
                 </div>
                 {/* // } */}
             </div>

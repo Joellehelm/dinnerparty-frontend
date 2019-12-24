@@ -57,7 +57,7 @@ class Signup extends Component {
         <div>
     <div className="form-container sign-up-container">
       <form className="resform" onSubmit={this.handleSubmit}>
-        <h1>Create Account</h1>
+        <h1 className="loginH1">Create Account</h1>
         <input type="text" placeholder="Name" name="username" value={username} onChange={this.handleChange}/>
         <input type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange}/>
         <input type="password" autoComplete="new-password" placeholder="Password" name="password" value={password} onChange={this.handleChange}/>

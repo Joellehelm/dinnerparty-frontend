@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import NavBar from './NavBar'
+import '../style/ShowRecipe.css'
 // import { addIngredients } from '../actions/ViewParty'
 
 class ShowRecipe extends Component {
@@ -169,7 +170,7 @@ class ShowRecipe extends Component {
         return (
             <div>
                 <NavBar history={this.props.history}/>
-                <div>
+                <div className="showRecipe">
                 <img src={this.state.image}/>
 
                 <h1>{this.state.name}</h1>
