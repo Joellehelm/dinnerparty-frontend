@@ -125,17 +125,17 @@ class ShowRecipe extends Component {
         .then(response => {
            
             
-            this.addIngredients()
+            this.addIngredients(id)
         })
     }
 
 
 
-    addIngredients = () => { 
+    addIngredients = (id) => { 
         const ing = this.state.ingredients.map(i => {return i.item})
         const ingredient = {
             ingredients: ing,
-            recipe_id: this.props.info.info.id,
+            recipe_id: id,
             party_id: this.state.party
         }
 

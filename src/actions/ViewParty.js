@@ -8,9 +8,10 @@ export const partyList = (partyId) => dispatch => {
     fetch(`http://localhost:3000/ingredients`)
     .then(r => r.json())
     .then(response => {
+        
         const ingredients = response.map(ingredient => {
             if(ingredient.party_id === partyId){
-                debugger
+               
                 return ingredient
             }
         })

@@ -3,7 +3,7 @@ import '../style/RecipeCard.css'
 
 class RecipeCard extends Component {
     componentDidMount(){
-        debugger
+       
     }
     render() {
         return (
