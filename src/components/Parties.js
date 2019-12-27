@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CreateParty from './CreateParty'
 import ViewParty from './ViewParty'
+import '../style/Parties.css'
 
 class Parties extends Component {
     constructor(){
@@ -117,13 +118,17 @@ class Parties extends Component {
 
                 :
 
-                <div>
+                <div className="parties">
                     <h2>Parties</h2>
+                        <div className="partyBorder">
                         <h4>Hosting</h4>
                         {this.mapHosting()}
+                        </div>
                     <div>
+                        <div className="partyBorder">
                         <h4>Attending</h4>
                         {this.mapAttending()}
+                        </div>
                     </div>
 
                     <div>

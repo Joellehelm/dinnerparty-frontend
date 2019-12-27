@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditParty from './EditParty'
 import { connect } from 'react-redux'
 import { partyList } from '../actions/ViewParty'
+import '../style/ViewParty.css'
 
 class ViewParty extends Component {
     constructor(){
@@ -31,7 +32,7 @@ class ViewParty extends Component {
 
     render() {
         return (
-            <div>
+            <div className="viewParty">
             {
                 this.state.editing === true ?
                 <EditParty party={this.props.party} handleEdit={this.handleEdit} />

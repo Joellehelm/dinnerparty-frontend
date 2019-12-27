@@ -1,0 +1,23 @@
+.parties {
+    margin-top: 100px;
+    text-align: center;
+
+
+}
+
+.parties h4 {
+    margin-right: 400px;
+    margin-top: -12px;
+    margin-left: 50px;
+    background: white;
+    width: 100px;
+}
+
+
+.partyBorder {
+    border: 5px solid black;
+    margin-bottom: 30px;
+    margin-left: 400px;
+    margin-right: 400px;
+  
+}
