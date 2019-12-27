@@ -3,16 +3,41 @@ import * as action from './actionTypes'
 
 
 
+// export const partyList = (partyId) => dispatch => {
+
+//     fetch(`http://localhost:3000/ingredients`)
+//     .then(r => r.json())
+//     .then(response => {
+        
+//         const ingredients = response.map(ingredient => {
+//             if(ingredient.party_id === partyId){
+               
+//                 return ingredient
+//             }
+//         })
+      
+
+
+//         dispatch({
+//             type: action.PARTY_LIST,
+//             payload: ingredients
+//         })
+//     })
+ 
+//   }
+
+
+
 export const partyList = (partyId) => dispatch => {
 
-    fetch(`http://localhost:3000/ingredients`)
+    fetch(`http://localhost:3000/party_recipes`)
     .then(r => r.json())
     .then(response => {
-        
-        const ingredients = response.map(ingredient => {
-            if(ingredient.party_id === partyId){
+        debugger
+        const recipes = response.map(recipe => {
+            if(recipe.party_id === partyId){
                
-                return ingredient
+                return recipe
             }
         })
       
@@ -20,7 +45,7 @@ export const partyList = (partyId) => dispatch => {
 
         dispatch({
             type: action.PARTY_LIST,
-            payload: ingredients
+            payload: recipes
         })
     })
  

@@ -39,23 +39,45 @@ class ShoppingList extends Component {
         })
     }
 
-
-
+ 
     mapList = () => {
-       
-    
-        return this.props.list.partyList.map((ingredient, idx) => {
-         
+        return this.props.list.partyList.map((recipe, idx) => {
+            debugger
+        return <div key={idx} >
+            <h2>{recipe.recipe.name}</h2>
+            <img src={recipe.recipe.image} />
+                {this.mapIngredients(recipe.ingredients)}
+            </div>
+        })
+    }
+
+
+    mapIngredients = (ingredients) => {
+        return ingredients.map((ingredient, idx) => {
             if(!this.state.purchasedIngredients.includes(ingredient.id)){
-            
-            return <div key={idx}><h4><input onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id}/>{ingredient.name}</h4></div>
+                return <div key={idx}><h4><input onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id}/>{ingredient.name}</h4></div>
             }else{
-               
-            return <div key={idx}><h4>Hello i'm a purchased ingredient {ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
+                return <div key={idx}><h4>Hello i'm a purchased ingredient {ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
             }
         })
-    
     }
+
+
+    // mapList = () => {
+       
+    
+    //     return this.props.list.partyList.map((ingredient, idx) => {
+    //      debugger
+    //         if(!this.state.purchasedIngredients.includes(ingredient.id)){
+            
+    //         return <div key={idx}><h4><input onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id}/>{ingredient.name}</h4></div>
+    //         }else{
+               
+    //         return <div key={idx}><h4>Hello i'm a purchased ingredient {ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
+    //         }
+    //     })
+    
+    // }
 
 
     markList = (event) => {
