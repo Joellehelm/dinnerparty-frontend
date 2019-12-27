@@ -7,7 +7,8 @@ class ShoppingList extends Component {
 
         this.state = {
             bringingIngredients: [],
-            userIngredients: []
+            userIngredients: [],
+            purchasedIngredients: []
         }
     }
   
@@ -17,12 +18,23 @@ class ShoppingList extends Component {
 
 
     componentDidMount(){
+        this.setState({userIngredients: []})
         fetch('http://localhost:3000/user_ingredients')
         .then(r => r.json())
         .then(response => {
-            let boughtIngredients = response.map(r => {return r.ingredient_id})
+            const boughtIngredients = {}
+            const purchased = response.map(r => {return r.ingredient_id})
+
+            response.forEach(r => {
+                let ing = r.ingredient_id
+                boughtIngredients[ing] = r.user.username
+                // boughtIngredients.push({[r.ingredient_id] : r.user.username})
+            })
+            // let boughtIngredients = response.map(r => {return r.ingredient_id})
+          
             this.setState({
-                userIngredients: boughtIngredients
+                userIngredients: boughtIngredients,
+                purchasedIngredients: purchased
             })
         })
     }
@@ -30,16 +42,19 @@ class ShoppingList extends Component {
 
 
     mapList = () => {
-    
+       
     
         return this.props.list.partyList.map((ingredient, idx) => {
-            if(!this.state.userIngredients.includes(ingredient.id)){
-              
-                return <p key={idx}><input onChange={this.markList} type="checkbox" key={idx} name="user" id={ingredient.id}/>{ingredient.name}</p>
+         
+            if(!this.state.purchasedIngredients.includes(ingredient.id)){
+            
+            return <div key={idx}><h4><input onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id}/>{ingredient.name}</h4></div>
             }else{
-            return <p>Hello i'm a purchased ingredient {ingredient.name}</p>
+               
+            return <div key={idx}><h4>Hello i'm a purchased ingredient {ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
             }
         })
+    
     }
 
 
@@ -64,7 +79,7 @@ class ShoppingList extends Component {
 
 
     handleSubmit = () => {
-        debugger
+    
         fetch('http://localhost:3000/user_ingredients', {
             method: "POST",
             headers: {

@@ -171,6 +171,7 @@ class ShowRecipe extends Component {
             <div>
                 <NavBar history={this.props.history}/>
                 <div className="showRecipe">
+                    <div className="topDiv">
                 <img src={this.state.image}/>
 
                 <h1>{this.state.name}</h1>
@@ -190,6 +191,7 @@ class ShowRecipe extends Component {
                 <p>{this.state.pairingText ? this.state.pairingText : "None"}</p>
                 <h3>Wine Pairing(s) </h3>
                 <ul>{this.listWinePairings()}</ul>
+                </div>
 
                 <select onChange={this.handleChange} name="party">
                    <option defaultValue>Choose a Party</option>
