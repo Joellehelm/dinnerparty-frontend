@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../style/Search.css'
 
 
 class Search extends Component {
@@ -75,7 +76,7 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
+            <div className="formDiv">
                 
                 <form onSubmit={this.props.handleSubmit}>
                <select onChange={this.props.handleChange} name="cuisine">
@@ -89,9 +90,10 @@ class Search extends Component {
                    {this.mapDiets()}
                    </select>
 
-
-                   <input className="searchBar" onChange={this.props.handleChange} name="query" placeholder="Search..."/>
+                <div className="searchBar">
+                   <input className="search" onChange={this.props.handleChange} name="query" placeholder="Search..."/>
                    <button name="submit">Submit</button>
+                   </div>
                    </form>
             </div>
         );

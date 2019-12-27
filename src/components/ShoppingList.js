@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import '../style/ShoppingList.css'
 
 class ShoppingList extends Component {
     constructor(){
@@ -42,26 +43,43 @@ class ShoppingList extends Component {
  
     mapList = () => {
         return this.props.list.partyList.map((recipe, idx) => {
-            debugger
-        return <div key={idx} >
-            <h2>{recipe.recipe.name}</h2>
+           
+        return <div className="listedRecipe" key={idx} >
+            <div className="recipeHeader">
             <img src={recipe.recipe.image} />
+            <h3>{recipe.recipe.name}</h3>
+            </div>
                 {this.mapIngredients(recipe.ingredients)}
             </div>
         })
     }
+  
 
+    // mapIngredients = (ingredients) => {
+    //     return ingredients.map((ingredient, idx) => {
+    //         if(!this.state.purchasedIngredients.includes(ingredient.id)){
+    //             return <div className="ingredientDiv" key={idx}><h4><input onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id}/>{ingredient.name}</h4></div>
+    //         }else{
+    //             return <div className="ingredientDiv" key={idx}><h4 className="purchasedIngredient">{ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
+    //         }
+    //     })
+    // }
 
     mapIngredients = (ingredients) => {
         return ingredients.map((ingredient, idx) => {
             if(!this.state.purchasedIngredients.includes(ingredient.id)){
-                return <div key={idx}><h4><input onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id}/>{ingredient.name}</h4></div>
+            return <div className="ingredientDiv" key={idx}><input className="checkBox" onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id} value={ingredient.name}/><h4>{ingredient.name}</h4></div>
             }else{
-                return <div key={idx}><h4>Hello i'm a purchased ingredient {ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
+                return <div className="ingredientDiv" key={idx}><h4 className="purchasedIngredient">{ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
             }
         })
     }
 
+
+
+
+
+ 
 
     // mapList = () => {
        
@@ -121,8 +139,8 @@ class ShoppingList extends Component {
 
     render() {
         return (
-            <div>
-                <div>
+            <div className="shoppingList">
+                <div className="listDiv">
                     {this.mapList()}
                     <button onClick={this.handleSubmit} >Bring These Ingredients</button>
                 </div>
