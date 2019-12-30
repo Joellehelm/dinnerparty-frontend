@@ -53,6 +53,7 @@ class Recipes extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+        debugger
         this.props.searchedRecipes({...this.state})
         this.mapCards()
         

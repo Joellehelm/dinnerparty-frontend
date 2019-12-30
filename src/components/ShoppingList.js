@@ -20,7 +20,12 @@ class ShoppingList extends Component {
 
     componentDidMount(){
         this.setState({userIngredients: []})
-        fetch('http://localhost:3000/user_ingredients')
+        fetch('http://localhost:3000/user_ingredients' ,{
+            method: "GET",
+            headers: {
+                "Authorization": `JWT ${localStorage.getItem('token')}`
+            }
+        })
         .then(r => r.json())
         .then(response => {
             const boughtIngredients = {}
@@ -124,7 +129,8 @@ class ShoppingList extends Component {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                "Authorization": `JWT ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({user_id: this.props.auth.user.id, ingredient_id: this.state.bringingIngredients})
         })

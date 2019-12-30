@@ -30,10 +30,16 @@ import * as action from './actionTypes'
 
 export const partyList = (partyId) => dispatch => {
 
-    fetch(`http://localhost:3000/party_recipes`)
+    fetch(`http://localhost:3000/party_recipes`, {
+        method: "GET",
+        headers: {
+            "Authorization": `JWT ${localStorage.getItem('token')}`
+        }
+
+    })
     .then(r => r.json())
     .then(response => {
-        debugger
+    
         const recipes = response.map(recipe => {
             if(recipe.party_id === partyId){
                

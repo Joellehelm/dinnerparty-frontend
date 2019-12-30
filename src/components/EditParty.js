@@ -55,7 +55,8 @@ class EditParty extends Component {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": 'application/json'
+                "Accept": 'application/json',
+                "Authorization": `JWT ${localStorage.getItem('token')}`
                
             },
             body: JSON.stringify({party: partyObj})
@@ -90,7 +91,12 @@ class EditParty extends Component {
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3000/usernames`)
+        fetch(`http://localhost:3000/usernames`, {
+            method: "GET",
+            headers: {
+                "Authorization": `JWT ${localStorage.getItem('token')}`
+            }
+        })
         .then(r => r.json())
         .then(users => {
             this.setState({users: users})
@@ -132,7 +138,8 @@ class EditParty extends Component {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                "Authorization": `JWT ${localStorage.getItem('token')}`
             }
         })
         .then(r => r.json())

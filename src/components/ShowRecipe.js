@@ -56,7 +56,12 @@ class ShowRecipe extends Component {
 
 
     fetchParties = () => {
-        fetch(`http://localhost:3000/parties`)
+        fetch(`http://localhost:3000/parties`, {
+            method: "GET",
+            headers: {
+                "Authorization": `JWT ${localStorage.getItem('token')}`
+            }
+        })
         .then(r => r.json())
         .then(response => {
           
@@ -97,7 +102,8 @@ class ShowRecipe extends Component {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                "Authorization": `JWT ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({name: this.state.name, api: this.props.info.info.id, image: this.state.image})
         })
@@ -116,7 +122,7 @@ class ShowRecipe extends Component {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": 'Bearer' + localStorage.getItem('token')
+                "Authorization": `JWT ${localStorage.getItem('token')}`
 
             },
             body: JSON.stringify({party_recipe: {party_id: this.state.party, recipe_id: id}})
@@ -144,7 +150,8 @@ class ShowRecipe extends Component {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "applicaton/json"
+                "Accept": "applicaton/json",
+                "Authorization": `JWT ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({ingredient})
         })

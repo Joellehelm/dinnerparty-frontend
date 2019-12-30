@@ -112,7 +112,12 @@ class CreateParty extends Component {
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3000/usernames`)
+        fetch(`http://localhost:3000/usernames`, {
+            method: "GET",
+            headers: {
+                "Authorization": `JWT ${localStorage.getItem('token')}`
+            }
+        })
         .then(r => r.json())
         .then(users => {
             this.setState({users: users, filteredUsers: users})
