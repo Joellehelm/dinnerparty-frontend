@@ -20,6 +20,7 @@ class CreateParty extends Component {
             partyDetails: "",
             partyGuests: [],
             users: [],
+            filteredUsers: [],
             userSearch: "",
             
 
@@ -44,7 +45,8 @@ class CreateParty extends Component {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": 'application/json'
+                "Accept": 'application/json',
+                "Authorization": `JWT ${localStorage.getItem('token')}`
                
             },
             body: JSON.stringify({party: partyObj})
@@ -69,7 +71,8 @@ class CreateParty extends Component {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                "Authorization": `JWT ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({party_user: {party_id: partyId, user_id: this.state.partyGuests}})
         })
@@ -92,6 +95,11 @@ class CreateParty extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
+        // if(this.state.userSearch.length > 0){
+        //     this.handleSearch()
+        // }else{
+        //     this.setState({filteredUsers: this.state.users})
+        // }
         
     }
     
@@ -107,7 +115,7 @@ class CreateParty extends Component {
         fetch(`http://localhost:3000/usernames`)
         .then(r => r.json())
         .then(users => {
-            this.setState({users: users})
+            this.setState({users: users, filteredUsers: users})
            
         })
     }
@@ -137,33 +145,54 @@ class CreateParty extends Component {
 
 
     mapUsers = () => {
-    return this.state.users.map(user => {return <p key={user.id}><input onChange={this.handleCheck} type="checkbox" key={user.id} name="user" id={user.id}/>{user.username}</p>})
+    return this.state.filteredUsers.map(user => {return <p key={user.id}><input onChange={this.handleCheck} type="checkbox" key={user.id} name="user" id={user.id}/>{user.username}</p>})
     }
 
 
+   handleSearch = (event) => {
+
    
 
+    this.setState({userSearch: event.target.value})    
+
+        if (event.target.value === ""){
+            
+            this.setState({filteredUsers: this.state.users})
+           
+        }else{
+            const f = this.state.filteredUsers.filter(user => user.username.includes(this.state.userSearch)).map(searchedUser => {return searchedUser})
+            this.setState({filteredUsers: f})
+        }
+    
+
+      
+
+   }
 
 
+   
 
 
     render() {
         const {partyName, partyAddress, userSearch} = this.state
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form className="createForm" onSubmit={this.handleSubmit}>
+                    <div className="leftSide">
                     <input onChange={this.handleChange} type="text" name="partyName" value={partyName} placeholder="Name"/>
                     <input onChange={this.handleChange} type="text" name="partyAddress" value={partyAddress} placeholder="Address"/>
                     
-                    <input type="date" name="partyDate" placeholder="Select Date" onChange={this.handleChange} />
+                    <input className="dateSelect" type="date" name="partyDate" placeholder="Select Date" onChange={this.handleChange} />
                     {/* <DatePicker placeholderText="Select Date" selected={this.state.partyDate} onChange={this.handleCalendar}  /> */}
                     
-                    <textarea placeholder="Additional Details" type="text" onChange={this.handleChange} name="partyDetails"/>
+                    <textarea className="details" placeholder="Additional Details" type="text" onChange={this.handleChange} name="partyDetails"/>
 
-
-                    <input type="text" value={userSearch} name="userSearch" placeholder="Search Users" onChange={this.handleChange} />
+                    </div>
+                    <div className="rightSide">
+                    <input className="userSearch" type="text" value={userSearch} name="userSearch" placeholder="Search Users" onChange={this.handleSearch} />
                     <div className="scrollBox" >
                     <ul>{this.mapUsers()}</ul>
+                    </div>
                     </div>
                     <button value="submit" type="submit">Create</button>
 

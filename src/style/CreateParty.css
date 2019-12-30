@@ -4,5 +4,50 @@
   border: 1px solid #4e4e4e;
   font: 18px Arial, Serif;
   overflow: auto;
+  float: right;
 
 }
+
+.dateSelect {
+  width: 145px;
+  margin-bottom: 20px;
+
+}
+
+.details {
+  width: 500px;
+  height: 200px;
+
+}
+
+.userSearch {
+  float: left;
+  width: 200px;
+  margin-left: 792px;
+  
+  
+}
+
+.createForm {
+  margin-top: 100px;
+  margin-left: 50px;
+
+}
+
+
+.createForm button {
+  margin-top: 500px;
+}
+
+
+.rightSide {
+  margin-right: 100px;
+}
+
+
+
+.leftSide {
+  float: left;
+  width: 500px;
+}
+

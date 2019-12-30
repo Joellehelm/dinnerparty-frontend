@@ -162,10 +162,10 @@ class EditParty extends Component {
                     <textarea placeholder="Additional Details" type="text" onChange={this.handleChange} value={partyDetails}/>
 
 
-                    <input type="text" value={userSearch} name="userSearch" placeholder="Search Users" onChange={this.handleChange} />
+                    {/* <input type="text" value={userSearch} name="userSearch" placeholder="Search Users" onChange={this.handleChange} />
                     <div className="scrollBox" >
-                    <ul>{this.mapUsers()}</ul>
-                    </div>
+                    <ul>{this.mapUsers()}</ul> */}
+                    {/* </div> */}
                     <button value="submit" type="submit">Submit Edit</button>
 
                     <button onClick={this.handleDelete}>Cancel Party</button>
