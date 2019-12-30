@@ -15,9 +15,16 @@ class ViewParty extends Component {
 
     handleEdit = () => {
         this.setState({editing: !this.state.editing})
-        
-
+           
     }
+
+    doneEditing = () => {
+        // this function is used after a party is deleted
+        this.setState({editing: !this.state.editing})
+        this.props.doneViewing()
+    }
+
+   
 
     
     showShoppingList = () => {
@@ -35,7 +42,7 @@ class ViewParty extends Component {
             <div className="viewParty">
             {
                 this.state.editing === true ?
-                <EditParty party={this.props.party} handleEdit={this.handleEdit} />
+                <EditParty sendPartyObj={this.props.sendPartyObj} history={this.props.history} party={this.props.party} doneEditing={this.doneEditing} doneViewing={this.props.doneViewing} handleEdit={this.handleEdit} />
                     :
                     <div>
                 <h1>{this.props.party.name}</h1>

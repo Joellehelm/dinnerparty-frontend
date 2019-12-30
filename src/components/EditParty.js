@@ -27,7 +27,7 @@ class EditParty extends Component {
 
     }
 
-   componentWillMount(){
+   UNSAFE_componentWillMount(){
        this.setState({
         partyName: this.props.party.name,
         partyAddress: this.props.party.address,
@@ -65,6 +65,7 @@ class EditParty extends Component {
            
            
             this.props.handleEdit()
+            this.props.doneViewing()
         })
     }   
 
@@ -136,7 +137,9 @@ class EditParty extends Component {
         })
         .then(r => r.json())
         .then(response => {
-            console.log("Successfully deleted")
+            this.props.doneEditing()
+         
+            
         })
     }
    

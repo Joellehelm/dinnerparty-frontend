@@ -79,7 +79,7 @@ class CreateParty extends Component {
             this.setState({
                 partyGuests: []
             })
-            this.props.mapHosting()
+            this.props.fetchParties()
             this.props.doneCreating()
             
         })
