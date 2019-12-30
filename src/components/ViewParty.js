@@ -5,12 +5,22 @@ import { partyList } from '../actions/ViewParty'
 import '../style/ViewParty.css'
 
 class ViewParty extends Component {
+    
+    _isMounted = false;
     constructor(){
         super()
-
+        
         this.state = {
             editing: false
         }
+    }
+
+    componentDidMount = () => {
+        this._isMounted = true;
+    }
+
+    componentWillUnmount = () => {
+        this._isMounted = false;
     }
 
     handleEdit = () => {
@@ -21,7 +31,7 @@ class ViewParty extends Component {
     doneEditing = () => {
         // this function is used after a party is deleted
         this.setState({editing: !this.state.editing})
-        this.props.doneViewing()
+        // this.props.doneViewing()
     }
 
    

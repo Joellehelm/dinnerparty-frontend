@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+
 import CreateParty from './CreateParty'
 import ViewParty from './ViewParty'
 
@@ -35,6 +35,7 @@ class Parties extends Component {
  
          const attendedParties = []
              response.forEach(party => {
+                 
                  if(party.user_id === this.props.auth.user.id){
                      attendedParties.push(party)
                  }
@@ -111,7 +112,7 @@ class Parties extends Component {
     mapAttending = () => {
         
         if(this.state.attending.length > 0){
-       
+       debugger
         return this.state.attending.map((party, idx) => { return <div key={idx} partyid={party.id} ><p onClick={() => this.viewParty(party)} >{party.party.name}</p></div>} )
         
         }else{
@@ -161,17 +162,9 @@ class Parties extends Component {
 }
 
 
-// mapStateToProps = (state) => {
-//     editing: state.editing
-//     viewParty: state.viewParty
-// }
 
-// const mapDispatchToProps = {
-//     changeEditing,
-//     changeViewing
-// }
 
-export default connect()(Parties);
+export default Parties;
 
 
 
