@@ -33,7 +33,7 @@ export const searchedRecipes = (searchTerms) => dispatch => {
       fetch(URL + `&number=5&instructionsRequired=true&apiKey=${key}`)
       .then(r => r.json())
       .then(recipes => {
-       
+       debugger
           dispatch({
             type: action.SEARCHED_RECIPES,
             payload: recipes.results

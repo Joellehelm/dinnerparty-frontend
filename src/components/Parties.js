@@ -29,7 +29,12 @@ class Parties extends Component {
 
 
     fetchUsers = () => {
-        fetch(`http://localhost:3000/party_users`)
+        fetch(`http://localhost:3000/party_users`, {
+            method: "GET",
+            headers: {
+                "Authorization": `JWT ${localStorage.getItem('token')}`
+            }
+        })
         .then(r => r.json())
         .then(response => {
  
@@ -50,7 +55,12 @@ class Parties extends Component {
 
 
     fetchParties = () => {
-        fetch(`http://localhost:3000/parties`)
+        fetch(`http://localhost:3000/parties`, {
+            method: "GET",
+            headers: {
+                "Authorization": `JWT ${localStorage.getItem('token')}`
+            }
+        })
        .then(r => r.json())
        .then(response => {
 
