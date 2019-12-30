@@ -68,7 +68,7 @@ class ShoppingList extends Component {
     mapIngredients = (ingredients) => {
         return ingredients.map((ingredient, idx) => {
             if(!this.state.purchasedIngredients.includes(ingredient.id)){
-            return <div className="ingredientDiv" key={idx}><input className="checkBox" onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id} value={ingredient.name}/><h4>{ingredient.name}</h4></div>
+            return <div className="ingredientDiv" key={idx}><input className="checkbox" onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id} value={ingredient.name}/><h4>{ingredient.name}</h4></div>
             }else{
                 return <div className="ingredientDiv" key={idx}><h4 className="purchasedIngredient">{ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
             }
@@ -130,6 +130,7 @@ class ShoppingList extends Component {
         })
         .then(r => r.json())
         .then(response => {
+            this.props.history.push('/account')
             console.log(response)
         })
     }

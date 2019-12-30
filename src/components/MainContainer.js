@@ -105,6 +105,8 @@ class MainContainer extends Component {
                     />
 
 
+
+
                     <Route 
                     exact path='/list' 
                     render={props => (

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import CreateParty from './CreateParty'
 import ViewParty from './ViewParty'
+
+
 import '../style/Parties.css'
 
 class Parties extends Component {
@@ -19,7 +22,34 @@ class Parties extends Component {
 
     
     componentDidMount(){
-       fetch(`http://localhost:3000/parties`)
+       
+        this.fetchParties()
+        this.fetchUsers()
+    } 
+
+
+    fetchUsers = () => {
+        fetch(`http://localhost:3000/party_users`)
+        .then(r => r.json())
+        .then(response => {
+ 
+         const attendedParties = []
+             response.forEach(party => {
+                 if(party.user_id === this.props.auth.user.id){
+                     attendedParties.push(party)
+                 }
+             })
+             if(attendedParties.length > 0){
+                 this.setState({
+                     attending: attendedParties
+                 })
+             }
+        }) 
+    }
+
+
+    fetchParties = () => {
+        fetch(`http://localhost:3000/parties`)
        .then(r => r.json())
        .then(response => {
 
@@ -35,30 +65,15 @@ class Parties extends Component {
                 })
             }
        })
+    }
 
-       fetch(`http://localhost:3000/party_users`)
-       .then(r => r.json())
-       .then(response => {
 
-        const attendedParties = []
-            response.forEach(party => {
-                if(party.user_id === this.props.auth.user.id){
-                    attendedParties.push(party)
-                }
-            })
-            if(attendedParties.length > 0){
-                this.setState({
-                    attending: attendedParties
-                })
-            }
-
-    
-            
+   doneViewing = () => {
+       this.setState({
+           viewParty: !this.state.viewParty
        })
-    } 
-
-
-   
+       this.fetchParties()
+   }
 
 
 
@@ -66,11 +81,12 @@ class Parties extends Component {
         this.setState({
             creating: false
         })
+       
     }
 
-    handleEdit = () => {
-        this.setState({editing: !this.state.editing})
-    }
+    // handleEdit = () => {
+    //     this.setState({editing: !this.state.editing})
+    // }
 
     viewParty = (party) => {
         if(party.party){
@@ -109,12 +125,12 @@ class Parties extends Component {
             <div>
                
                 { this.state.creating ?
-                <CreateParty mapHosting={this.mapHosting} doneCreating={this.doneCreating} auth={this.props.auth}/>
+                <CreateParty fetchParties={this.fetchParties} doneCreating={this.doneCreating} auth={this.props.auth}/>
 
                 :
                 
                 this.state.viewParty ? 
-                <ViewParty history={this.props.history} hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
+                <ViewParty doneViewing={this.doneViewing} history={this.props.history} hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
 
                 :
 
@@ -144,7 +160,18 @@ class Parties extends Component {
     }
 }
 
-export default Parties;
+
+// mapStateToProps = (state) => {
+//     editing: state.editing
+//     viewParty: state.viewParty
+// }
+
+// const mapDispatchToProps = {
+//     changeEditing,
+//     changeViewing
+// }
+
+export default connect()(Parties);
 
 
 
