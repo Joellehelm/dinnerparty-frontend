@@ -175,15 +175,21 @@ class ShowRecipe extends Component {
 
     render() {
         return (
+                
+
             <div>
                 <NavBar history={this.props.history}/>
+                <div className="recipeContainer">
+                <div className="recipeName">
+                <h1>{this.state.name}</h1>
+                </div>
                 <div className="showRecipe">
                 <div className="recipePicture">
                 <img src={this.state.image}/>
                 </div>
-                    <div className="topDiv">
+                    
+              
 
-                <h1>{this.state.name}</h1>
                 <div className="innerItems">
                 <h3>Servings</h3>
                 <p>{this.state.servings}</p>
@@ -202,18 +208,19 @@ class ShowRecipe extends Component {
                 <ul>{this.listWinePairings()}</ul>
                 </div>
                 </div>
-                <div className="bottomDiv">
-                    <div className="partySelect">
+
+                
+                <div className="ingredients">
+                <div className="partySelect">
                 <select onChange={this.handleChange} name="party">
                    <option defaultValue>Choose a Party</option>
                    {this.mapParties()}
                    </select><button onClick={this.addRecipe}>Add to Party</button>
                    </div>
-                <div className="ingredients">
                 <h3>Ingredients</h3>
                 <ul>{this.state.ingredients.map((i, idx) => {return <li key={idx}>{i.item}</li>})}</ul>
                 </div>
-
+                <div className="instructions">
                 <h2>Instructions</h2>
                 {this.state.instructions}
                 </div>

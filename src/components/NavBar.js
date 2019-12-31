@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import $ from 'jquery'
 import '../style/NavBar.scss'
+import { connect } from 'react-redux'
+import { logout } from '../actions/auth';
 
 class NavBar extends Component {
 
@@ -28,6 +30,7 @@ class NavBar extends Component {
                 <li className="navLi"><a className="navA" onClick={() =>this.props.history.push('/')}>Home</a></li>
                 <li className="navLi"><a className="navA" onClick={() => this.props.history.push('/account')}>Account</a></li>
                 <li className="navLi"><a className="navA" onClick={() => this.props.history.push('/messages')}>Messages</a></li>
+                <li className="logout" onClick={() =>this.props.logout()}>Logout</li>
                 
                 </ul>
             </div>
@@ -36,4 +39,15 @@ class NavBar extends Component {
     }
 }
 
-export default NavBar;
+const mapStateToProps = (state) => ({
+    auth: state.auth
+  })
+
+
+const mapDispatchToProps = {
+ 
+    logout
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
