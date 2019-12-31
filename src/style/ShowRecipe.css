@@ -1,12 +1,55 @@
 .showRecipe {
-    margin-top: 150px;
- 
+    margin: 150px 150px 150px 150px;
+    font-family: 'Prata', serif;
     
    
 }
 
+.bottomDiv {
+    float: right;
+    margin-bottom: 100px;
+    padding-bottom: 100px;
+    margin-top: -50px;
+
+}
+
 
 .topDiv {
+  
+  margin-left: 200px;
+  float: right;
+  width: 600px;
+  margin-top: -33px;
+  
+  
+
+}
+
+.innerItems {
+   
+    padding-left: 50px;
+    padding-right: 50px;
+    border: 2px solid black;
     
 }
 
+.recipePicture {
+   
+   float: left;
+   padding-bottom: 20px;
+   
+   
+}
+
+
+.partySelect {
+    float: left;
+    text-align: center;
+    
+    margin-left: 175px;
+
+}
+
+.ingredients {
+    padding-top: 60px;
+}
