@@ -59,7 +59,7 @@ export const login = (user, history) => dispatch => {
                 
           } else {
           // error handling here
-          console.log('HIT THE ELSE IN LOGIN FETCH')
+          
 
           }
         })

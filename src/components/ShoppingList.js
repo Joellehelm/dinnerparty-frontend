@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import '../style/ShoppingList.css'
+import NavBar from './NavBar'
+
 
 class ShoppingList extends Component {
     constructor(){
@@ -71,6 +73,8 @@ class ShoppingList extends Component {
     // }
 
     mapIngredients = (ingredients) => {
+        
+
         return ingredients.map((ingredient, idx) => {
             if(!this.state.purchasedIngredients.includes(ingredient.id)){
             return <div className="ingredientDiv" key={idx}><input className="checkbox" onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id} value={ingredient.name}/><h4>{ingredient.name}</h4></div>
@@ -137,7 +141,7 @@ class ShoppingList extends Component {
         .then(r => r.json())
         .then(response => {
             this.props.history.push('/account')
-            console.log(response)
+            
         })
     }
 
@@ -146,11 +150,15 @@ class ShoppingList extends Component {
 
     render() {
         return (
+            <div>
+              
+                <NavBar history={this.props.history} />
             <div className="shoppingList">
                 <div className="listDiv">
                     {this.mapList()}
                     <button onClick={this.handleSubmit} >Bring These Ingredients</button>
                 </div>
+            </div>
             </div>
         );
     }
