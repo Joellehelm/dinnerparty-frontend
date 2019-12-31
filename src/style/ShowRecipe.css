@@ -1,55 +1,69 @@
 .showRecipe {
-    margin: 150px 150px 150px 150px;
-    font-family: 'Prata', serif;
-    
-   
-}
-
-.bottomDiv {
-    float: right;
-    margin-bottom: 100px;
-    padding-bottom: 100px;
-    margin-top: -50px;
-
-}
-
-
-.topDiv {
-  
-  margin-left: 200px;
-  float: right;
-  width: 600px;
-  margin-top: -33px;
-  
-  
-
+    margin: 100px 150px 100px 150px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 200px;
 }
 
 .innerItems {
-   
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 70px;
+    text-align: left;
     border: 2px solid black;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-right: 70px;
     
 }
-
-.recipePicture {
-   
-   float: left;
-   padding-bottom: 20px;
-   
-   
-}
-
 
 .partySelect {
-    float: left;
-    text-align: center;
+    margin-bottom: 60px;
+    margin-left: 170px;
     
-    margin-left: 175px;
+}
+
+.partySelect select {
+    width: 200px;
+   
+
+    text-align: center;
+}
+
+.partySelect button {
+    margin-left: 10px;
+    
+}
+
+.innerItems ul {
+    list-style: square;
+}
+
+
+
+
+.recipeName {
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+.bottomDiv {
+    margin-left: 100px;
+}
+
+
+.ingredients {  
+    margin-left: 140px;
+   
+    margin-top: -50px;
+    position: absolute;
+}
+
+.instructions {
+    position: absolute;
+    margin-left: 100px;
+    padding-bottom: 150px;
+    padding-top: 400px;
+    margin-right: 100px;
 
 }
 
-.ingredients {
-    padding-top: 60px;
-}
