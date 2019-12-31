@@ -48,7 +48,7 @@ class ShoppingList extends Component {
  
     mapList = () => {
         return this.props.list.partyList.map((recipe, idx) => {
-           
+          
         return <div className="listedRecipe" key={idx} >
             <div className="recipeHeader">
             <img src={recipe.recipe.image} />
