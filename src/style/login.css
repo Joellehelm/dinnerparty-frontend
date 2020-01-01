@@ -80,7 +80,7 @@
 	text-align: center;
 }
 
-input {
+.logInput {
 	background-color: #eee;
 	border: none;
 	padding: 12px 15px;

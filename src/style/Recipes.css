@@ -1,4 +1,4 @@
-.recipesContainer {
+/* .recipesContainer {
     display: grid;
     
     grid-template-columns: repeat(4, 1fr);
@@ -7,20 +7,19 @@
     margin-right: 100px;
     margin-bottom: 100px;
     padding: 50px 50px 50px 50px;
-    grid-gap: 60px;
+    grid-gap: 60px; */
     /* border: 3px solid black;
     border-radius: 15px;
     background-color: rgba(0, 0, 0, 0.37); */
+/* } */
+
+
+
+.recipesContainer {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin: 180px 100px 100px 100px;
+    grid-gap: 50px;
 }
 
-
-.search {
-    text-align: center;
-    display: inline-block;
-    max-width: 400px;
-    
-    margin-left: 50px;
-    margin-top: 20px;
-    margin-bottom: 100px;
-
-}

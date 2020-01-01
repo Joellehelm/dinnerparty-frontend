@@ -6,36 +6,16 @@
     height: 250px;
 
     border: 3px solid black;
-    border-radius: 125%;
-    /* height: 100%;
-    width: auto;
-    background: transparent no-repeat center;
-    background-size: cover;  */
-    /* width: 100%;
-    height: auto;   */
-    /* background-size: 50% 50%;
-    background-size: cover; */
-    
+    border-radius: 50%;
 
-/*    
-    float: left;
-    width:  250px;
-    height: 250px;
-    background-position: 100% 100%;
-   
-    background-size:     cover; */
 }
 
-.imgDiv {
-   
-   
-}
+
 
 .recipeCard {
-   
-    grid-template-columns: 100px 100px 100px 100px;
-    /* max-width: 300px;
-    max-height: 300px; */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 300px);
+  
     margin-bottom: 50px;
     text-align: center;
     opacity: 85%;
