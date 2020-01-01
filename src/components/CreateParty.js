@@ -150,14 +150,13 @@ class CreateParty extends Component {
 
 
     mapUsers = () => {
-    return this.state.filteredUsers.map(user => {return <p key={user.id}><input onChange={this.handleCheck} type="checkbox" key={user.id} name="user" id={user.id}/>{user.username}</p>})
+    return this.state.filteredUsers.map(user => {return <p className="user" key={user.id}><input onChange={this.handleCheck} type="checkbox" key={user.id} name="user" id={user.id}/>{user.username}</p>})
     }
 
 
    handleSearch = (event) => {
 
    
-
     this.setState({userSearch: event.target.value})    
 
         if (event.target.value === ""){
@@ -167,9 +166,15 @@ class CreateParty extends Component {
         }else{
             const f = this.state.filteredUsers.filter(user => user.username.includes(this.state.userSearch)).map(searchedUser => {return searchedUser})
             this.setState({filteredUsers: f})
+            
         }
     
-
+        // const userthings = document.querySelectorAll(".user")
+        // userthings.forEach(user => {
+        //     if(this.state.filteredUsers.includes(user.innerText)){
+        //         user.style.display = 'none';
+        //     }
+        // })
       
 
    }
@@ -181,7 +186,7 @@ class CreateParty extends Component {
     render() {
         const {partyName, partyAddress, userSearch} = this.state
         return (
-            <div>
+            <div className="createContainer">
                 <form className="createForm" onSubmit={this.handleSubmit}>
                     <div className="leftSide">
                     <input onChange={this.handleChange} type="text" name="partyName" value={partyName} placeholder="Name"/>
@@ -199,7 +204,9 @@ class CreateParty extends Component {
                     <ul>{this.mapUsers()}</ul>
                     </div>
                     </div>
-                    <button value="submit" type="submit">Create</button>
+                    <div className="buttonDiv">
+                    <button className="createPartyButton" value="submit" type="submit">Create</button>
+                    </div>
 
                     
 
