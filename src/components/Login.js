@@ -76,8 +76,8 @@ class Login extends Component {
 			<h1 className="loginH1">Sign in</h1>
 		
 		
-			<input type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange}/>
-			<input type="password" autoComplete="current-password" name="password" placeholder="Password" value={password} onChange={this.handleChange}/>
+			<input className="logInput" type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange}/>
+			<input className="logInput" type="password" autoComplete="current-password" name="password" placeholder="Password" value={password} onChange={this.handleChange}/>
 			{/* <a href="#">Forgot your password?</a> */}
 			<button className="resbutton" type="submit">Sign In</button>
 		</form>

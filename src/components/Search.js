@@ -92,7 +92,7 @@ class Search extends Component {
 
                 <div className="searchBar">
                    <input className="search" onChange={this.props.handleChange} name="query" placeholder="Search..."/>
-                   <button name="submit">Submit</button>
+                   <button className="searchButton" name="submit">Submit</button>
                    </div>
                    </form>
             </div>
