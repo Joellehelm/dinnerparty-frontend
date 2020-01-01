@@ -166,7 +166,7 @@ class EditParty extends Component {
                     <input type="date" name="partyDate" placeholder="Select Date" onChange={this.handleChange} />
                     {/* <DatePicker placeholderText="Select Date" selected={this.state.partyDate} onChange={this.handleCalendar}  /> */}
                     
-                    <textarea placeholder="Additional Details" type="text" onChange={this.handleChange} value={partyDetails}/>
+                    <textarea placeholder="Additional Details" type="text" name="partyDetails" onChange={this.handleChange} value={partyDetails}/>
 
 
                     {/* <input type="text" value={userSearch} name="userSearch" placeholder="Search Users" onChange={this.handleChange} />

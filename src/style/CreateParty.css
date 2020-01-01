@@ -1,10 +1,10 @@
 .scrollBox {
   height: 450px;
-  width: 250px;
+  width: 350px;
   border: 1px solid #4e4e4e;
   font: 18px Arial, Serif;
   overflow: auto;
-  float: right;
+  /* float: right; */
 
 }
 
@@ -21,33 +21,49 @@
 }
 
 .userSearch {
-  float: left;
+  text-align: center;
   width: 200px;
-  margin-left: 792px;
-  
-  
+  margin-right: 110px;
 }
 
 .createForm {
-  margin-top: 100px;
-  margin-left: 50px;
+  margin: 150px 200px 200px 200px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  grid-column-gap: 300px;
+  
 
 }
 
-
-.createForm button {
-  margin-top: 500px;
+.buttonDiv {
+  display: flex;
+  justify-content: center;
 }
 
 
-.rightSide {
-  margin-right: 100px;
+.createPartyButton {
+  
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  border: 2px solid black;
+ 
 }
 
+.createPartyButton:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to right, white, rgba(0, 0, 0, 0.5));
+  color: white;
+  border: 2px solid white;
+
+  
+  
+}
 
 
 .leftSide {
-  float: left;
-  width: 500px;
+  margin-top: 30px;
 }
+
 
