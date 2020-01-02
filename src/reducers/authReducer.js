@@ -4,6 +4,7 @@ import * as act from '../actions/actionTypes';
 const initialState = {
     user: {},
     isLoggedIn: false,
+    creation: false
 
 
     
@@ -12,9 +13,11 @@ export default function(state = initialState, action) {
   
     switch (action.type) {
         case act.CURRENT_USER:
+            
         return {
             ...state,
-            user: action.payload
+            user: action.payload,
+            creation: true
         };
 
         case act.LOGIN:

@@ -21,6 +21,11 @@ class ShoppingList extends Component {
 
 
     componentDidMount(){
+        this.fetchIngredients()
+    }
+
+
+    fetchIngredients = () => {
         this.setState({userIngredients: []})
         fetch('http://localhost:3000/user_ingredients' ,{
             method: "GET",
@@ -140,7 +145,8 @@ class ShoppingList extends Component {
         })
         .then(r => r.json())
         .then(response => {
-            this.props.history.push('/account')
+            this.fetchIngredients()
+            // this.props.history.push('/account')
             
         })
     }
