@@ -235,10 +235,12 @@ class ShowRecipe extends Component {
                     </div>
 
                 </div>
+                <div className="ingDiv">
                 <div className="ingredients">
               
               <h3>Ingredients</h3>
               <ul>{this.state.ingredients.map((i, idx) => {return <li key={idx}>{i.item}</li>})}</ul>
+              </div>
               </div>
 
                

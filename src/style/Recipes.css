@@ -18,9 +18,11 @@
 .recipesContainer {
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    margin: 180px 100px 100px 100px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* margin: 180px 100px 100px 100px; */
+    margin: 15% 10% 15% 15%;
     grid-gap: 50px;
+    margin-top: 180px;
 }
 
 

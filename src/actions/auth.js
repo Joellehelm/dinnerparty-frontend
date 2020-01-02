@@ -26,9 +26,12 @@ export const register = (user) => dispatch => {
                 payload: response
 
               })
-            // add history here
-        //   } else {
-        //  //handle errors here
+           
+          } else {
+              dispatch({
+                type: action.CURRENT_USER,
+                payload: "no"
+              })
           }
         })
         .catch(error => console.log('api errors:', error))
@@ -58,8 +61,7 @@ export const login = (user, history) => dispatch => {
                 localStorage.setItem('token', response.jwt)
                 
           } else {
-          // error handling here
-          
+           
 
           }
         })

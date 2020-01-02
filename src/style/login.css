@@ -214,5 +214,14 @@
 }
 
 
+.badSignup {
+	color: red;
+}
 
+.goodSignup {
+	color: green;
+}
 
+.badLogin {
+	color: red;
+}

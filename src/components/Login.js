@@ -13,7 +13,8 @@ class Login extends Component {
         username: '',
         password: '',
         errors: '',
-        loggedIn: false
+        loggedIn: false,
+        clicked: false
        };
     }
  
@@ -35,7 +36,8 @@ class Login extends Component {
       this.setState({
         loggedIn: true,
         username: "",
-        password: ""
+        password: "",
+        clicked: true
       })
       
    
@@ -59,6 +61,12 @@ class Login extends Component {
     }
 
 
+    wrongLogin = () => {
+      if(this.state.clicked === true){
+        return <div className="badLogin"><p>That Username or Password is incorrect.</p></div>
+  
+      }
+    }
 
 
 
@@ -78,7 +86,7 @@ class Login extends Component {
 		
 			<input className="logInput" type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange}/>
 			<input className="logInput" type="password" autoComplete="current-password" name="password" placeholder="Password" value={password} onChange={this.handleChange}/>
-			{/* <a href="#">Forgot your password?</a> */}
+			{this.wrongLogin()}
 			<button className="resbutton" type="submit">Sign In</button>
 		</form>
 	</div>

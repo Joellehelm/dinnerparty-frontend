@@ -43,10 +43,22 @@ class Signup extends Component {
         password: "",
         password_confirmation: ""
       })
+      this.successModal()
   }
   
  
-  
+  successModal = () => {
+   
+    if(this.props.auth.user === "no"){
+    
+      return <div className="badSignup"><p>That username or email is already in use.</p></div>
+    }
+    if(this.props.auth.creation === true){
+      
+      return <div className="goodSignup"><p>Account Successfully Created!</p></div>
+    }
+    
+  }
  
   
   
@@ -63,6 +75,8 @@ class Signup extends Component {
         <input className="logInput" type="password" autoComplete="new-password" placeholder="Password" name="password" value={password} onChange={this.handleChange}/>
         <input className="logInput" type="password" autoComplete="new-password" placeholder="Password Confirmation" name="password_confirmation" value={password_confirmation} onChange={this.handleChange}/>
         <button className="resbutton" type="submit">Sign Up</button>
+        
+    {this.successModal()}
       </form>
     </div>
     </div>
@@ -73,7 +87,8 @@ class Signup extends Component {
 
 
   const mapStateToProps = (state) => ({
-      auth: state.auth
+      auth: state.auth,
+    
   })
   
   export default connect(mapStateToProps, { register })(Signup);
