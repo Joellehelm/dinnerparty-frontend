@@ -158,24 +158,49 @@ class EditParty extends Component {
     render() {
         const {partyName, partyAddress, userSearch, partyDetails} = this.state
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            // <div>
+            //     <form onSubmit={this.handleSubmit}>
+            //         <input onChange={this.handleChange} type="text" name="partyName" value={partyName} placeholder="Name"/>
+            //         <input onChange={this.handleChange} type="text" name="partyAddress" value={partyAddress} placeholder="Address"/>
+                    
+            //         <input type="date" name="partyDate" placeholder="Select Date" onChange={this.handleChange} />
+            //         {/* <DatePicker placeholderText="Select Date" selected={this.state.partyDate} onChange={this.handleCalendar}  /> */}
+                    
+            //         <textarea placeholder="Additional Details" type="text" name="partyDetails" onChange={this.handleChange} value={partyDetails}/>
+
+
+            //         {/* <input type="text" value={userSearch} name="userSearch" placeholder="Search Users" onChange={this.handleChange} />
+            //         <div className="scrollBox" >
+            //         <ul>{this.mapUsers()}</ul> */}
+            //         {/* </div> */}
+            //         <button value="submit" type="submit">Submit Edit</button>
+
+            //         <button onClick={this.handleDelete}>Cancel Party</button>
+
+                    
+
+            //         </form>
+            // </div>
+
+
+            <div className="createContainer">
+                <form className="createForm" onSubmit={this.handleSubmit}>
+                    <div className="leftSide">
                     <input onChange={this.handleChange} type="text" name="partyName" value={partyName} placeholder="Name"/>
                     <input onChange={this.handleChange} type="text" name="partyAddress" value={partyAddress} placeholder="Address"/>
                     
-                    <input type="date" name="partyDate" placeholder="Select Date" onChange={this.handleChange} />
-                    {/* <DatePicker placeholderText="Select Date" selected={this.state.partyDate} onChange={this.handleCalendar}  /> */}
+                    <input className="dateSelect" type="date" name="partyDate" placeholder="Select Date" onChange={this.handleChange} />
                     
-                    <textarea placeholder="Additional Details" type="text" name="partyDetails" onChange={this.handleChange} value={partyDetails}/>
+                    
+                    <textarea className="details" placeholder="Additional Details" type="text" onChange={this.handleChange} name="partyDetails"/>
 
-
-                    {/* <input type="text" value={userSearch} name="userSearch" placeholder="Search Users" onChange={this.handleChange} />
-                    <div className="scrollBox" >
-                    <ul>{this.mapUsers()}</ul> */}
-                    {/* </div> */}
                     <button value="submit" type="submit">Submit Edit</button>
 
                     <button onClick={this.handleDelete}>Cancel Party</button>
+                 
+                    </div>
+                  
+                  
 
                     
 

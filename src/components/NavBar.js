@@ -29,10 +29,10 @@ class NavBar extends Component {
                 <ul className={"menu", "navUl"}>
                 <li className="navLi"><a className="navA" onClick={() =>this.props.history.push('/')}>Home</a></li>
                 <li className="navLi"><a className="navA" onClick={() => this.props.history.push('/account')}>Account</a></li>
-                <li className="navLi"><a className="navA" onClick={() => this.props.history.push('/messages')}>Messages</a></li>
-                <li className="logout" onClick={() =>this.props.logout()}>Logout</li>
+                {/* <li className="navLi"><a className="navA" onClick={() => this.props.history.push('/messages')}>Messages</a></li> */}
                 
                 </ul>
+                <p className="logout" onClick={() =>this.props.logout()}>Logout</p>
             </div>
             </div>
         );

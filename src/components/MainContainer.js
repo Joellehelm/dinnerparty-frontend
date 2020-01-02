@@ -44,7 +44,7 @@ import {
 
 const messages = (props) => {
     return (
-        <div>MESSAGES</div>
+        <div><h1>Coming Soon...</h1></div>
     )
 }
 
@@ -113,6 +113,12 @@ class MainContainer extends Component {
                     <ShoppingList {...props} auth={this.props.auth} handleRedirect={this.handleRedirect}/>
                      )}
                     />
+
+                
+
+                
+
+
 
                     </Switch>
                     :

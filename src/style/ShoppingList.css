@@ -1,5 +1,6 @@
 .shoppingList {
-    margin-top: 300px;
+    margin-top: 200px;
+    text-align: center;
 }
 
 
@@ -78,4 +79,24 @@
 .purchasedIngredient {
     text-decoration: line-through;
    
+}
+
+
+.shoppingList button {
+    margin-top: .1%;
+    width: 350px;
+    height: 50px; 
+    outline: none;
+    margin-bottom: 3%;
+    
+    border: .5px inset black;
+    border-radius: 30px;
+    
+}
+
+.shoppingList button:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to right, white, rgba(0, 0, 0, 0.685));
+    color: white;
+    border: 2px solid white;
 }

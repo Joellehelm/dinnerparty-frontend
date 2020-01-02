@@ -23,6 +23,7 @@
 .userSearch {
   text-align: center;
   width: 200px;
+  
   margin-right: 110px;
 }
 
@@ -31,9 +32,17 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   text-align: center;
-  grid-column-gap: 300px;
+
   
 
+}
+
+.createForm input {
+  background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
 }
 
 .buttonDiv {

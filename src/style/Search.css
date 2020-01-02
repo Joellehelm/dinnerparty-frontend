@@ -12,7 +12,7 @@
     width: 30%;
     position: absolute;
     left: 50%;
-    top: 18%;
+    top: 20%;
     transform: translate(-50%, -50%);
     
 }
@@ -21,7 +21,7 @@
     margin-top: 3%;
     width: 100px;
     height: 20px; 
-    
+    outline: none;
     
     border: .5px inset black;
     border-radius: 30px;
