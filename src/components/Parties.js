@@ -141,7 +141,7 @@ class Parties extends Component {
                 :
                 
                 this.state.viewParty ? 
-                <ViewParty doneViewing={this.doneViewing} history={this.props.history} hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
+                <ViewParty fetchParties={this.fetchParties} doneViewing={this.doneViewing} history={this.props.history} hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
 
                 :
                 <div className="partyDiv">
@@ -160,7 +160,9 @@ class Parties extends Component {
 
                     <div>
                     </div>
+                    <div className="partyBtnDiv">
                     <button className="partyCreateBtn" onClick={() => this.setState({creating: true})}>Create Party</button>
+                    </div>
                 </div>
 
                     </div>

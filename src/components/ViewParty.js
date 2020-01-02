@@ -52,7 +52,7 @@ class ViewParty extends Component {
             <div className="viewParty">
             {
                 this.state.editing === true ?
-                <EditParty sendPartyObj={this.props.sendPartyObj} history={this.props.history} party={this.props.party} doneEditing={this.doneEditing} doneViewing={this.props.doneViewing} handleEdit={this.handleEdit} />
+                <EditParty fetchParties={this.props.fetchParties} sendPartyObj={this.props.sendPartyObj} history={this.props.history} party={this.props.party} doneEditing={this.doneEditing} doneViewing={this.props.doneViewing} handleEdit={this.handleEdit} />
                     :
                     <div>
                 <h1>{this.props.party.name}</h1>

@@ -51,8 +51,8 @@ export const login = (user, history) => dispatch => {
         })
         .then(r => r.json())
         .then(response => {
-    
-            if (response.user) {
+          if (response.user) {
+         
                 
                 dispatch({
                     type: action.LOGIN,

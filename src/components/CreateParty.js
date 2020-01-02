@@ -120,6 +120,7 @@ class CreateParty extends Component {
         })
         .then(r => r.json())
         .then(users => {
+            
             this.setState({users: users, filteredUsers: users})
            
         })
@@ -150,7 +151,12 @@ class CreateParty extends Component {
 
 
     mapUsers = () => {
-    return this.state.filteredUsers.map(user => {return <p className="user" key={user.id}><input onChange={this.handleCheck} type="checkbox" key={user.id} name="user" id={user.id}/>{user.username}</p>})
+    return this.state.filteredUsers.map(user => {
+        if(user.username !== this.props.auth.user.username){
+
+            return <p className="user" key={user.id}><input onChange={this.handleCheck} type="checkbox" key={user.id} name="user" id={user.id}/>{user.username}</p>
+        }
+    })
     }
 
 
@@ -164,17 +170,12 @@ class CreateParty extends Component {
             this.setState({filteredUsers: this.state.users})
            
         }else{
-            const f = this.state.filteredUsers.filter(user => user.username.includes(this.state.userSearch)).map(searchedUser => {return searchedUser})
+            const f = this.state.filteredUsers.filter(user => user.username.toLowerCase().includes(this.state.userSearch.toLowerCase())).map(searchedUser => {return searchedUser})
             this.setState({filteredUsers: f})
             
         }
     
-        // const userthings = document.querySelectorAll(".user")
-        // userthings.forEach(user => {
-        //     if(this.state.filteredUsers.includes(user.innerText)){
-        //         user.style.display = 'none';
-        //     }
-        // })
+      
       
 
    }
@@ -198,7 +199,7 @@ class CreateParty extends Component {
                     <textarea className="details" placeholder="Additional Details" type="text" onChange={this.handleChange} name="partyDetails"/>
 
                     </div>
-                    <div className="rightSide">
+                    <div className="rightSideBox">
                     <input className="userSearch" type="text" value={userSearch} name="userSearch" placeholder="Search Users" onChange={this.handleSearch} />
                     <div className="scrollBox" >
                     <ul>{this.mapUsers()}</ul>

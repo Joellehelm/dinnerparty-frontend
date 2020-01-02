@@ -6,6 +6,7 @@
     align-items: center;
     grid-template-rows: repeat(2, 1fr);
     margin: 5% 5% 5% 5%;
+    grid-gap: 13%
    
     
 }
@@ -65,12 +66,15 @@
    
 }
 
+.partyBtnDiv {
+    text-align: center;
+}
 
 
 .partyCreateBtn {
-    width: 250px;
+    width: 10%;
     height: 30px;
-    margin-left: 625px;
-   
+    text-align: center;
+
     
 }
