@@ -24,6 +24,8 @@ class Login extends Component {
         [name]: value
       })
     };
+
+
   handleSubmit = (event) => {
       event.preventDefault()
       const {username, password} = this.state
@@ -62,9 +64,15 @@ class Login extends Component {
 
 
     wrongLogin = () => {
-      if(this.state.clicked === true){
+      if(this.state.clicked === true && this.props.auth.user.username !== this.state.username ){
+        
+     
+     
         return <div className="badLogin"><p>That Username or Password is incorrect.</p></div>
   
+      }
+      else{
+        return null
       }
     }
 
