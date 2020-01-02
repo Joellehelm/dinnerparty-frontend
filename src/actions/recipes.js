@@ -5,7 +5,7 @@ import * as action from './actionTypes'
 
 export const searchedRecipes = (searchTerms) => dispatch => {
 
-    const key = '47d476a9850e403e8abbf3b822215bd5'
+    const key = '8637d575cf9b40fea513f2928dfc4be1'
      
 
       let URL = `https://api.spoonacular.com/recipes/search`

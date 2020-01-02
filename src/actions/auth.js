@@ -61,7 +61,10 @@ export const login = (user, history) => dispatch => {
                 localStorage.setItem('token', response.jwt)
                 
           } else {
-           
+           dispatch({
+             type: action.WRONG_LOGIN,
+            
+           })
 
           }
         })

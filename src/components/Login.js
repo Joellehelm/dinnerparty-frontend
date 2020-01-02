@@ -49,10 +49,7 @@ class Login extends Component {
 
 
 
-  // redirect = () => {
-  //     this.state.history.push('/')
-    // }
-
+    
 
     handleButton = (event) => {
       event.preventDefault()
@@ -64,7 +61,8 @@ class Login extends Component {
 
 
     wrongLogin = () => {
-      if(this.state.clicked === true && this.props.auth.user.username !== this.state.username ){
+    
+      if(this.state.clicked === true && this.props.auth.wrong === true ){
         
      
      
@@ -95,6 +93,7 @@ class Login extends Component {
 			<input className="logInput" type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange}/>
 			<input className="logInput" type="password" autoComplete="current-password" name="password" placeholder="Password" value={password} onChange={this.handleChange}/>
 			{this.wrongLogin()}
+      
 			<button className="resbutton" type="submit">Sign In</button>
 		</form>
 	</div>
