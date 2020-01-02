@@ -1,49 +1,73 @@
 .showRecipe {
-    display: flex;
-    margin: 100px 150px 100px 150px;
+    align-items: center;
+    
+    margin: 5% 5% 5% 5%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 200px;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    grid-template-rows: repeat(1, 550px);
+    grid-gap: 4rem;
+   
 }
+
+.rightSide {
+    
+    border: 2px solid black;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 30px;
+    overflow: scroll;
+    height: 600px;
+
+  
+}
+
+
+
+
+.nutrition {
+    width: 50%;
+    float: right;
+    border-left: 2px solid black;
+    padding-left: 5%;
+}
+
 
 .innerItems {
-    padding-left: 70px;
-    text-align: left;
-    border: 2px solid black;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-right: 70px;
-    
+    float: left;
+    width: 50%;
+    padding-right: 5%;
 }
+
+
+.instructions {
+    margin-top: 30px;
+
+}
+
 
 .partySelect {
-    margin-bottom: 60px;
-    margin-left: 170px;
-    
-}
-
-.partySelect select {
-    width: 200px;
-   
-    margin-top: 100px;
     text-align: center;
-}
-
-.partySelect button {
-    margin-left: 10px;
+    margin-top: 50px;
     
 }
+
 
 .innerItems ul {
     list-style: square;
 }
 
+.pictureDiv {
+    text-align: center;
+}
+
 .recipePicture img {
     border: 2px solid black;
+    text-align: center;
 }
 
 .recipeContainer {
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 
 .recipeName {
@@ -52,9 +76,49 @@
 }
 
 
-.bottomDiv {
+.instructions {
     margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 100px;
+    margin-top: 50px;
 }
+
+
+
+
+/* .innerItems {
+    padding-left: 70px;
+    text-align: left;
+    border: 2px solid black;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-right: 70px;
+    
+} */
+
+
+
+/* .partySelect select {
+    width: 200px;
+   
+    margin-top: 100px;
+    text-align: center;
+} */
+
+/* .partySelect button {
+    margin-left: 10px;
+    
+} */
+
+
+
+
+
+
+
+/* .bottomDiv {
+    margin-left: 100px;
+} */
 
 
 /* .ingredients {  
@@ -64,6 +128,8 @@
     margin-top: -50px;
     
 }
+
+
 
 .instructions {
    

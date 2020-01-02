@@ -20,7 +20,8 @@ class ShowRecipe extends Component {
             instructions: "",
             cuisines: "",
             hosting: [],
-            party: ""
+            party: "",
+            nutrition: []
         }
     }
 
@@ -31,10 +32,11 @@ class ShowRecipe extends Component {
        
         if(this.props.info.info.id){
 
-            fetch(`https://api.spoonacular.com/recipes/${this.props.info.info.id}/information?includeNutrition=false&apiKey=${key}`)
+            fetch(`https://api.spoonacular.com/recipes/${this.props.info.info.id}/information?includeNutrition=true&apiKey=${key}`)
             .then(r => r.json())
             .then(info => {
-              
+             const nutr = info.nutrition.nutrients.slice(0, 8)
+             
                 this.setState({
                     name: info.title,
                     image: info.image,
@@ -45,9 +47,12 @@ class ShowRecipe extends Component {
                     winePairings: info.winePairing.pairedWines,
                     pairingText: info.winePairing.pairingText,
                     instructions: info.instructions,
-                    cuisines: info.cuisines
+                    cuisines: info.cuisines,
+                    nutrition: nutr.map(n => {return {title: n.title, amount: n.amount}})
+                    
                 })
                 this.fetchParties()
+                this.mapNutrition()
             })
         }
 
@@ -64,7 +69,7 @@ class ShowRecipe extends Component {
         })
         .then(r => r.json())
         .then(response => {
-          
+         
          const hostedParties = []
              response.forEach(party => {
                  if(party.host_id === this.props.auth.user.id){
@@ -162,6 +167,11 @@ class ShowRecipe extends Component {
        
     }
 
+
+    mapNutrition = () => {
+        return this.state.nutrition.map((n, idx) => {return <div className="singleNutrition" key={idx} ><h3>{n.title}</h3><p>{n.amount}</p></div>})
+    }
+
  
 
     
@@ -177,59 +187,6 @@ class ShowRecipe extends Component {
         return (
                 
 
-            // <div>
-            //     <NavBar history={this.props.history}/>
-            //     <div className="recipeContainer">
-            //         <div className="recipeName">
-            //         <h1>{this.state.name}</h1>
-            //         </div>
-            //     <div className="showRecipe">
-            //         <div className="recipePicture">
-            //         <img src={this.state.image}/>
-            //         <div className="partySelect">
-            //     <select onChange={this.handleChange} name="party">
-            //        <option defaultValue>Choose a Party</option>
-            //        {this.mapParties()}
-            //        </select><button onClick={this.addRecipe}>Add to Party</button>
-            //        </div>
-            //         </div>
-                    
-              
-
-            //     <div className="innerItems">
-            //     <h3>Servings</h3>
-            //     <p>{this.state.servings}</p>
-
-            //     <h3>Diet(s)</h3>
-            //     <ul>{this.state.diets.map((diet, idx) => {return <li key={idx} >{diet}</li>})}</ul>
-
-            //     <h3>Time in Minutes</h3>
-            //     <p>{this.state.readyInMinutes}</p>
-
-                
-
-            //     <h3>Wine Info</h3>
-            //     <p>{this.state.pairingText ? this.state.pairingText : "None"}</p>
-            //     <h3>Wine Pairing(s) </h3>
-            //     <ul>{this.listWinePairings()}</ul>
-            //     </div>
-                
-
-            //     <div className="bottomDiv">
-            //     <div className="ingredients">
-              
-            //     <h3>Ingredients</h3>
-            //     <ul>{this.state.ingredients.map((i, idx) => {return <li key={idx}>{i.item}</li>})}</ul>
-            //     </div>
-            //     <div className="instructions">
-            //     <h2>Instructions</h2>
-            //     {this.state.instructions}
-            //     </div>
-            //     </div>
-            //     </div>
-            //     </div>
-            // </div>
-
             <div>
                 <NavBar history={this.props.history}/>
                 <div className="recipeContainer">
@@ -238,7 +195,9 @@ class ShowRecipe extends Component {
                     </div>
                 <div className="showRecipe">
                     <div className="recipePicture">
-                    <img src={this.state.image}/>
+                        <div className="pictureDiv">
+                        <img src={this.state.image}/>
+                        </div>
                     <div className="partySelect">
                 <select onChange={this.handleChange} name="party">
                    <option defaultValue>Choose a Party</option>
@@ -246,16 +205,12 @@ class ShowRecipe extends Component {
                    </select><button onClick={this.addRecipe}>Add to Party</button>
                    </div>
 
-                <div className="ingredients">
               
-              <h3>Ingredients</h3>
-              <ul>{this.state.ingredients.map((i, idx) => {return <li key={idx}>{i.item}</li>})}</ul>
-              </div>
              
                     </div>
                     
               
-
+            <div className="rightSide">
                 <div className="innerItems">
                 <h3>Servings</h3>
                 <p>{this.state.servings}</p>
@@ -273,15 +228,27 @@ class ShowRecipe extends Component {
                 <h3>Wine Pairing(s) </h3>
                 <ul>{this.listWinePairings()}</ul>
                 </div>
-                
 
+                <div className="nutrition">
+                    {this.mapNutrition()}
+                
+                    </div>
+
+                </div>
+                <div className="ingredients">
+              
+              <h3>Ingredients</h3>
+              <ul>{this.state.ingredients.map((i, idx) => {return <li key={idx}>{i.item}</li>})}</ul>
+              </div>
+
+               
+            
+                </div>
+                </div>
                 <div className="instructions">
               <h2>Instructions</h2>
               {this.state.instructions}
               </div>
-            
-                </div>
-                </div>
             </div>
         );
     }

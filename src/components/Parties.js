@@ -112,7 +112,7 @@ class Parties extends Component {
        
         if(this.state.hosting.length > 0){
 
-            return this.state.hosting.map((party, idx) => { return <div key={idx} partyid={party.id}><p onClick={() => this.viewParty(party)}>{party.name}</p></div>})
+            return this.state.hosting.map((party, idx) => { return <div className="linkDiv" key={idx} partyid={party.id}><p className="partyLink" onClick={() => this.viewParty(party)}>{party.name}</p></div>})
         }else{
             return null
         }
@@ -123,7 +123,7 @@ class Parties extends Component {
         
         if(this.state.attending.length > 0){
        debugger
-        return this.state.attending.map((party, idx) => { return <div key={idx} partyid={party.id} ><p onClick={() => this.viewParty(party)} >{party.party.name}</p></div>} )
+        return this.state.attending.map((party, idx) => { return <div className="linkDiv" key={idx} partyid={party.id} ><p className="partyLink" onClick={() => this.viewParty(party)} >{party.party.name}</p></div>} )
         
         }else{
             return null
@@ -144,25 +144,25 @@ class Parties extends Component {
                 <ViewParty doneViewing={this.doneViewing} history={this.props.history} hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
 
                 :
-
+                <div className="partyDiv">
+                    <h1>Parties</h1>
                 <div className="parties">
-                    <h2>Parties</h2>
-                        <div className="partyBorder">
+                        <div className="hosting">
                         <h4>Hosting</h4>
                         {this.mapHosting()}
                         </div>
                     <div>
-                        <div className="partyBorder">
+                        <div className="attending">
                         <h4>Attending</h4>
                         {this.mapAttending()}
                         </div>
                     </div>
 
                     <div>
-
+                    </div>
+                    <button className="partyCreateBtn" onClick={() => this.setState({creating: true})}>Create Party</button>
                 </div>
 
-                    <button onClick={() => this.setState({creating: true})}>Create Party</button>
                     </div>
                 }
                 

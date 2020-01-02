@@ -53,18 +53,21 @@ class Recipes extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+
+        if(this.state.query !== "" || this.state.cuisine !== "" || this.state.diet !== ""){
+            this.props.searchedRecipes({...this.state})
+            this.mapCards()
+            
+            event.target.query.value = ""
+            event.target.cuisine.value = "Cuisine Type"
+            event.target.diet.value = "Dietary Restrictions"
+            this.setState({
+                query: "",
+                cuisine: "",
+                diet: ""
+            })
+        }
     
-        this.props.searchedRecipes({...this.state})
-        this.mapCards()
-        
-        event.target.query.value = ""
-        event.target.cuisine.value = "Cuisine Type"
-        event.target.diet.value = "Dietary Restrictions"
-        this.setState({
-            query: "",
-            cuisine: "",
-            diet: ""
-        })
        
     }
 
