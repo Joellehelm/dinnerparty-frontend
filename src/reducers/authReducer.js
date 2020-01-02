@@ -4,7 +4,8 @@ import * as act from '../actions/actionTypes';
 const initialState = {
     user: {},
     isLoggedIn: false,
-    creation: false
+    creation: false,
+    wrong: null
 
 
     
@@ -34,7 +35,14 @@ export default function(state = initialState, action) {
                 user: {},
                 isLoggedIn: false
             }
-   //second case
+        
+        case act.WRONG_LOGIN:
+            return {
+                ...state,
+                wrong: true,
+                user: {},
+                isLoggedIn: false
+            }
    
 
         default: 
