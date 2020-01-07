@@ -7,8 +7,15 @@ import { connect } from 'react-redux'
 import { searchedRecipes } from '../actions/recipes';
 import { recipeInfo } from '../actions/recipeInfo'
 import { Redirect } from 'react-router-dom'
+import { fetchingRecipes } from '../actions/recipes'
+import { css } from "@emotion/core";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
-
+const override = css`
+  display: block;
+  
+  border-color: red;
+`;
 
 class Recipes extends Component {
     constructor(){
@@ -23,6 +30,7 @@ class Recipes extends Component {
             diet: "",
             clicked: false,
             showId: ""
+        
         }
     }
 
@@ -39,12 +47,23 @@ class Recipes extends Component {
 
   
     mapCards = () => {
-        if(this.props.recipes.recipes.length === 0 ){
-            return null
-        }else{
+       
+
+        if(this.props.isFetching === true ){
+            return <div className="loader">
+                <PacmanLoader
+                css={override}
+                size={50}
+                color={"rgb(4, 153, 29)"}
+                loading={this.props.isFetching}
+            /></div>
+        }
+        if(this.props.isFetching === false && this.props.recipes.recipes.length > 0){
+         
             return this.props.recipes.recipes.map((recipe, idx) => { 
+           
                 
-                return <RecipeCard cardClicked={this.cardClicked} info={recipe} key={idx}/>
+                return <RecipeCard cardClicked={this.cardClicked} info={recipe} pic={recipe.image} key={idx}/>
             })
 
         }
@@ -53,8 +72,10 @@ class Recipes extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+       
 
         if(this.state.query !== "" || this.state.cuisine !== "" || this.state.diet !== ""){
+            this.props.fetchingRecipes()
             this.props.searchedRecipes({...this.state})
             this.mapCards()
             
@@ -66,6 +87,7 @@ class Recipes extends Component {
                 cuisine: "",
                 diet: ""
             })
+            
         }
     
        
@@ -85,17 +107,16 @@ class Recipes extends Component {
     render() {
         return (
             <div>
-                {/* {
-                    this.state.clicked ? 
-                    <ShowRecipe showId={this.state.showId}/>
-                    : */}
+             
                 <div>
                     <Search search={this.state.query} selected={this.state.cuisine} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
                     <div className="recipesContainer">
+                  
                     {this.mapCards()}
+                   
                     </div>
                 </div>
-                {/* // } */}
+             
             </div>
         );
     }
@@ -103,14 +124,16 @@ class Recipes extends Component {
 
 const mapStateToProps = (state) => ({
     recipes: state.recipes,
-    info: state.info
+    info: state.info,
+    isFetching: state.recipes.isFetching
   })
 
 
   const mapDispatchToProps = {
  
       searchedRecipes,
-      recipeInfo
+      recipeInfo,
+      fetchingRecipes
     
   }
 

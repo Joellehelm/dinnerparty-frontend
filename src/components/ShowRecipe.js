@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import NavBar from './NavBar'
 import '../style/ShowRecipe.css'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+
 // import { addIngredients } from '../actions/ViewParty'
 
 class ShowRecipe extends Component {
@@ -21,14 +24,20 @@ class ShowRecipe extends Component {
             cuisines: "",
             hosting: [],
             party: "",
-            nutrition: []
+            nutrition: [],
+            modal: false
         }
     }
 
     componentDidMount(){
 
        
-       const key = '8637d575cf9b40fea513f2928dfc4be1'
+        const key = '8637d575cf9b40fea513f2928dfc4be1'
+
+        // const key = 'd0ec7d65d45b4f94849ced4f8902ee2a'
+
+        // const key = '1bb51352dd1242a78144cdf8f41248f7'
+
        
         if(this.props.info.info.id){
 
@@ -136,6 +145,7 @@ class ShowRecipe extends Component {
         .then(response => {
            
             
+            this.setState({modal: true})
             this.addIngredients(id)
         })
     }
@@ -172,9 +182,32 @@ class ShowRecipe extends Component {
         return this.state.nutrition.map((n, idx) => {return <div className="singleNutrition" key={idx} ><h3>{n.title}</h3><p>{n.amount}</p></div>})
     }
 
+    
+    closeModal = () => {
+        document.querySelector('.modalQuery').classList.remove('modalOverlay')
+        this.setState({modal: false})
+    }
+
+
+    showModal = () => {
+
+        if(this.state.modal === true){
+
+
+            document.querySelector('.modalQuery').classList.add('modalOverlay')
+
+
+
+            return <div className="modal">
+              <h3>This recipe has been successfully added to your party!</h3>
+              <Button onClick={() => this.closeModal()} variant="secondary">Close</Button>
+          </div>
+        }
+        
+    }
+
  
 
-    
 
     handleChange = (event) => {
        
@@ -188,7 +221,10 @@ class ShowRecipe extends Component {
                 
 
             <div>
+               
                 <NavBar history={this.props.history}/>
+                {this.showModal()}
+                <div className="modalQuery">
                 <div className="recipeContainer">
                     <div className="recipeName">
                     <h1>{this.state.name}</h1>
@@ -208,6 +244,11 @@ class ShowRecipe extends Component {
               
              
                     </div>
+
+            
+
+
+
                     
               
             <div className="rightSide">
@@ -250,6 +291,7 @@ class ShowRecipe extends Component {
                 <div className="instructions">
               <h2>Instructions</h2>
               {this.state.instructions}
+              </div>
               </div>
             </div>
         );

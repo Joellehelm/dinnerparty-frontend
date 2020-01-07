@@ -23,6 +23,14 @@
     margin: 15% 10% 15% 15%;
     grid-gap: 50px;
     margin-top: 180px;
+    text-align: center;
 }
 
 
+
+
+.loader {
+    text-align: center;
+    margin-left: 38%;
+    margin-right: 38%;
+}

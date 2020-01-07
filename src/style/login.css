@@ -163,8 +163,8 @@
 	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
 	background: linear-gradient(to right, #FF4B2B, #FF416C); */
 	background: rgb(4, 153, 29);
-	background: -webkit-linear-gradient(to right, rgb(14, 141, 2), rgb(12, 90, 23));
-	background: linear-gradient(to right, rgb(14, 141, 2), rgb(12, 90, 23));
+	background: -webkit-linear-gradient(to right, rgb(23, 136, 13), rgb(4, 153, 29));
+	background: linear-gradient(to right, rgb(23, 136, 13), rgb(4, 153, 29));
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
