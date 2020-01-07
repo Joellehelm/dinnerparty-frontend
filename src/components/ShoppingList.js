@@ -160,6 +160,8 @@ class ShoppingList extends Component {
               
                 <NavBar history={this.props.history} />
             <div className="shoppingList">
+                <h1>Shopping List</h1>
+                <p>Check off which ingredients you'll be bringing and click "Bring These Ingredients" at the bottom of the page.</p>
                 <div className="listDiv">
                     {this.mapList()}
                     <button onClick={this.handleSubmit} >Bring These Ingredients</button>
