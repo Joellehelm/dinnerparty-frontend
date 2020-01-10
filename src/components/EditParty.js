@@ -16,7 +16,6 @@ class EditParty extends Component {
             partyName: "",
             partyAddress: "",
             partyDate: "",
-            partyTime: "",
             partyDetails: "",
             partyGuests: [],
             users: [],
@@ -156,21 +155,22 @@ class EditParty extends Component {
 
 
     render() {
-        const {partyName, partyAddress, userSearch, partyDetails} = this.state
+        const {partyName, partyAddress, partyDate, partyDetails} = this.state
         return (
         
           
 
             <div className="createContainer">
-                <form className="createForm" onSubmit={this.handleSubmit}>
+                <form className="editForm" onSubmit={this.handleSubmit}>
                     <div className="leftSide">
                     <input onChange={this.handleChange} type="text" name="partyName" value={partyName} placeholder="Name"/>
                     <input onChange={this.handleChange} type="text" name="partyAddress" value={partyAddress} placeholder="Address"/>
                     
-                    <input className="dateSelect" type="date" name="partyDate" placeholder="Select Date" onChange={this.handleChange} />
+                    <input className="dateSelect" type="date" name="partyDate" value={partyDate} placeholder="Select Date" onChange={this.handleChange} />
                     
                     
-                    <textarea className="details" placeholder="Additional Details" type="text" onChange={this.handleChange} name="partyDetails"/>
+                    <textarea className="details" placeholder="Additional Details" type="text" value={partyDetails} onChange={this.handleChange} name="partyDetails"/>
+                    <br></br>
 
                     <button value="submit" type="submit">Submit Edit</button>
 

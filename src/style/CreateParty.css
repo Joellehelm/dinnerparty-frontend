@@ -31,17 +31,30 @@
 }
 
 .createForm {
-  /* margin: 150px 200px 200px 200px; */
   margin: 10% 18% 10% 18%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   text-align: center;
   grid-gap: 5%;
-  
-
-  
 
 }
+
+
+.editForm {
+  margin: 10% 18% 10% 18%;
+  text-align: center;
+  grid-gap: 5%;
+}
+
+.editForm input {
+  background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+  width: 100%;
+  
+}
+
 
 .createForm input {
   background-color: #eee;

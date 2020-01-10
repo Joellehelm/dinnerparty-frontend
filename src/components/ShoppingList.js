@@ -16,13 +16,12 @@ class ShoppingList extends Component {
     }
   
 
-    //map ids of user_ingredients to state then when list is mapped exclude ingredients that have an id that is included in user_ingredients
-    // then map user_ingredients in their correct places and style them appropriately.
 
 
     componentDidMount(){
         this.fetchIngredients()
     }
+
 
 
     fetchIngredients = () => {
@@ -41,9 +40,9 @@ class ShoppingList extends Component {
             response.forEach(r => {
                 let ing = r.ingredient_id
                 boughtIngredients[ing] = r.user.username
-                // boughtIngredients.push({[r.ingredient_id] : r.user.username})
+               
             })
-            // let boughtIngredients = response.map(r => {return r.ingredient_id})
+          
           
             this.setState({
                 userIngredients: boughtIngredients,
@@ -53,6 +52,8 @@ class ShoppingList extends Component {
     }
 
  
+
+
     mapList = () => {
         return this.props.list.partyList.map((recipe, idx) => {
           
@@ -67,15 +68,7 @@ class ShoppingList extends Component {
     }
   
 
-    // mapIngredients = (ingredients) => {
-    //     return ingredients.map((ingredient, idx) => {
-    //         if(!this.state.purchasedIngredients.includes(ingredient.id)){
-    //             return <div className="ingredientDiv" key={idx}><h4><input onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id}/>{ingredient.name}</h4></div>
-    //         }else{
-    //             return <div className="ingredientDiv" key={idx}><h4 className="purchasedIngredient">{ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
-    //         }
-    //     })
-    // }
+
 
     mapIngredients = (ingredients) => {
         
@@ -92,24 +85,6 @@ class ShoppingList extends Component {
 
 
 
-
- 
-
-    // mapList = () => {
-       
-    
-    //     return this.props.list.partyList.map((ingredient, idx) => {
-    //      debugger
-    //         if(!this.state.purchasedIngredients.includes(ingredient.id)){
-            
-    //         return <div key={idx}><h4><input onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id}/>{ingredient.name}</h4></div>
-    //         }else{
-               
-    //         return <div key={idx}><h4>Hello i'm a purchased ingredient {ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
-    //         }
-    //     })
-    
-    // }
 
 
     markList = (event) => {
@@ -133,8 +108,10 @@ class ShoppingList extends Component {
 
 
     handleSubmit = () => {
-    
-        fetch('http://localhost:3000/user_ingredients', {
+    // definitely need to check if the user id and ingredient id exist as a user_ingredient before posting.
+      
+        if(this.state.bringingIngredients.length > 0){
+            fetch('http://localhost:3000/user_ingredients', {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -145,10 +122,14 @@ class ShoppingList extends Component {
         })
         .then(r => r.json())
         .then(response => {
+            debugger
+            this.setState({bringingIngredients: []})
             this.fetchIngredients()
-            // this.props.history.push('/account')
+           
             
         })
+        }
+        
     }
 
 

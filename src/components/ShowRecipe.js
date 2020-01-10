@@ -245,9 +245,6 @@ class ShowRecipe extends Component {
              
                     </div>
 
-            
-
-
 
                     
               
