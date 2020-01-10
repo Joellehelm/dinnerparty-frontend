@@ -16,12 +16,12 @@ class ShoppingList extends Component {
     }
   
 
-   
 
 
     componentDidMount(){
         this.fetchIngredients()
     }
+
 
 
     fetchIngredients = () => {
@@ -52,6 +52,8 @@ class ShoppingList extends Component {
     }
 
  
+
+
     mapList = () => {
         return this.props.list.partyList.map((recipe, idx) => {
           
@@ -107,7 +109,9 @@ class ShoppingList extends Component {
 
     handleSubmit = () => {
     // definitely need to check if the user id and ingredient id exist as a user_ingredient before posting.
-        fetch('http://localhost:3000/user_ingredients', {
+      
+        if(this.state.bringingIngredients.length > 0){
+            fetch('http://localhost:3000/user_ingredients', {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -118,11 +122,14 @@ class ShoppingList extends Component {
         })
         .then(r => r.json())
         .then(response => {
-            
+            debugger
+            this.setState({bringingIngredients: []})
             this.fetchIngredients()
            
             
         })
+        }
+        
     }
 
 
