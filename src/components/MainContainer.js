@@ -19,27 +19,6 @@ import {
 
 
 
-//   const login = (props) => {
-//       return (
-//           <Login handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn}/>
-//       )
-//   }
-
-  
-//   const signup = (props) => {
-//     return(
-//         <Signup handleLogin={this.props.handleLogin} loggedInStatus={this.props.isLoggedIn} />
-//     )
-//   }
-
-
-//   const home = (props) => {
-
-//     return (
-     
-//         <div>HOME</div>
-//     )
-// }
 
 
 const messages = (props) => {
@@ -47,9 +26,6 @@ const messages = (props) => {
         <div><h1>Coming Soon...</h1></div>
     )
 }
-
-
-
 
 
 

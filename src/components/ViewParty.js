@@ -49,7 +49,7 @@ class ViewParty extends Component {
 
     render() {
         return (
-            <div className="overlay">
+           
             <div className="viewParty">
             {
                 this.state.editing === true ?
@@ -78,7 +78,7 @@ class ViewParty extends Component {
             }   
 
             </div>
-            </div>
+            
         );
     }
 }
