@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import EditParty from './EditParty'
 import { connect } from 'react-redux'
 import { partyList } from '../actions/ViewParty'
+import actionCable from 'actioncable'
 import '../style/ViewParty.css'
+
+const CableApp = {}
+
+CableApp.cable = actionCable.createConsumer(`ws://localhost:3000/cable`)
 
 class ViewParty extends Component {
     
@@ -11,11 +16,18 @@ class ViewParty extends Component {
         super()
         
         this.state = {
-            editing: false
+            editing: false,
+            allRooms: [],
+            currentRoom: {
+              room: {}, 
+              users: [],
+              messages: []
+            }
         }
     }
 
     componentDidMount = () => {
+     
         this._isMounted = true;
     }
 
@@ -43,6 +55,11 @@ class ViewParty extends Component {
         this.props.history.push('/list')
        
     }
+
+    sendMessage = (event) => {
+        event.preventDefault()
+        console.log(event.target.message.value)
+    }
     
 
 
@@ -55,7 +72,19 @@ class ViewParty extends Component {
                 this.state.editing === true ?
                 <EditParty fetchParties={this.props.fetchParties} sendPartyObj={this.props.sendPartyObj} history={this.props.history} party={this.props.party} doneEditing={this.doneEditing} doneViewing={this.props.doneViewing} handleEdit={this.handleEdit} />
                     :
-                    <div>
+                    <div className="partyViewDiv">
+
+                        <div className="chatBoxDiv">
+                            <div className="chatBorder">
+                            <h1>CHATROOM ID {this.props.party.room.id}</h1>
+                            </div>
+                            <form onSubmit={this.sendMessage}>
+                            <input type="text" name="message" />
+                            <button>Send</button>
+                            </form>
+                        </div>
+
+                <div className="partyInfoDiv">
                 <h1>{this.props.party.name}</h1>
                 <h3>Date</h3>
                 <p>{this.props.party.date}</p>
@@ -63,6 +92,8 @@ class ViewParty extends Component {
                 <p>{this.props.party.address}</p>
                 <h3>Details</h3>
                 <p>{this.props.party.details}</p>
+               
+                </div>
 
                 <button onClick={this.showShoppingList} >Shopping List</button>
                 

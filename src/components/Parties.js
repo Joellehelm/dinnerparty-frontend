@@ -37,11 +37,12 @@ class Parties extends Component {
         })
         .then(r => r.json())
         .then(response => {
- 
+         
          const attendedParties = []
              response.forEach(party => {
-                 
+                
                  if(party.user_id === this.props.auth.user.id){
+                     
                      attendedParties.push(party)
                  }
              })
@@ -63,9 +64,9 @@ class Parties extends Component {
         })
        .then(r => r.json())
        .then(response => {
-
         const hostedParties = []
             response.forEach(party => {
+             
                 if(party.host_id === this.props.auth.user.id){
                     hostedParties.push(party)
                 }
@@ -100,7 +101,9 @@ class Parties extends Component {
     // }
 
     viewParty = (party) => {
+        
         if(party.party){
+            party.party.room = party.room
             this.setState({viewParty: !this.state.viewParty, partyInfo: party.party, hosting: false})
         }else{
             this.setState({viewParty: !this.state.viewParty, partyInfo: party, hosting: true})

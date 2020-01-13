@@ -108,7 +108,6 @@ class ShoppingList extends Component {
 
 
     handleSubmit = () => {
-    // definitely need to check if the user id and ingredient id exist as a user_ingredient before posting.
       
         if(this.state.bringingIngredients.length > 0){
             fetch('http://localhost:3000/user_ingredients', {
@@ -122,7 +121,6 @@ class ShoppingList extends Component {
         })
         .then(r => r.json())
         .then(response => {
-            debugger
             this.setState({bringingIngredients: []})
             this.fetchIngredients()
            
