@@ -54,6 +54,7 @@ class CreateParty extends Component {
         .then(r => r.json())
         .then(response => {
             this.createPartyUsers(response.id)
+            this.createRoom(response.id)
             this.setState({
                 name: "",
                 host_id: "",
@@ -63,6 +64,24 @@ class CreateParty extends Component {
             })
         })
     }   
+
+
+
+    createRoom = (partyId) => {
+        fetch('http://localhost:3000/rooms', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": 'application/json',
+                "Authorization": `JWT ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({party_id: partyId})
+        })
+        .then(r => r.json())
+        .then(response => {
+           
+        })
+    }
 
 
     createPartyUsers = (partyId) => {
