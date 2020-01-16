@@ -76,6 +76,7 @@ class ViewParty extends Component {
 
                         <div className="chatBoxDiv">
                             <div className="chatBorder">
+                                {/* chatroom name will go here */}
                             <h1>CHATROOM ID {this.props.party.room.id}</h1>
                             </div>
                             <form onSubmit={this.sendMessage}>
