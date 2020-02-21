@@ -36,10 +36,10 @@
 
 .parties h4 {
     margin-right: 20%;
-    margin-top: -1.5%;
+    margin-top: -2%;
     margin-left: 10%;
     background: white;
-    width: 12%;
+    width: 15%;
     height: 20px;
    
 }
@@ -51,7 +51,8 @@
     padding-bottom: 1%;
     margin-left: 25%;
     margin-right: 25%;
-    min-height: 200px;
+    min-height: 300px;
+    
     
   
 }
@@ -62,12 +63,14 @@
    
     margin-left: 25%;
     margin-right: 25%;
-    min-height: 200px;
+    min-height: 300px;
+    
    
 }
 
 .partyBtnDiv {
     text-align: center;
+   
 }
 
 
@@ -75,7 +78,7 @@
     width: 10%;
     height: 30px;
     text-align: center;
-    margin-bottom: 5%;
+    
     outline: none;
     border: .5px inset black;
 
@@ -87,4 +90,29 @@
     background-image: linear-gradient(to right, white, rgba(0, 0, 0, 0.685));
     color: white;
     border: 2px solid white;
+}
+
+@media only screen and (max-width: 480px) {
+
+    .parties h4 {
+        margin-top: -4%;
+        width: 30%;
+    }
+
+    .partyCreateBtn {
+        width: 50%;
+
+    }
+
+    .hosting {
+        margin-left: 0%;
+        margin-right: 0%;
+        min-height: 250px;
+    }
+
+    .attending {
+        margin-left: 0%;
+        margin-right: 0%;
+        min-height: 250px;
+    }
 }

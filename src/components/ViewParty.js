@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditParty from './EditParty'
 import { connect } from 'react-redux'
 import { partyList } from '../actions/ViewParty'
+import RoomWebSocket from './RoomWebSocket'
 import actionCable from 'actioncable'
 import '../style/ViewParty.css'
 
@@ -29,6 +30,10 @@ class ViewParty extends Component {
     componentDidMount = () => {
      
         this._isMounted = true;
+
+       // either fetch all users for chat room from here `http://localhost:3000/party_users` or create an array of users on back end and fetch that.
+        
+        
     }
 
     componentWillUnmount = () => {
@@ -47,8 +52,6 @@ class ViewParty extends Component {
     }
 
    
-
-    
     showShoppingList = () => {
        
         this.props.partyList(this.props.party.id)
@@ -59,6 +62,17 @@ class ViewParty extends Component {
     sendMessage = (event) => {
         event.preventDefault()
         console.log(event.target.message.value)
+    }
+
+    getRoomData = () => {
+        fetch(`http://localhost:3000/rooms/${this.props.party.room.id}`)
+        .then(r => r.json())
+        .then(response => {
+            this.setState({
+                room: response.room
+            })
+            
+        })
     }
     
 
@@ -75,6 +89,7 @@ class ViewParty extends Component {
                     <div className="partyViewDiv">
 
                         <div className="chatBoxDiv">
+                            <RoomWebSocket getRoomData={this.getRoomData} />
                             <div className="chatBorder">
                                 {/* chatroom name will go here */}
                             <h1>CHATROOM ID {this.props.party.room.id}</h1>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import NavBar from './NavBar'
 import '../style/ShowRecipe.css'
-import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
 // import { addIngredients } from '../actions/ViewParty'
@@ -45,7 +44,7 @@ class ShowRecipe extends Component {
             .then(r => r.json())
             .then(info => {
              const nutr = info.nutrition.nutrients.slice(0, 8)
-             
+                // change instructions to analyzed instructions and format for step by step.
                 this.setState({
                     name: info.title,
                     image: info.image,
@@ -223,8 +222,8 @@ class ShowRecipe extends Component {
             <div>
                
                 <NavBar history={this.props.history}/>
-                {this.showModal()}
                 <div className="modalQuery">
+                {this.showModal()}
                 <div className="recipeContainer">
                     <div className="recipeName">
                     <h1>{this.state.name}</h1>

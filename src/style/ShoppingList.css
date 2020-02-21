@@ -45,10 +45,32 @@
     /* grid-template-columns: repeat(3, 30%); */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: .2%;
-    
-   
+
     
 }
+
+@media only screen and (max-width: 480px) {
+    .listedRecipe { 
+        margin: 15% 1% 1% 1%;
+        width: 100%;
+        height: 100%;
+        grid-gap: none;
+        display: inline-block;
+        
+    }
+
+
+    .recipeHeader {
+        margin: 5% 8% 1% 12%;
+        float: none;
+    }
+
+    .ingredientDiv {
+        margin-top: 0%;
+        
+    }
+}
+	
 
 .ingredientDiv {
     
