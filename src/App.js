@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <div>
         {/* handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} */}
-        <MainContainer  />
+        <MainContainer cableApp={this.props.cableApp}/>
       </div>
     );
   }

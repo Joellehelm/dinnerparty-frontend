@@ -76,7 +76,7 @@ class MainContainer extends Component {
                     <Route 
                     exact path='/account' 
                     render={props => (
-                    <Account {...props} auth={this.props.auth} handleRedirect={this.handleRedirect}/>
+                    <Account {...props} cableApp={this.props.cableApp} auth={this.props.auth} handleRedirect={this.handleRedirect}/>
                      )}
                     />
 

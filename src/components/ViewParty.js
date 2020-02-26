@@ -18,7 +18,6 @@ class ViewParty extends Component {
         
         this.state = {
             editing: false,
-            allRooms: [],
             currentRoom: {
               room: {}, 
               users: [],
@@ -61,7 +60,20 @@ class ViewParty extends Component {
 
     sendMessage = (event) => {
         event.preventDefault()
-        console.log(event.target.message.value)
+
+        fetch(`http://localhost:3000/messages`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `JWT ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({room_id: this.props.party.room.id, user_id: this.props.auth.user.id, content: event.target.message.value})
+        })
+        .then(r => r.json())
+        .then(response => {
+            console.log(response)
+        })
     }
 
     getRoomData = () => {
@@ -89,7 +101,7 @@ class ViewParty extends Component {
                     <div className="partyViewDiv">
 
                         <div className="chatBoxDiv">
-                            <RoomWebSocket getRoomData={this.getRoomData} />
+                            <RoomWebSocket cableApp={this.props.cableApp} getRoomData={this.getRoomData} />
                             <div className="chatBorder">
                                 {/* chatroom name will go here */}
                             <h1>CHATROOM ID {this.props.party.room.id}</h1>
