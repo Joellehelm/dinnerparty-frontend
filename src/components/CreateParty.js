@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'redux';
+import { connect } from 'react-redux';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -85,6 +85,11 @@ class CreateParty extends Component {
 
 
     createPartyUsers = (partyId) => {
+        
+        let guestsAndHost = []
+        guestsAndHost = this.state.partyGuests
+        guestsAndHost.push(this.props.auth.user.id)
+        console.log(guestsAndHost)
 
         fetch('http://localhost:3000/party_users', {
             method: "POST",
@@ -236,4 +241,10 @@ class CreateParty extends Component {
     }
 }
 
-export default CreateParty;
+
+const mapStateToProps = (state) => ({
+    auth: state.auth
+  })
+
+
+export default connect(mapStateToProps)(CreateParty);
