@@ -3,7 +3,19 @@ import React, { Component } from 'react';
 class RoomWebSocket extends Component {
 
     componentDidMount = () => {
-        this.props.getRoomData(window.location.href.match(/\d+/)[0])
+        this.props.getRoomData()
+      
+        this.props.cableApp.room = this.props.cableApp.cable.subscriptions.create({
+            channel: 'RoomsChannel',
+            room: this.props.room
+        },
+        {
+            received: (updatedRoom) => {
+                this.props.updateRoom(updatedRoom)
+               
+               
+            }
+        })
     }
 
 

@@ -144,7 +144,7 @@ class Parties extends Component {
                 :
                 
                 this.state.viewParty ? 
-                <ViewParty fetchParties={this.fetchParties} doneViewing={this.doneViewing} history={this.props.history} hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
+                <ViewParty cableApp={this.props.cableApp} attending={this.state.attending} fetchParties={this.fetchParties} doneViewing={this.doneViewing} history={this.props.history} hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
 
                 :
                 <div className="partyDiv">
