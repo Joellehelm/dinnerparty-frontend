@@ -12,7 +12,7 @@ const CableApp = {}
 
 CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
 
-// const compose enhancers for better dev tools
+
 
 ReactDOM.render(<Provider store={store} ><App cableApp={CableApp} /></ Provider>, document.getElementById('root'));
 

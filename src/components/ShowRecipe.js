@@ -4,7 +4,6 @@ import NavBar from './NavBar'
 import '../style/ShowRecipe.css'
 import Button from 'react-bootstrap/Button';
 
-// import { addIngredients } from '../actions/ViewParty'
 
 class ShowRecipe extends Component {
     constructor(){
@@ -44,7 +43,7 @@ class ShowRecipe extends Component {
             .then(r => r.json())
             .then(info => {
              const nutr = info.nutrition.nutrients.slice(0, 8)
-                // change instructions to analyzed instructions and format for step by step.
+    
                 this.setState({
                     name: info.title,
                     image: info.image,
@@ -63,8 +62,6 @@ class ShowRecipe extends Component {
                 this.mapNutrition()
             })
         }
-
-
     }
 
 
@@ -207,7 +204,6 @@ class ShowRecipe extends Component {
 
  
 
-
     handleChange = (event) => {
        
         this.setState({
@@ -300,9 +296,7 @@ const mapStateToProps = (state) => ({
     auth: state.auth
   })
 
-  const mapDispatchToProps = {
-    //   addIngredients
-  }
+  
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShowRecipe);
+export default connect(mapStateToProps)(ShowRecipe);

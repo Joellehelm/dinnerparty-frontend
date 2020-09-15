@@ -7,9 +7,7 @@ class RecipeCard extends Component {
         return (
             <div className="recipeCard" onClick={() => this.props.cardClicked(this.props.info)}>
                 <div className="imgDiv">
-                
-                
-                
+  
                 <img src={`https://spoonacular.com/recipeImages/${this.props.pic}`} alt={this.props.name}/>
                 </div>
                 <div className="recipeTitle">

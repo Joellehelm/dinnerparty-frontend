@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import RecipeCard from './RecipeCard'
 import Search from './Search'
-import ShowRecipe from './ShowRecipe'
 import '../style/Recipes.css'
 import { connect } from 'react-redux'
 import { searchedRecipes } from '../actions/recipes';
 import { recipeInfo } from '../actions/recipeInfo'
-import { Redirect } from 'react-router-dom'
 import { fetchingRecipes } from '../actions/recipes'
 import { css } from "@emotion/core";
 import PacmanLoader from "react-spinners/PacmanLoader";
@@ -33,8 +31,6 @@ class Recipes extends Component {
         
         }
     }
-
-
 
 
 
@@ -89,10 +85,8 @@ class Recipes extends Component {
             })
             
         }
-    
-       
+  
     }
-
 
 
 
@@ -106,11 +100,11 @@ class Recipes extends Component {
 
     render() {
         return (
-            <div>
+            <div className="recipe-wrapper">
              
-                <div>
+                <div className="recipe-container">
                     <Search search={this.state.query} selected={this.state.cuisine} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
-                    <div className="recipesContainer">
+                    <div className="recipe-cards-container">
                   
                     {this.mapCards()}
                    

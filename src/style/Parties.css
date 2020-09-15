@@ -1,118 +1,355 @@
+
 .parties {
-  
     text-align: center;
     display: grid;
     align-content: center;
     align-items: center;
     grid-template-rows: repeat(2, 1fr);
-    margin: 5% 5% 5% 5%;
+    margin: 2rem;
     grid-gap: 5%
-   
-    
 }
 
 .partyDiv {
     text-align: center;
-    align-items: center;
 }
 
-.partyDiv h1 {
-    margin-top: 5%;
+.parties-title {
+    margin-top: 4rem;
+    font-size: 3rem;
+    margin-bottom: 0rem;
+    font-family: "Prata";
+    font-weight: bold;
+    color: rgb(235, 0, 0);
+    text-shadow: 2px 2px rgb(236, 169, 143);
 }
 
-
+.link-div {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    width: 100%;
+}
 
 .partyLink {
-   
-    font-family: Tinos;
-    font-size: 18px;
+    font-family: "Roboto";
+    font-size: 1.2rem;
+    background-color: yellowgreen;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: .5rem;
+    min-height: 4rem;
+    padding: .3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
 }
 
 .partyLink:hover {
     cursor: pointer;
-    color: rgb(4, 153, 29);
+    color: rgba(3, 175, 3, 0.904);
+    border: 2px solid rgba(3, 175, 3, 0.904);
     
 }
 
-.parties h4 {
-    margin-right: 20%;
-    margin-top: -2%;
-    margin-left: 10%;
-    background: white;
-    width: 15%;
-    height: 20px;
-   
+.border-word-first {
+    top: 10%;
+    background: rgba(245, 245, 245, 0);
+    font-size: 2.3rem;
+    left: 27%;
+    position: absolute;
+    color: rgba(3, 175, 3, 0.904);
+    font-family: "Pattaya";
+    text-shadow: 1px 1px rgb(0, 95, 16);
+}
+
+.border-word-second {
+    top: 47%;
+    background: rgba(245, 245, 245, 0);
+    font-size: 2.3rem;
+    left: 27%;
+    position: absolute;
+    color: rgba(3, 175, 3, 0.904);
+    font-family: "Pattaya";
+    text-shadow: 1px 1px rgb(0, 95, 16);
 }
 
 
 .hosting {
     text-align: center;
-    border: 5px solid black;
     padding-bottom: 1%;
-    margin-left: 25%;
-    margin-right: 25%;
-    min-height: 300px;
-    
-    
-  
+    margin-left: 20%;
+    margin-right: 20%;
+    min-height: 325px;
+    max-height: 325px;
+    background-color: whitesmoke;
+    border-radius: .5rem;
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.637);
+    overflow-y: scroll;
 }
 
-.attending {
-    border: 5px solid black;
-    padding-bottom: 1%;
-   
-    margin-left: 25%;
-    margin-right: 25%;
-    min-height: 300px;
+
+.hosting::-webkit-scrollbar {
+    width: .5rem;
+    }
     
-   
+    .hosting::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+    }
+    
+    .hosting::-webkit-scrollbar-thumb {
+    background:rgba(0, 0, 0, 0.445); 
+    border-radius: 10px;
+    }
+    
+    .hosting::-webkit-scrollbar-thumb:hover {
+    background:rgb(54, 56, 58); 
+    }
+
+
+.attending {
+    background-color: whitesmoke;
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.637);
+    padding-bottom: 1%;
+    border-radius: .5rem;
+    margin-left: 20%;
+    margin-right: 20%;
+    min-height: 325px;
+    max-height: 325px;
+    overflow-y: scroll;
 }
+
+
+.attending::-webkit-scrollbar {
+    width: .5rem;
+    }
+    
+    .attending::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+    }
+    
+    .attending::-webkit-scrollbar-thumb {
+    background:rgba(0, 0, 0, 0.445); 
+    border-radius: 10px;
+    }
+    
+    .attending::-webkit-scrollbar-thumb:hover {
+    background:rgb(54, 56, 58); 
+    }
+
 
 .partyBtnDiv {
     text-align: center;
-   
 }
 
 
 .partyCreateBtn {
-    width: 10%;
-    height: 30px;
+    width: 15rem;
+    height: 3rem;
     text-align: center;
-    
-    outline: none;
-    border: .5px inset black;
-
-    
+    margin-top: -1rem;
+    font-size: 1.3rem;
+    color: whitesmoke;
+    font-family: "Roboto";
+    border-radius: .4rem;
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.514);
+    background-color: rgba(3, 175, 3, 0.904);
+    color: whitesmoke;
+    border: none;
 }
 
 .partyCreateBtn:hover {
     cursor: pointer;
-    background-image: linear-gradient(to right, white, rgba(0, 0, 0, 0.685));
+    background-image: linear-gradient(to right, white, rgba(3, 175, 3, 0.904));
     color: white;
     border: 2px solid white;
 }
 
-@media only screen and (max-width: 480px) {
-
-    .parties h4 {
-        margin-top: -4%;
-        width: 30%;
+@media(min-height: 1274px) {
+    .border-word-first {
+        top: 14.3%;
     }
 
-    .partyCreateBtn {
-        width: 50%;
+    .border-word-second {
+        top: 46.8%;
+    }
 
+    .partyDiv {
+        text-align: center;
+        margin-top: 10rem;
+      
     }
 
     .hosting {
-        margin-left: 0%;
-        margin-right: 0%;
-        min-height: 250px;
+        min-height: 25rem;
+        max-height: 25rem;
+        margin-left: 15%;
+        margin-right: 15%;
     }
 
     .attending {
-        margin-left: 0%;
-        margin-right: 0%;
-        min-height: 250px;
+        min-height: 25rem;
+        max-height: 25rem;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}
+
+@media (max-width: 1439px){
+
+    .hosting {
+        min-height: 300px;
+        max-height: 300px;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .attending {
+        min-height: 300px;
+        max-height: 300px;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .partyBtnDiv {
+        margin-top: -1rem;
+    }
+
+    .border-word-first {
+        top: 10.9%;
+    }
+
+    .border-word-second {
+        top: 48.3%;
+    }
+}
+
+
+@media (max-width: 1100px) {
+    .partyBtnDiv button{
+        width: 15rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .hosting {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .attending {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .border-word-first {
+        left: 23%;
+    }
+
+    .border-word-second {
+        left: 23%;
+    }
+
+    .partyLink {
+        margin-left: .5rem;
+        margin-right: .5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .hosting {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+
+    .attending {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+
+    .border-word-first {
+        left: 21%;
+    }
+
+    .border-word-second {
+        left: 21%;
+    }
+}
+
+@media (max-width: 700px) {
+    .hosting {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .attending {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .border-word-first {
+        left: 20%;
+    }
+
+    .border-word-second {
+        left: 20%;
+    }
+}
+
+@media (max-width: 600px) {
+    .link-div {
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    .hosting {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
+    .attending {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
+    .border-word-first {
+        left: 19%;
+    }
+
+    .border-word-second {
+        left: 19%;
+    }
+
+    .partyLink {
+        margin-left: .1rem;
+        margin-right: .1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .hosting {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .attending {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .border-word-first {
+        left: 17%;
+    }
+
+    .border-word-second {
+        left: 17%;
     }
 }

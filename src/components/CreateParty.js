@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DatePicker, { registerLocale } from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-
-
-
 import '../style/CreateParty.css'
-import { ReactReduxContext } from 'react-redux';
+import UserCheckBox from './UserCheckBox';
+import InvitedUsers from './InvitedUsers';
+
 
 class CreateParty extends Component {
     constructor(){
@@ -22,10 +20,8 @@ class CreateParty extends Component {
             users: [],
             filteredUsers: [],
             userSearch: "",
-            
 
         }
-
     }
    
 
@@ -119,12 +115,6 @@ class CreateParty extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-        // if(this.state.userSearch.length > 0){
-        //     this.handleSearch()
-        // }else{
-        //     this.setState({filteredUsers: this.state.users})
-        // }
-        
     }
     
     handleCalendar = (event) => {
@@ -144,48 +134,45 @@ class CreateParty extends Component {
         })
         .then(r => r.json())
         .then(users => {
-            
+        
             this.setState({users: users, filteredUsers: users})
            
         })
     }
 
-    handleCheck = (event) => {
-        const guestId = parseInt(event.target.id)
-           
+    handleCheck = (user) => {
+    
+        
         let guests = this.state.partyGuests
-        if(this.state.partyGuests.includes(guestId)){
-            let idx = guests.indexOf(guestId)
+        if(guests.includes(user)){
+            let idx = guests.indexOf(user)
             delete guests[idx]
-
+    
             this.setState({
                 partyGuests: guests
             })
         } else {
-            guests.push(guestId)
+            guests.push(user)
             this.setState({
                 partyGuests: guests
             })
         }
-       
-        
+
     }
 
     
 
-
     mapUsers = () => {
     return this.state.filteredUsers.map(user => {
         if(user.username !== this.props.auth.user.username){
-
-            return <p className="user" key={user.id}><input onChange={this.handleCheck} type="checkbox" key={user.id} name="user" id={user.id}/>{user.username}</p>
+            return <UserCheckBox user={user} handleCheck={this.handleCheck} key={"usercheckbox" + user.id} />
+        
         }
     })
     }
 
 
    handleSearch = (event) => {
-
    
     this.setState({userSearch: event.target.value})    
 
@@ -196,16 +183,8 @@ class CreateParty extends Component {
         }else{
             const f = this.state.filteredUsers.filter(user => user.username.toLowerCase().includes(this.state.userSearch.toLowerCase())).map(searchedUser => {return searchedUser})
             this.setState({filteredUsers: f})
-            
         }
-    
-      
-      
-
    }
-
-
-   
 
 
     render() {
@@ -214,14 +193,13 @@ class CreateParty extends Component {
             <div className="createContainer">
                 <form className="createForm" onSubmit={this.handleSubmit}>
                     <div className="leftSide">
-                    <input onChange={this.handleChange} type="text" name="partyName" value={partyName} placeholder="Name"/>
+                    <input onChange={this.handleChange} type="text" name="partyName" value={partyName} placeholder="Party Name"/>
                     <input onChange={this.handleChange} type="text" name="partyAddress" value={partyAddress} placeholder="Address"/>
                     
                     <input className="dateSelect" type="date" name="partyDate" placeholder="Select Date" onChange={this.handleChange} />
-                    {/* <DatePicker placeholderText="Select Date" selected={this.state.partyDate} onChange={this.handleCalendar}  /> */}
                     
                     <textarea className="details" placeholder="Additional Details" type="text" onChange={this.handleChange} name="partyDetails"/>
-
+                    <InvitedUsers removeFromParty={this.handleCheck} guests={this.state.partyGuests}/>
                     </div>
                     <div className="rightSideBox">
                     <input className="userSearch" type="text" value={userSearch} name="userSearch" placeholder="Search Users" onChange={this.handleSearch} />

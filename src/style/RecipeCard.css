@@ -3,21 +3,15 @@
     height: 100%;
     display: block;
     object-fit: cover;
-   
-    height: 300px;
-
+    height: 10rem;
     border: 3px solid black;
-    border-radius: 50%;
-
+    border-radius: 1rem;
 }
 
 
 
 .recipeCard {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 200px);
-    max-width: 300px;
-    /* margin-bottom: 50px; */
+    max-width: 10rem;
     text-align: center;
     opacity: 85%;
 
@@ -25,7 +19,20 @@
 
 .recipeCard:hover {
     opacity: 100%;
+    cursor: pointer;
+    animation: pulse .3s linear;
+    
 }
+
+
+@keyframes pulse {
+    100% {
+      transform: scale(1);
+    }
+  
+  
+  
+  }
 
 
 
