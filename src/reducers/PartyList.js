@@ -18,7 +18,6 @@ const initialState = {
                 ingredientNames.push(i)
             }
         })
-         
             return {
                 ...state,
                 partyList: ingredientNames

@@ -214,3 +214,9 @@
 .badLogin {
 	color: red;
 }
+
+@media (max-width: 649px){
+	.container {
+		
+	}
+}

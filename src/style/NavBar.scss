@@ -21,9 +21,9 @@ $border: 4px solid $menubar-color;
   }
 }
 
-.navBarDiv,
-html {
-  height: 100%;
+.navBarDiv {
+  // height: 100%;
+  // overflow: hidden !important;
 }
 
 .navBarDiv {

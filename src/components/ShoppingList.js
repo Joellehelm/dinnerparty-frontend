@@ -53,7 +53,7 @@ class ShoppingList extends Component {
             return <div className="listedRecipe" key={idx} >
                 <div className="recipeHeader">
                     <img src={recipe.recipe.image} />
-                    <h3>{recipe.recipe.name}</h3>
+                    <p>{recipe.recipe.name}</p>
                 </div>
                 {this.mapIngredients(recipe.ingredients)}
             </div>
@@ -64,12 +64,17 @@ class ShoppingList extends Component {
     mapIngredients = (ingredients) => {
         return ingredients.map((ingredient, idx) => {
             if (!this.state.purchasedIngredients.includes(ingredient.id)) {
-                return <div className="ingredientDiv" key={idx}><input className="checkbox" onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id} value={ingredient.name} /><h4>{ingredient.name}</h4></div>
+              
+                return <div className="ingredientDiv" style={{backgroundImage: `url(https://spoonacular.com/cdn/ingredients_500x500/${ingredient.picture})`}} key={idx}>
+                    <input className="checkbox" onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id} value={ingredient.name} />
+                    <p>{ingredient.name}</p>
+                    </div>
             } else {
                 return <div className="ingredientDiv" key={idx}><h4 className="purchasedIngredient">{ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
             }
         })
     }
+
 
 
 
