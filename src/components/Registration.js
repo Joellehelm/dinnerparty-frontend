@@ -21,8 +21,6 @@ class Registration extends Component {
     }
 
 
-    // maybe swap the return below to a logout button if the user is logged in
-
     render() {
         return (
             <div className="registration">

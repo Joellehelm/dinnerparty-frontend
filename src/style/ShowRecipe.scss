@@ -1,0 +1,471 @@
+.showRecipe {
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 4%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    grid-template-rows: repeat(1, 550px);
+    grid-gap: 3rem;
+}
+
+.show-recipe-container {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+}
+
+.rightSide {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding-right: 10%;
+    padding-left: 10%;
+    grid-column-gap: 3rem;
+    align-items: center;
+    background-color: rgba(245, 245, 245, 0.795);
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.493);
+    border-radius: .6rem;
+    font-family: "Roboto";
+    &::-webkit-scrollbar-thumb {
+        background-color: gray !important;
+        border-radius: 0.3rem;
+      }
+
+      &::-webkit-scrollbar {
+        width: 0.5rem !important;
+        height: 0.5rem !important;
+      }
+}
+
+
+.nutrition {
+    height: 100%;
+    width: 100%
+}
+
+
+.innerItems {
+    height: 100%;
+}
+
+.innerItems p {
+    font-family: "Roboto";
+    color: rgb(49, 49, 49);
+}
+
+.nutrition p {
+    font-family: "Roboto";
+    color: rgb(49, 49, 49);
+}
+
+.inner-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: rgb(255, 72, 0) !important;
+}
+
+
+.innerItems ul {
+    list-style: square;
+    color: rgb(49, 49, 49);
+}
+
+.pictureDiv {
+    text-align: center;
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.493);
+    border-radius: .6rem;
+    height: 25rem;
+    width: 37.5rem;
+}
+
+.recipePicture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    border-radius: .6rem;
+}
+
+
+.recipeContainer {
+   grid-column: 1/2;
+   grid-row: 1/2;
+}
+
+.recipeName {
+    text-shadow: 1px 1px rgba(245, 245, 245, 0.795);
+    text-align: center;
+    margin-top: 100px;
+    font-size: 2.5rem;
+    font-family: "Pattaya";
+    color: rgb(61, 61, 61);
+}
+
+
+.instructions {
+    display: flex;
+    flex-flow: column;
+    border-radius: .6rem;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 3rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    background-color: rgba(245, 245, 245, 0.795);
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.493);
+    grid-row-gap: .5rem;
+}
+
+.instructions-title {
+    font-family: "Roboto";
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgb(3, 175, 3);
+    margin: 0rem;
+}
+
+.small-text {
+    margin-top: 0rem;
+    color: rgb(71, 71, 71);
+    font-family: "Roboto";
+}
+
+.instruction-step p {
+    margin: 0rem;
+}
+
+.instruction-step {
+    border: 1px solid black;
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.instruction-step:hover {
+    cursor: pointer;
+    background-color: rgba(245, 245, 245, 0.918);
+}
+
+.marked-spot {
+    background-color: lightgreen;
+}
+
+.marked-spot:hover {
+    background-color: rgba(144, 238, 144, 0.664) !important;
+}
+
+.ins {
+    padding-left: 2rem;
+    padding-right: 1rem;
+    padding-bottom: .5rem;
+    margin-top: -.5rem !important;
+    font-family: "Roboto";
+}
+
+.ins-step {
+    color: rgb(3, 175, 3);
+    font-family: "Pattaya";
+    font-size: 1.5rem;
+    padding-left: 1rem;
+}
+
+.add-recipe-btn {
+    width: 7rem;
+    height: 3rem;
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Roboto";
+    border-radius: .4rem;
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.514);
+    background-color: rgba(3, 175, 3, 0.904);
+    color: whitesmoke;
+    border: none;
+}
+
+.add-recipe-btn:hover {
+    cursor: pointer;
+    background-color: rgb(3, 175, 3);
+}
+
+
+.partySelect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    grid-column-gap: .5rem;
+}
+
+
+.partySelect select {
+    height: 3rem;
+    width: 20rem;
+    border-radius: .4rem;
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.514);
+    font-size: 1rem;
+    text-align: center;
+    text-align-last: center;
+    background-color: lightgreen;
+    font-family: "Roboto";
+    color: rgb(59, 59, 59);
+}
+
+
+.partySelect select:hover {
+    cursor: pointer;
+}
+
+.partySelect select:focus {
+    outline-color: rgb(3, 175, 3);
+}
+
+
+.ingredients {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    background-color: rgba(245, 245, 245, 0.795);
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.493);
+    padding: 2rem;
+    border-radius: .6rem;
+    font-family: "Roboto";
+    font-size: 1.1rem;
+    
+}
+
+.ingredients ul li {
+    margin-top: 1rem;
+    font-family: "Roboto";
+}
+
+.ingredients p {
+    color: rgb(3, 175, 3);
+    font-weight: 600;
+    font-size: 2rem;
+    font-family: "Roboto";
+    margin: 0;
+}
+
+.modal {
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.493);
+    width: 30rem;
+    height: 15rem;
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: .5rem;
+    text-align: center;
+    z-index: 1002; 
+    // font-family: "Roboto";
+    font-size: 1.1rem;
+   display: grid;
+   grid-template-rows: 2fr 1fr;
+   text-align: center;
+}
+
+.modal-words {
+    background-color: white !important;
+    border-radius: .5rem .5rem 0rem 0rem;
+    border-bottom: 1px solid black;
+}
+
+.modal-btn-container {
+    background-color: whitesmoke;
+    border-radius: 0rem 0rem .5rem .5rem;
+}
+
+.modal div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal p {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 1.2rem;
+}
+
+.modalOverlay {
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.637);
+}
+
+
+
+.modal button {
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.493);
+    background-color: rgba(3, 175, 3, 0.904);
+    color: whitesmoke;
+    font-family: "Roboto";
+    width: 10rem;
+    height: 2.5rem; 
+    border: none;
+    border-radius: .5rem;
+    
+}
+
+.modal button:hover {
+    cursor: pointer;
+    background-color: rgb(3, 175, 3);
+    color: white;
+    border: 1px solid white;
+}
+
+
+
+
+
+@media (max-width: 769px) {
+  .showRecipe {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .rightSide {
+      margin-right: 0rem;
+  }
+
+  .pictureDiv {
+    height: 20rem;
+    width: 32.5rem;
+  }
+
+  .ingredients {
+      font-size: 1rem;
+  }
+
+  .recipeName {
+      font-size: 2rem;
+  }
+}
+
+@media (max-width: 655px) {
+    .pictureDiv {
+        height: 20rem;
+        width: 29.5rem
+    }
+}
+
+
+@media (max-width: 620px) {
+    .pictureDiv {
+        height: 20rem;
+        width: 27.5rem;
+    }
+
+    .add-recipe-btn {
+        width: 6.5rem;
+        font-size: .9rem;
+    }
+
+    .partySelect select {
+        width: 17rem;
+    }
+
+    .instructions {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+}
+
+@media (max-width: 580px) {
+    .pictureDiv {
+        height: 18rem;
+        width: 25.5rem;
+    }
+
+    .add-recipe-btn {
+        width: 6rem;
+        font-size: .8rem;
+    }
+
+    .partySelect select {
+        width: 15rem;
+        font-size: .9rem
+    }
+
+    .modal {
+        width: 25rem;
+    }
+}
+
+
+@media (max-width: 520px) {
+    .pictureDiv {
+        height: 15rem;
+        width: 23.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .pictureDiv {
+        width: 20.5rem;
+    }
+
+    .add-recipe-btn {
+        height: 2.5rem;
+        width: 5.5rem;
+        font-size: .8rem;
+    }
+
+    .partySelect select {
+        height: 2.5rem;
+        width: 13rem;
+
+    }
+
+    .modal {
+        height: 13rem;
+        width: 23rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .pictureDiv {
+        width: 18.5rem;
+    }
+
+    .rightSide {
+        display: flex;
+        flex-flow: column;
+    }
+}
+
+@media (max-width: 410px) {
+    .pictureDiv {
+        width: 17rem;
+    }
+
+    .partySelect select {
+        width: 11rem;
+    }
+
+    .modal {
+        height: 13rem;
+        width: 20rem;
+    }
+}
+
+
+
+

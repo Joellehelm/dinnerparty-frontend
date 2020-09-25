@@ -3,43 +3,43 @@ import '../style/Search.css'
 
 
 class Search extends Component {
-    constructor(){
+    constructor() {
         super()
 
         this.state = {
-           allCuisines: [],
-           allDiets: []
+            allCuisines: [],
+            allDiets: []
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.setState({
-            allCuisines: ["African", 
-            "American",
-            "British",
-            "Cajun",
-            "Caribbean",
-            "Chinese",
-            "Eastern European",
-            "European",
-            "French",
-            "German",
-            "Greek",
-            "Indian",
-            "Irish",
-            "Italian",
-            "Japanese",
-            "Jewish",
-            "Korean",
-            "Latin American",
-            "Mediterranean",
-            "Mexican",
-            "Middle Eastern",
-            "Nordic",
-            "Southern",
-            "Spanish",
-            "Thai",
-            "Vietnamese"]
+            allCuisines: ["African",
+                "American",
+                "British",
+                "Cajun",
+                "Caribbean",
+                "Chinese",
+                "Eastern European",
+                "European",
+                "French",
+                "German",
+                "Greek",
+                "Indian",
+                "Irish",
+                "Italian",
+                "Japanese",
+                "Jewish",
+                "Korean",
+                "Latin American",
+                "Mediterranean",
+                "Mexican",
+                "Middle Eastern",
+                "Nordic",
+                "Southern",
+                "Spanish",
+                "Thai",
+                "Vietnamese"]
         })
 
         this.setState({
@@ -57,44 +57,46 @@ class Search extends Component {
             ]
         })
 
-        
+
     }
 
 
 
     mapDiets = () => {
-        return this.state.allDiets.map((diet, idx) => {return <option key={idx} name="diet" value={diet}>{diet}</option>})
+        return this.state.allDiets.map((diet, idx) => { return <option key={idx} name="diet" value={diet}>{diet}</option> })
     }
 
-    
+
 
 
     mapCuisines = () => {
-        return this.state.allCuisines.map((cuisine, idx) => {return <option key={idx} name="cuisine" value={cuisine}>{cuisine}</option>})
+        return this.state.allCuisines.map((cuisine, idx) => { return <option key={idx} name="cuisine" value={cuisine}>{cuisine}</option> })
     }
 
 
     render() {
         return (
-            <div className="formDiv">
-                
+            <div className="form-div">
+
                 <form onSubmit={this.props.handleSubmit}>
-               <select onChange={this.props.handleChange} name="cuisine">
-                   <option defaultValue>Cuisine Type</option>
-                   {this.mapCuisines()}
-                   </select>
+                    <div className="selection-for-search">
+                        <select onChange={this.props.handleChange} name="cuisine">
+                            <option defaultValue>Cuisine Type</option>
+                            {this.mapCuisines()}
+                        </select>
 
 
-                   <select onChange={this.props.handleChange} name="diet">
-                   <option defaultValue>Dietary Restrictions</option>
-                   {this.mapDiets()}
-                   </select>
+                        <select onChange={this.props.handleChange} name="diet">
+                            <option defaultValue>Dietary Restrictions</option>
+                            {this.mapDiets()}
+                        </select>
+                    </div>
 
-                <div className="searchBar">
-                   <input className="search" onChange={this.props.handleChange} name="query" placeholder="Search..."/>
-                   <button className="searchButton" name="submit">Submit</button>
-                   </div>
-                   </form>
+                    <div className="search-bar">
+                        <input className="search" onChange={this.props.handleChange} name="query" placeholder="Search..." />
+                        <button className="search-button" name="submit">Submit</button>
+                    </div>
+                </form>
             </div>
         );
     }

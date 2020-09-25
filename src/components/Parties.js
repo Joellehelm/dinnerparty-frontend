@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-
 import CreateParty from './CreateParty'
 import ViewParty from './ViewParty'
-
-
 import '../style/Parties.css'
 
 class Parties extends Component {
@@ -96,9 +93,7 @@ class Parties extends Component {
        
     }
 
-    // handleEdit = () => {
-    //     this.setState({editing: !this.state.editing})
-    // }
+
 
     viewParty = (party) => {
         
@@ -136,7 +131,7 @@ class Parties extends Component {
 
     render() {
         return (
-            <div>
+            <div className="party-container">
                
                 { this.state.creating ?
                 <CreateParty fetchParties={this.fetchParties} doneCreating={this.doneCreating} auth={this.props.auth}/>
@@ -148,16 +143,20 @@ class Parties extends Component {
 
                 :
                 <div className="partyDiv">
-                    <h1>Parties</h1>
+                    <p className="parties-title">Parties</p>
                 <div className="parties">
                         <div className="hosting">
-                        <h4>Hosting</h4>
+                        <p className="border-word-first">Hosting</p>
+                        <div className="link-div">
                         {this.mapHosting()}
+                        </div>
                         </div>
                     <div>
                         <div className="attending">
-                        <h4>Attending</h4>
+                        <p className="border-word-second">Attending</p>
+                        <div className="link-div">
                         {this.mapAttending()}
+                        </div>
                         </div>
                     </div>
 

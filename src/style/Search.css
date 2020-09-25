@@ -1,55 +1,140 @@
-.formDiv {
-    margin-top: 200px;
-    text-align: center;
-    
-}
-
-.formDiv select {
-    position: relative;
-    margin-left: 10px;
-}
-
-.searchBar {
-   
-    width: 30%;
-    position: absolute;
-    left: 50%;
-    top: 280px;
-    transform: translate(-50%, -50%);
-    
-}
-
-.searchButton {
-    margin-top: 3%;
-    width: 100px;
-    height: 20px; 
-    outline: none;
-    
-    border: .5px inset black;
-    border-radius: 30px;
-    
-}
-
-.searchButton:hover {
-    cursor: pointer;
-    background-image: linear-gradient(to right, white, rgba(0, 0, 0, 0.685));
-    color: white;
-    border: 2px solid white;
-}
-
-.search {
-    text-align: center;
-   
-    border: .5px outset black;
-    outline-style: none;
-    border-radius: 30px;
-    height: 30px;
-    
-    width: 100%;
-    position: relative;
+.search-bar {
     display: flex;
+    overflow: hidden;
+    border-radius: .5rem;
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.514);
+    height: 3rem;
 }
 
-.search:focus{
-    box-shadow: 1px 2px;
+.search-bar input{
+    border: none;
+    text-align: center;
+    height: 3rem;
+    width: 25rem;
+    font-size: 1.5rem;
+    border-right: none;
+    border: 1px solid rgb(3, 175, 3);
+   
+    border-radius: .5rem;
+}
+
+.search-bar input:focus {
+    border-radius: .5rem;
+    padding: 3px 0px 3px 3px;
+    outline: none;
+  }
+
+.search-bar button {
+    margin-left: -.7rem;
+    border-left: none;
+    border: none;
+    width: 5rem;
+    height: 3rem;
+    font-family: "Roboto";
+    background-color: rgb(3, 175, 3);
+    color: whitesmoke;
+    font-size: 1.2rem;
+}
+
+.search-bar button:hover {
+    cursor: pointer;
+}
+
+.search-bar button:focus {
+    outline: none;
+}
+
+.selection-for-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.selection-for-search select {
+    box-shadow: 0.125rem 0.125rem 0.375rem 0.0625rem hsla(0, 0%, 0%, 0.514);
+    height: 3rem;
+    width: 13rem;
+    border-radius: .5rem;
+    font-size: 1rem;
+    text-align: center;
+    text-align-last: center;
+    background-color: lightgreen;
+    font-family: "Roboto";
+    color: rgb(59, 59, 59);
+}
+
+.selection-for-search select:hover {
+    cursor: pointer;
+}
+
+.selection-for-select select:focus {
+    outline-color: rgb(3, 175, 3);
+}
+
+
+.form-div form {
+    grid-row-gap: 1rem;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+@media (max-width: 820px){
+
+    .selection-for-search select {
+        width: 11rem;
+    }
+
+    .search-bar input{
+        height: 3rem;
+        width: 20rem;
+    
+    }
+}
+
+@media (max-width: 620px){
+   .selection-for-search select {
+       width: 10rem;
+       font-size: .9rem;
+   }
+
+   .search-bar input{
+       width: 17rem;
+       font-size: 1.2rem;
+   }
+
+   .search-bar button {
+    width: 4rem;
+    font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .selection-for-search select {
+        width: 12rem;
+        font-size: 1rem;
+    }
+
+    .selection-for-search {
+        display: flex;
+        flex-direction: column;
+        grid-row-gap: .5rem;
+    }   
+
+    .form-div form {
+        grid-row-gap: 1rem;
+        display: grid;
+        grid-template-rows: 2fr 1fr;
+    }
+
+    .search-bar input{
+        width: 15rem;
+        font-size: 1.1rem;
+    }
+ 
+    .search-bar button {
+     width: 4rem;
+     font-size: 1rem;
+     }
+
+  
 }
