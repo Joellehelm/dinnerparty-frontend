@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import '../style/ShoppingList.css'
 import NavBar from './NavBar'
+import MarkIngredient from './MarkIngredient'
+import '../style/ShoppingList.css'
+
 
 
 class ShoppingList extends Component {
@@ -65,12 +67,17 @@ class ShoppingList extends Component {
         return ingredients.map((ingredient, idx) => {
             if (!this.state.purchasedIngredients.includes(ingredient.id)) {
               
-                return <div className="ingredientDiv" style={{backgroundImage: `url(https://spoonacular.com/cdn/ingredients_500x500/${ingredient.picture})`}} key={idx}>
-                    <input className="checkbox" onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id} value={ingredient.name} />
-                    <p>{ingredient.name}</p>
-                    </div>
+                return <MarkIngredient markList={this.markList} ingredient={ingredient}/>
+                // return <IconContext.Provider value={{ color: "rgba(3, 175, 3, 0.904)" }}>
+                // <div className="ingredientDiv" style={{backgroundImage: `url(https://spoonacular.com/cdn/ingredients_500x500/${ingredient.picture})`}} key={ingredient.name} onClick={() => this.markList(ingredient.id)} id={ingredient.id} value={ingredient.name}key={idx}>
+                // <SiAddthis />
+                           
+                //     {/* <input className="checkbox" onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id} value={ingredient.name} /> */}
+                //     <p>{ingredient.name}</p>
+                //     </div>
+                //     </IconContext.Provider>
             } else {
-                return <div className="ingredientDiv" key={idx}><h4 className="purchasedIngredient">{ingredient.name}</h4><p>{this.state.userIngredients[ingredient.id]}</p></div>
+                return <div className="ingredientDiv" style={{backgroundImage: `url(https://spoonacular.com/cdn/ingredients_500x500/${ingredient.picture})`}} key={ingredient.name} ><p className="purchasedIngredient">{ingredient.name}</p><p>{this.state.userIngredients[ingredient.id]}</p></div>
             }
         })
     }
@@ -78,8 +85,9 @@ class ShoppingList extends Component {
 
 
 
-    markList = (event) => {
-        const ingredientId = parseInt(event.target.id)
+    markList = (ingredientId) => {
+        console.log(ingredientId)
+        // const ingredientId = parseInt(event.target.id)
 
         let bringing = this.state.bringingIngredients
         if (this.state.bringingIngredients.includes(ingredientId)) {

@@ -54,12 +54,42 @@
 .ingredientDiv {
     opacity: 80%;
     height: 10rem;
+    font-family: "Roboto";
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.outline-green:after{
+    content:"";
+    position:absolute;
+    border-top:3px solid black;
+      width: 27rem;
+      transform: rotate(19.5deg);
+    }
+
+.outline-green {
+    border: 8px double rgb(3, 175, 3) !important;
+}
+
+.ingredientDiv svg {
+    height: 2rem;
+    width: 2rem;
+}
+
+.ingredientDiv p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(245, 245, 245, 0.856);
+    width: 100%;
+    padding-left: .5rem;
+    padding-right: .5rem;
 }
 
 .ingredientDiv:hover {
     cursor: pointer;
     opacity: 100%;
-    border: 4px double lightgreen;
+    border: 8px double rgb(3, 175, 3);
 }
 
 @media only screen and (max-width: 480px) {
