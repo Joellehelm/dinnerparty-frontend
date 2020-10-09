@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Home from './Home'
-import NavBar from './NavBar'
 import Registration from './Registration'
-import Recipes from './Recipes'
 import { connect } from 'react-redux'
 import ShowRecipe from './ShowRecipe'
 import ShoppingList from './ShoppingList'
@@ -12,15 +10,6 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-
-
-
-const messages = (props) => {
-    return (
-        <div><h1>Coming Soon...</h1></div>
-    )
-}
-
 
 
 
@@ -66,7 +55,7 @@ class MainContainer extends Component {
                                 <Route
                                     exact path='/account'
                                     render={props => (
-                                        <Account {...props} cableApp={this.props.cableApp} auth={this.props.auth} handleRedirect={this.handleRedirect} />
+                                        <Account {...props} auth={this.props.auth} handleRedirect={this.handleRedirect} />
                                     )}
                                 />
 

@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
        
-        <MainContainer cableApp={this.props.cableApp}/>
+        <MainContainer />
       </div>
     );
   }

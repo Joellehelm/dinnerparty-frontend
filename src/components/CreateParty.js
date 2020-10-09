@@ -50,7 +50,6 @@ class CreateParty extends Component {
         .then(r => r.json())
         .then(response => {
             this.createPartyUsers(response.id)
-            this.createRoom(response.id)
             this.setState({
                 name: "",
                 host_id: "",
@@ -63,30 +62,7 @@ class CreateParty extends Component {
 
 
 
-    createRoom = (partyId) => {
-        fetch('http://localhost:3000/rooms', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": 'application/json',
-                "Authorization": `JWT ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify({party_id: partyId})
-        })
-        .then(r => r.json())
-        .then(response => {
-           
-        })
-    }
-
-
     createPartyUsers = (partyId) => {
-        
-        let guestsAndHost = []
-        guestsAndHost = this.state.partyGuests
-        guestsAndHost.push(this.props.auth.user.id)
-        console.log(guestsAndHost)
-
         fetch('http://localhost:3000/party_users', {
             method: "POST",
             headers: {
@@ -94,35 +70,29 @@ class CreateParty extends Component {
                 "Accept": "application/json",
                 "Authorization": `JWT ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({party_user: {party_id: partyId, user_id: this.state.partyGuests}})
+            body: JSON.stringify({party_user: this.state.partyGuests, party_id: partyId})
         })
         .then(r => r.json())
         .then(response => {
-           
             this.setState({
                 partyGuests: []
             })
             this.props.fetchParties()
             this.props.doneCreating()
-            
         })
     }
 
 
-
     handleChange = (event) => {
-        
         this.setState({
             [event.target.name]: event.target.value
         })
     }
     
     handleCalendar = (event) => {
-        
         this.setState({
             partyDate: event
         })
-        
     }
 
     componentDidMount(){
@@ -140,9 +110,7 @@ class CreateParty extends Component {
         })
     }
 
-    handleCheck = (user) => {
-    
-        
+    handleCheck = (user) => {  
         let guests = this.state.partyGuests
         if(guests.includes(user)){
             let idx = guests.indexOf(user)
@@ -157,29 +125,20 @@ class CreateParty extends Component {
                 partyGuests: guests
             })
         }
-
     }
-
-    
 
     mapUsers = () => {
     return this.state.filteredUsers.map(user => {
         if(user.username !== this.props.auth.user.username){
             return <UserCheckBox user={user} handleCheck={this.handleCheck} key={"usercheckbox" + user.id} />
-        
         }
     })
     }
 
-
    handleSearch = (event) => {
-   
-    this.setState({userSearch: event.target.value})    
-
-        if (event.target.value === ""){
-            
+    this.setState({userSearch: event.target.value})
+        if (event.target.value === ""){    
             this.setState({filteredUsers: this.state.users})
-           
         }else{
             const f = this.state.filteredUsers.filter(user => user.username.toLowerCase().includes(this.state.userSearch.toLowerCase())).map(searchedUser => {return searchedUser})
             this.setState({filteredUsers: f})

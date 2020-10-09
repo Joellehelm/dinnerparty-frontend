@@ -5,16 +5,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './store';
-import actionCable from 'actioncable';
 
-
-const CableApp = {}
-
-CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
-
-
-
-ReactDOM.render(<Provider store={store} ><App cableApp={CableApp} /></ Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store} ><App /></ Provider>, document.getElementById('root'));
 
 
 serviceWorker.unregister();
