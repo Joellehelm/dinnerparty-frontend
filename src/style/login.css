@@ -216,7 +216,17 @@
 }
 
 @media (max-width: 649px){
-	.container {
-		
+	.resform {
+		padding: 0 30px;
+	}
+
+	.resform h1 {
+		font-size: 1.6rem;
+	}
+
+	.resbutton {
+		height: 2rem;
+		width: 5rem;
+		padding: 0rem;
 	}
 }
