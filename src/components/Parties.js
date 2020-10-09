@@ -19,14 +19,17 @@ class Parties extends Component {
 
     
     componentDidMount(){
-       
         this.fetchParties()
-        this.fetchUsers()
+
     } 
 
+    fetchParties = () => {
+        this.fetchHosting()
+        this.fetchAttending()
+    }
 
-    fetchUsers = () => {
-        fetch(`http://localhost:3000/party_users`, {
+    fetchAttending = () => {
+        fetch(`http://localhost:3000/attending`, {
             method: "GET",
             headers: {
                 "Authorization": `JWT ${localStorage.getItem('token')}`
@@ -34,47 +37,23 @@ class Parties extends Component {
         })
         .then(r => r.json())
         .then(response => {
-         
-         const attendedParties = []
-             response.forEach(party => {
-                
-                 if(party.user_id === this.props.auth.user.id){
-                     
-                     attendedParties.push(party)
-                 }
-             })
-             if(attendedParties.length > 0){
-                 this.setState({
-                     attending: attendedParties
-                 })
-             }
-        }) 
+            this.setState({attending: response})
+        })
     }
 
-
-    fetchParties = () => {
-        fetch(`http://localhost:3000/parties`, {
+    fetchHosting = () => {
+        fetch(`http://localhost:3000/hosting`, {
             method: "GET",
             headers: {
                 "Authorization": `JWT ${localStorage.getItem('token')}`
             }
         })
-       .then(r => r.json())
-       .then(response => {
-        const hostedParties = []
-            response.forEach(party => {
-             
-                if(party.host_id === this.props.auth.user.id){
-                    hostedParties.push(party)
-                }
-            })
-            if(hostedParties.length > 0){
-                this.setState({
-                    hosting: hostedParties
-                })
-            }
-       })
+        .then(r => r.json())
+        .then(response => {
+           this.setState({hosting: response})
+        })
     }
+
 
 
    doneViewing = () => {
@@ -84,24 +63,17 @@ class Parties extends Component {
        this.fetchParties()
    }
 
-
-
     doneCreating = () => {
         this.setState({
             creating: false
         })
-       
     }
 
-
-
     viewParty = (party) => {
-        
-        if(party.party){
-            party.party.room = party.room
-            this.setState({viewParty: !this.state.viewParty, partyInfo: party.party, hosting: false})
-        }else{
+        if(party.hosting){
             this.setState({viewParty: !this.state.viewParty, partyInfo: party, hosting: true})
+        }else{
+            this.setState({viewParty: !this.state.viewParty, partyInfo: party, hosting: false})
         }
     }
 
@@ -109,8 +81,9 @@ class Parties extends Component {
     mapHosting = () => {
        
         if(this.state.hosting.length > 0){
-
-            return this.state.hosting.map((party, idx) => { return <div className="linkDiv" key={idx} partyid={party.id}><p className="partyLink" onClick={() => this.viewParty(party)}>{party.name}</p></div>})
+            return this.state.hosting.map((party, idx) => { 
+                party.hosting = true
+                return <div className="linkDiv" key={idx} partyid={party.id}><p className="partyLink" onClick={() => this.viewParty(party)}>{party.name}</p></div>})
         }else{
             return null
         }
@@ -120,9 +93,9 @@ class Parties extends Component {
     mapAttending = () => {
         
         if(this.state.attending.length > 0){
-     
-        return this.state.attending.map((party, idx) => { return <div className="linkDiv" key={idx} partyid={party.id} ><p className="partyLink" onClick={() => this.viewParty(party)} >{party.party.name}</p></div>} )
-        
+            return this.state.attending.map((party, idx) => { 
+                party.hosting = false
+                return <div className="linkDiv" key={idx} partyid={party.id} ><p className="partyLink" onClick={() => this.viewParty(party)} >{party.name}</p></div>} )  
         }else{
             return null
         }
@@ -139,7 +112,7 @@ class Parties extends Component {
                 :
                 
                 this.state.viewParty ? 
-                <ViewParty cableApp={this.props.cableApp} attending={this.state.attending} fetchParties={this.fetchParties} doneViewing={this.doneViewing} history={this.props.history} hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
+                <ViewParty attending={this.state.attending} fetchParties={this.fetchParties} doneViewing={this.doneViewing} history={this.props.history} hosting={this.state.hosting} auth={this.props.auth} party={this.state.partyInfo} />
 
                 :
                 <div className="partyDiv">
