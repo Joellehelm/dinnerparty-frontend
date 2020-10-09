@@ -23,9 +23,11 @@ class MarkIngredient extends Component {
                 style={{ backgroundImage: `url(https://spoonacular.com/cdn/ingredients_500x500/${this.props.ingredient.picture})` }} 
                 key={this.props.ingredient.name} 
                 onClick={() => this.markList(this.props.ingredient.id)} id={this.props.ingredient.id} value={this.props.ingredient.name} key={this.props.ingredientname + this.props.ingredientId}>
-                    <SiAddthis />
-
+                    <div className="mark-ing-container">
+                        <SiAddthis />
+                
                     <p>{this.props.ingredient.name}</p>
+                    </div>
                 </div>
             </IconContext.Provider>
 

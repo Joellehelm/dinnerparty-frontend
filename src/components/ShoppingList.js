@@ -16,7 +16,6 @@ class ShoppingList extends Component {
         }
     }
 
-
     componentDidMount() {
         this.fetchIngredients()
     }
@@ -47,14 +46,12 @@ class ShoppingList extends Component {
             })
     }
 
-
-
     mapList = () => {
         return this.props.list.partyList.map((recipe, idx) => {
 
             return <div className="listedRecipe" key={idx} >
                 <div className="recipeHeader">
-                    <img src={recipe.recipe.image} />
+                    <div className="recipe-img" style={{backgroundImage: `url(${recipe.recipe.image})`}}></div>
                     <p>{recipe.recipe.name}</p>
                 </div>
                 {this.mapIngredients(recipe.ingredients)}
@@ -62,32 +59,18 @@ class ShoppingList extends Component {
         })
     }
 
-
     mapIngredients = (ingredients) => {
         return ingredients.map((ingredient, idx) => {
             if (!this.state.purchasedIngredients.includes(ingredient.id)) {
-              
                 return <MarkIngredient markList={this.markList} ingredient={ingredient}/>
-                // return <IconContext.Provider value={{ color: "rgba(3, 175, 3, 0.904)" }}>
-                // <div className="ingredientDiv" style={{backgroundImage: `url(https://spoonacular.com/cdn/ingredients_500x500/${ingredient.picture})`}} key={ingredient.name} onClick={() => this.markList(ingredient.id)} id={ingredient.id} value={ingredient.name}key={idx}>
-                // <SiAddthis />
-                           
-                //     {/* <input className="checkbox" onChange={this.markList} key={idx} type="checkbox" name="user" id={ingredient.id} value={ingredient.name} /> */}
-                //     <p>{ingredient.name}</p>
-                //     </div>
-                //     </IconContext.Provider>
+        
             } else {
-                return <div className="ingredientDiv" style={{backgroundImage: `url(https://spoonacular.com/cdn/ingredients_500x500/${ingredient.picture})`}} key={ingredient.name} ><p className="purchasedIngredient">{ingredient.name}</p><p>{this.state.userIngredients[ingredient.id]}</p></div>
+                return <div className="ingredientDiv purchased-ingredient" style={{backgroundImage: `url(https://spoonacular.com/cdn/ingredients_500x500/${ingredient.picture})`}} key={ingredient.name} ><p className="purchasedIngredient">{ingredient.name}</p><p>{this.state.userIngredients[ingredient.id]}</p></div>
             }
         })
     }
 
-
-
-
     markList = (ingredientId) => {
-        console.log(ingredientId)
-        // const ingredientId = parseInt(event.target.id)
 
         let bringing = this.state.bringingIngredients
         if (this.state.bringingIngredients.includes(ingredientId)) {
@@ -104,7 +87,6 @@ class ShoppingList extends Component {
             })
         }
     }
-
 
     handleSubmit = () => {
 
@@ -124,9 +106,7 @@ class ShoppingList extends Component {
                     this.fetchIngredients()
                 })
         }
-
     }
-
 
 
     render() {
@@ -139,7 +119,7 @@ class ShoppingList extends Component {
                     <p>Check off which ingredients you'll be bringing and click "Bring These Ingredients" at the bottom of the page.</p>
                     <div className="listDiv">
                         {this.mapList()}
-                        <button onClick={this.handleSubmit} >Bring These Ingredients</button>
+                        <button className="bring-ing-btn" onClick={this.handleSubmit} >Bring These Ingredients</button>
                     </div>
                 </div>
             </div>
